@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Container from './Container';
+import { SocialRow } from './PlatformLinks';
 import { artist, contact, policyLinks, allLinks, nav } from '@/content/site';
 
 export default function Footer() {
@@ -18,7 +19,7 @@ export default function Footer() {
             {contact.email && (
               <a
                 href={`mailto:${contact.email}`}
-                className="mt-6 inline-block text-sm text-bone-dim transition-colors hover:text-accent"
+                className="mt-6 inline-block text-sm text-bone-dim transition-colors hover:text-accent-bright"
               >
                 {contact.email}
               </a>
@@ -35,7 +36,7 @@ export default function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-sm text-bone-dim transition-colors hover:text-accent"
+                    className="text-sm text-bone-dim transition-colors hover:text-accent-bright"
                   >
                     {item.label}
                   </Link>
@@ -57,7 +58,7 @@ export default function Footer() {
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm text-bone-dim transition-colors hover:text-accent"
+                      className="text-sm text-bone-dim transition-colors hover:text-accent-bright"
                     >
                       {link.label}
                       <span className="sr-only"> (opens in a new tab)</span>
@@ -73,9 +74,12 @@ export default function Footer() {
 
         {/* Legal row */}
         <div className="mt-16 flex flex-col gap-6 border-t border-line pt-8 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-xs text-bone-faint">
-            © {year} {artist.name}. All rights reserved.
-          </p>
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:gap-10">
+            <p className="text-xs text-bone-faint">
+              © {year} {artist.name}. All rights reserved.
+            </p>
+            <SocialRow size="h-[18px] w-[18px]" className="-ml-3 gap-1" />
+          </div>
           <ul className="flex flex-wrap gap-x-6 gap-y-2">
             {policyLinks.map((item) => (
               <li key={item.href}>

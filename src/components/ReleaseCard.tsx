@@ -65,7 +65,7 @@ export default function ReleaseCard({ release }: { release: Release }) {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs uppercase tracking-[0.14em] text-accent underline-offset-4 transition-colors hover:text-accent-bright hover:underline"
+                  className="text-xs uppercase tracking-[0.14em] text-bone-dim underline-offset-4 transition-colors hover:text-accent-bright hover:underline"
                 >
                   {link.label}
                   <span className="sr-only">

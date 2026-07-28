@@ -76,12 +76,12 @@ export default function ContactPage() {
                           href={link.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="group flex items-center justify-between border-b border-line py-3 text-base text-bone-dim transition-colors hover:text-accent"
+                          className="group flex items-center justify-between border-b border-line py-3 text-base text-bone-dim transition-colors hover:text-accent-bright"
                         >
                           <span>{link.label}</span>
                           <span
                             aria-hidden="true"
-                            className="text-bone-faint transition-transform duration-200 group-hover:translate-x-1 group-hover:text-accent"
+                            className="text-bone-faint transition-transform duration-200 group-hover:translate-x-1 group-hover:text-accent-bright"
                           >
                             →
                           </span>
@@ -103,12 +103,12 @@ export default function ContactPage() {
                           href={link.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="group flex items-center justify-between border-b border-line py-3 text-base text-bone-dim transition-colors hover:text-accent"
+                          className="group flex items-center justify-between border-b border-line py-3 text-base text-bone-dim transition-colors hover:text-accent-bright"
                         >
                           <span>{link.label}</span>
                           <span
                             aria-hidden="true"
-                            className="text-bone-faint transition-transform duration-200 group-hover:translate-x-1 group-hover:text-accent"
+                            className="text-bone-faint transition-transform duration-200 group-hover:translate-x-1 group-hover:text-accent-bright"
                           >
                             →
                           </span>

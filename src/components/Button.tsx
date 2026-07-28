@@ -12,12 +12,12 @@ const base =
 const variants: Record<Variant, string> = {
   // Solid white. Use once per screen — it marks the single main action.
   primary:
-    'bg-accent text-ink-950 font-semibold hover:bg-accent-bright shadow-[0_0_28px_-6px_rgba(255,45,120,0.7)]',
+    'bg-accent text-white font-semibold hover:bg-accent-bright shadow-[0_10px_30px_-10px_rgba(196,30,36,0.85)]',
   // Outlined. For secondary actions sitting next to a primary.
   secondary:
-    'border border-line-strong text-bone hover:border-accent hover:bg-accent hover:text-ink-950',
+    'border border-line-strong text-bone hover:border-accent hover:bg-accent hover:text-white',
   // Text only. For tertiary actions and long link lists.
-  ghost: 'px-0 py-2 text-bone-dim hover:text-accent',
+  ghost: 'px-0 py-2 text-bone-dim hover:text-accent-bright',
 };
 
 /**

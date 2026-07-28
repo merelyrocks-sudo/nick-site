@@ -90,8 +90,8 @@ export default function ProductCard({ product }: { product: Product }) {
                       htmlFor={id}
                       className={`flex h-10 min-w-10 cursor-pointer items-center justify-center border px-3 text-xs uppercase tracking-[0.1em] transition-colors peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-bone ${
                         selected
-                          ? 'border-accent bg-accent text-ink-950'
-                          : 'border-line-strong text-bone-dim hover:border-accent hover:text-accent'
+                          ? 'border-accent bg-accent text-white'
+                          : 'border-line-strong text-bone-dim hover:border-accent hover:text-accent-bright'
                       }`}
                     >
                       {s}

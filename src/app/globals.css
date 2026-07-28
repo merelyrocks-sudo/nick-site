@@ -21,35 +21,39 @@
 }
 
 /* ---------------------------------------------------------------------------
-   DESIGN TOKENS — "moody but lively"
-   Charcoal rather than black, so the page has depth instead of a void.
-   Hot magenta carries all the energy. Change --color-accent and the whole
-   site changes colour at once.
+   DESIGN TOKENS — black, deep red, chrome.
+   Classic rock: near-black grounds, blood red for anything that acts,
+   brushed silver for headlines and text.
    --------------------------------------------------------------------------- */
 @theme {
-  /* --- Surfaces. Warm-leaning charcoal, never pure black. */
-  --color-ink-950: #131316; /* page background */
-  --color-ink-900: #1a1a1e; /* raised panels */
-  --color-ink-800: #232329; /* cards */
-  --color-ink-700: #2e2e36; /* hover */
+  /* --- Surfaces. */
+  --color-ink-950: #0a0a0a; /* page background */
+  --color-ink-900: #121212; /* raised panels */
+  --color-ink-800: #1a1a1a; /* cards */
+  --color-ink-700: #262626; /* hover */
 
-  /* --- Text.
-     Contrast measured against --color-ink-950. AA needs 4.5:1 for body text.
-     Do not darken these without re-checking. */
-  --color-bone: #ffffff; /* primary. 18.4:1 */
-  --color-bone-dim: #b4b0b8; /* secondary. 8.6:1 */
-  --color-bone-faint: #8a8590; /* captions. 5.1:1 */
+  /* --- Text. Silver-leaning rather than pure white.
+     Contrast measured against --color-ink-950; AA needs 4.5:1 for body text. */
+  --color-bone: #f2f2f2; /* primary. 17.4:1 */
+  --color-bone-dim: #b8bcc2; /* secondary. 9.1:1 */
+  --color-bone-faint: #85898f; /* captions. 5.6:1 */
 
-  /* --- Accent. Hot magenta. 5.2:1 on the background, so it is safe for text.
-     NOTE: white text on a magenta fill only reaches 3.6:1 and fails AA, which
-     is why magenta buttons use dark text instead. */
-  --color-accent: #ff2d78;
-  --color-accent-bright: #ff5c95;
-  --color-accent-deep: #c4145a;
+  /* --- Accent: deep blood red.
+     IMPORTANT: red on black is only 3.4:1, which FAILS AA for body text.
+     Red is therefore used for FILLS, RULES and LARGE DISPLAY TEXT only.
+     Buttons are red with WHITE text, which passes at 5.9:1. */
+  --color-accent: #c41e24;
+  --color-accent-bright: #e02a31;
+  --color-accent-deep: #7a0f14;
 
-  /* --- Hairlines, tinted toward the accent so even borders feel alive. */
-  --color-line: rgba(255, 45, 120, 0.16);
-  --color-line-strong: rgba(255, 45, 120, 0.42);
+  /* --- Chrome. Used for the metallic sheen on headings. */
+  --color-chrome-hi: #ffffff;
+  --color-chrome-mid: #b8bcc2;
+  --color-chrome-lo: #6e7278;
+
+  /* --- Hairlines. */
+  --color-line: rgba(242, 242, 242, 0.12);
+  --color-line-strong: rgba(242, 242, 242, 0.32);
 
   --font-sans:
     "Inter Variable", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -75,40 +79,48 @@ body {
   position: relative;
 }
 
-/* Film grain over the whole page. Pure CSS/SVG, no image request.
-   pointer-events:none so it never blocks a click. */
+/* Film grain across the whole page. Inline SVG noise — no image request. */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   z-index: 9999;
   pointer-events: none;
-  opacity: 0.09;
-  mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.055;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Keyboard focus. Magenta so it reads as part of the design, not a browser default. */
 :focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-accent-bright);
   outline-offset: 3px;
   border-radius: 0;
 }
 
 ::selection {
   background-color: var(--color-accent);
-  color: var(--color-ink-950);
+  color: #ffffff;
 }
 
 /* ---------------------------------------------------------------------------
-   TYPE PATTERNS
+   TYPE
    --------------------------------------------------------------------------- */
 .eyebrow {
   font-size: 0.6875rem;
   font-weight: 600;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: var(--color-bone-faint);
+}
+
+/* A short red rule before an eyebrow label. Purely decorative. */
+.eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 1.75rem;
+  height: 2px;
+  margin-right: 0.75rem;
+  vertical-align: 0.2em;
+  background-color: var(--color-accent);
 }
 
 .display {
@@ -119,14 +131,15 @@ body::before {
   letter-spacing: 0.01em;
 }
 
-/* Big headline with a magenta gradient running through the letters. */
-.display-hot {
+/* Brushed-chrome headline. Light rakes across the letterforms. */
+.display-chrome {
   background-image: linear-gradient(
-    100deg,
-    #ffffff 0%,
-    #ffffff 38%,
-    var(--color-accent-bright) 62%,
-    var(--color-accent) 100%
+    176deg,
+    var(--color-chrome-hi) 0%,
+    var(--color-chrome-mid) 34%,
+    var(--color-chrome-lo) 52%,
+    var(--color-chrome-mid) 66%,
+    var(--color-chrome-hi) 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -137,29 +150,43 @@ body::before {
    ATMOSPHERE
    --------------------------------------------------------------------------- */
 
-/* Magenta bloom behind a section. Decorative only. */
-.glow-bloom {
+/* Dull red haze behind a section — like stage light bleeding through smoke. */
+.haze {
   position: absolute;
   border-radius: 9999px;
-  filter: blur(90px);
-  opacity: 0.5;
+  filter: blur(110px);
+  opacity: 0.4;
   pointer-events: none;
   background: radial-gradient(
     circle,
     var(--color-accent) 0%,
-    rgba(255, 45, 120, 0) 70%
+    rgba(196, 30, 36, 0) 70%
   );
 }
 
-/* Artwork lifts and throws colour when you hover it. */
+/* Scratched, uneven horizontal rule. */
+.rule-worn {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--color-accent) 12%,
+    rgba(242, 242, 242, 0.28) 30%,
+    transparent 48%,
+    rgba(242, 242, 242, 0.18) 62%,
+    var(--color-accent-deep) 84%,
+    transparent 100%
+  );
+}
+
 .card-lift {
   transition:
     transform 0.5s var(--ease-out-soft),
     box-shadow 0.5s var(--ease-out-soft);
 }
 .card-lift:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 50px -12px rgba(255, 45, 120, 0.45);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 46px -14px rgba(196, 30, 36, 0.6);
 }
 
 @keyframes rise {
@@ -177,26 +204,28 @@ body::before {
   animation: rise 0.9s var(--ease-out-soft) both;
 }
 
-/* Slow drift of the hero bloom, so the page is never completely static. */
-@keyframes drift {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(4%, -3%, 0) scale(1.12);
-  }
-}
-
-.animate-drift {
-  animation: drift 18s ease-in-out infinite;
-}
-
 /* ---------------------------------------------------------------------------
-   MOTION SAFETY
-   People who get motion sickness have told their operating system so.
-   Everything decorative stops; nothing becomes unreadable.
+   SCROLL REVEAL
+   Sections start faded and slide up as they enter the viewport. Driven by
+   IntersectionObserver in Reveal.tsx, which adds .is-visible.
+
+   NOTE the fallback: if JavaScript never runs, .reveal has no effect because
+   the visible state is the default in the no-JS case below. Content must
+   never be permanently invisible just because a script failed.
    --------------------------------------------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.8s var(--ease-out-soft),
+    transform 0.8s var(--ease-out-soft);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -209,6 +238,11 @@ body::before {
     transition-duration: 0.01ms !important;
   }
   .card-lift:hover {
+    transform: none;
+  }
+  /* Never hide content from someone who has asked for less motion. */
+  .reveal {
+    opacity: 1;
     transform: none;
   }
 }

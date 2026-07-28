@@ -3,6 +3,8 @@ import Container from '@/components/Container';
 import Button from '@/components/Button';
 import SectionHeading from '@/components/SectionHeading';
 import ReleaseCard from '@/components/ReleaseCard';
+import Reveal from '@/components/Reveal';
+import { StreamingBar, SocialRow } from '@/components/PlatformLinks';
 import {
   artist,
   images,
@@ -45,21 +47,20 @@ export default function Home() {
         />
         <div
           aria-hidden="true"
-          className="absolute inset-0 mix-blend-color bg-gradient-to-tr from-accent/45 via-transparent to-accent-deep/35"
+          className="absolute inset-0 mix-blend-color bg-gradient-to-tr from-accent/30 via-transparent to-accent-deep/40"
         />
         <div
           aria-hidden="true"
-          className="glow-bloom animate-drift left-[-10%] top-[-15%] h-[55vh] w-[55vh]"
+          className="haze animate-drift left-[-10%] top-[-15%] h-[55vh] w-[55vh]"
         />
 
         <Container wide className="relative pb-20 pt-40 sm:pb-24">
           <div className="animate-rise max-w-4xl">
             {/* Condensed face, so this runs very large before it feels big. */}
-            <h1 className="display display-hot text-[clamp(4.5rem,19vw,15rem)]">
+            <h1 className="display display-chrome text-[clamp(4.5rem,19vw,15rem)]">
               {artist.name}
             </h1>
             <p className="mt-6 max-w-lg text-sm uppercase tracking-[0.22em] text-bone-dim sm:text-base">
-              <span className="mr-3 inline-block h-2 w-2 translate-y-[-2px] bg-accent" />
               {artist.tagline}
             </p>
 
@@ -81,7 +82,7 @@ export default function Home() {
 
       {/* ================= FEATURED MUSIC ================= */}
       <section className="relative overflow-hidden py-24 sm:py-32">
-        <div aria-hidden="true" className="glow-bloom right-[-15%] top-[10%] h-[45vh] w-[45vh] opacity-30" />
+        <div aria-hidden="true" className="haze right-[-15%] top-[10%] h-[45vh] w-[45vh] opacity-30" />
         <Container className="relative">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <SectionHeading
@@ -95,8 +96,10 @@ export default function Home() {
           </div>
 
           <div className="mt-14 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
-            {featured.map((release) => (
-              <ReleaseCard key={release.id} release={release} />
+            {featured.map((release, i) => (
+              <Reveal key={release.id} delay={i * 0.08}>
+                <ReleaseCard release={release} />
+              </Reveal>
             ))}
           </div>
         </Container>
@@ -104,8 +107,9 @@ export default function Home() {
 
       {/* ================= ABOUT ================= */}
       <section className="relative overflow-hidden border-t border-line bg-gradient-to-b from-ink-900 via-ink-950 to-ink-900 py-24 sm:py-32">
-        <div aria-hidden="true" className="glow-bloom left-[35%] top-[-20%] h-[50vh] w-[50vh] opacity-25" />
+        <div aria-hidden="true" className="haze left-[35%] top-[-20%] h-[50vh] w-[50vh] opacity-25" />
         <Container>
+          <Reveal>
           <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
             <div className="relative aspect-[4/5] overflow-hidden rounded-none bg-ink-800">
               <Image
@@ -130,12 +134,13 @@ export default function Home() {
               </div>
             </div>
           </div>
+          </Reveal>
         </Container>
       </section>
 
       {/* ================= LISTEN & FOLLOW ================= */}
       <section className="relative overflow-hidden py-24 sm:py-32">
-        <div aria-hidden="true" className="glow-bloom left-1/2 top-1/2 h-[60vh] w-[60vh] -translate-x-1/2 -translate-y-1/2 opacity-25" />
+        <div aria-hidden="true" className="haze left-1/2 top-1/2 h-[60vh] w-[60vh] -translate-x-1/2 -translate-y-1/2 opacity-25" />
         <Container className="relative">
           <SectionHeading
             eyebrow="Everywhere"
@@ -146,39 +151,23 @@ export default function Home() {
 
           {allLinks.length > 0 ? (
             <div className="mx-auto mt-14 max-w-4xl">
-              {streamingLinks.length > 0 && (
-                <ul className="flex flex-wrap justify-center gap-3">
-                  {streamingLinks.map((link) => (
-                    <li key={link.label}>
-                      <Button href={link.href} external variant="secondary">
-                        {link.label}
-                      </Button>
-                    </li>
-                  ))}
-                </ul>
-              )}
+              {/* Streaming platforms, with their official marks. */}
+              <Reveal>
+                <StreamingBar />
+              </Reveal>
+
               {socialLinks.length > 0 && (
-                <ul className="mt-6 flex flex-wrap justify-center gap-x-8 gap-y-3">
-                  {socialLinks.map((link) => (
-                    <li key={link.label}>
-                      <a
-                        href={link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-sm tracking-wide text-bone-dim transition-colors hover:text-accent"
-                      >
-                        {link.label}
-                        <span className="sr-only"> (opens in a new tab)</span>
-                      </a>
-                    </li>
-                  ))}
-                </ul>
+                <Reveal delay={0.1}>
+                  <div className="mt-12">
+                    <div className="rule-worn mx-auto mb-8 max-w-xs" />
+                    <SocialRow className="justify-center" size="h-6 w-6" />
+                  </div>
+                </Reveal>
               )}
             </div>
           ) : (
             <p className="mt-10 text-center text-sm text-bone-faint">
-              Streaming and social links will appear here once they are added in{' '}
-              <code className="text-bone-dim">src/content/site.ts</code>.
+              Streaming and social links will appear here once they are added.
             </p>
           )}
         </Container>
