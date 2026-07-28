@@ -24,7 +24,7 @@ export default function SectionHeading({
       {eyebrow && <p className="eyebrow">{eyebrow}</p>}
       {/* Sizes run large because Bebas is condensed — it occupies far less
           width than a normal face at the same font-size. */}
-      <Tag className="display mt-5 text-5xl text-bone sm:text-6xl lg:text-7xl">
+      <Tag className="display display-hot mt-5 text-5xl sm:text-6xl lg:text-7xl">
         {title}
       </Tag>
       {description && (

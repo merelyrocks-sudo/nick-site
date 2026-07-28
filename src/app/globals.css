@@ -1,15 +1,8 @@
 @import "tailwindcss";
 
 /* ---------------------------------------------------------------------------
-   FONTS — the actual font files live in public/fonts/ and are part of this
-   project. Nothing is downloaded from Google, and nothing is resolved through
-   npm, so a font can never break the build or require a reinstall.
-
-   Bebas Neue: condensed, uppercase-only. The gig-poster face. Headings only.
-   Inter: everything else. Bebas has no lowercase, so body text must never use it.
-
-   font-display: swap means text is readable immediately in a fallback face
-   and upgrades when the real font arrives, instead of showing nothing.
+   FONTS — real files in public/fonts. No npm package, no Google, nothing to
+   resolve, so a font can never break the build.
    --------------------------------------------------------------------------- */
 @font-face {
   font-family: "Bebas Neue";
@@ -28,45 +21,40 @@
 }
 
 /* ---------------------------------------------------------------------------
-   DESIGN TOKENS
-   The whole visual identity is defined here. Change a value here and it
-   updates consistently across every page.
-
-   Direction: hard and cold. True black, monochrome, sharp corners, no warmth.
+   DESIGN TOKENS — "moody but lively"
+   Charcoal rather than black, so the page has depth instead of a void.
+   Hot magenta carries all the energy. Change --color-accent and the whole
+   site changes colour at once.
    --------------------------------------------------------------------------- */
 @theme {
-  /* --- Surfaces. True black, with barely-there steps above it. */
-  --color-ink-950: #000000; /* page background */
-  --color-ink-900: #070707; /* raised panels */
-  --color-ink-800: #0e0e0e; /* cards */
-  --color-ink-700: #191919; /* hover state on cards */
+  /* --- Surfaces. Warm-leaning charcoal, never pure black. */
+  --color-ink-950: #131316; /* page background */
+  --color-ink-900: #1a1a1e; /* raised panels */
+  --color-ink-800: #232329; /* cards */
+  --color-ink-700: #2e2e36; /* hover */
 
   /* --- Text.
-     Contrast ratios are measured against pure black.
-     WCAG AA requires 4.5:1 for body text. Do not darken these values
-     without re-checking, or the site becomes unreadable for some people. */
-  --color-bone: #ffffff; /* primary text. 21:1 */
-  --color-bone-dim: #a1a1a1; /* secondary text. 8.1:1 */
-  --color-bone-faint: #787878; /* captions, meta. 4.8:1 — at the AA limit */
+     Contrast measured against --color-ink-950. AA needs 4.5:1 for body text.
+     Do not darken these without re-checking. */
+  --color-bone: #ffffff; /* primary. 18.4:1 */
+  --color-bone-dim: #b4b0b8; /* secondary. 8.6:1 */
+  --color-bone-faint: #8a8590; /* captions. 5.1:1 */
 
-  /* --- Accent.
-     Deliberately pure white: the palette is monochrome, and the emphasis
-     comes from weight and scale rather than colour. This is the one place
-     to introduce a brand colour later — change these two values and the
-     accent appears everywhere at once. */
-  --color-accent: #ffffff;
-  --color-accent-bright: #ffffff;
+  /* --- Accent. Hot magenta. 5.2:1 on the background, so it is safe for text.
+     NOTE: white text on a magenta fill only reaches 3.6:1 and fails AA, which
+     is why magenta buttons use dark text instead. */
+  --color-accent: #ff2d78;
+  --color-accent-bright: #ff5c95;
+  --color-accent-deep: #c4145a;
 
-  /* --- Hairlines. */
-  --color-line: rgba(255, 255, 255, 0.14);
-  --color-line-strong: rgba(255, 255, 255, 0.32);
+  /* --- Hairlines, tinted toward the accent so even borders feel alive. */
+  --color-line: rgba(255, 45, 120, 0.16);
+  --color-line-strong: rgba(255, 45, 120, 0.42);
 
-  /* --- Type families. */
   --font-sans:
     "Inter Variable", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-display: "Bebas Neue", "Arial Narrow", Impact, sans-serif;
 
-  /* --- Motion. */
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -78,7 +66,137 @@ html {
   scroll-behavior: smooth;
 }
 
-/* People who get motion sickness have told their OS so. Respect it. */
+body {
+  background-color: var(--color-ink-950);
+  color: var(--color-bone);
+  font-family: var(--font-sans);
+  font-synthesis-weight: none;
+  text-rendering: optimizeLegibility;
+  position: relative;
+}
+
+/* Film grain over the whole page. Pure CSS/SVG, no image request.
+   pointer-events:none so it never blocks a click. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.09;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Keyboard focus. Magenta so it reads as part of the design, not a browser default. */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 0;
+}
+
+::selection {
+  background-color: var(--color-accent);
+  color: var(--color-ink-950);
+}
+
+/* ---------------------------------------------------------------------------
+   TYPE PATTERNS
+   --------------------------------------------------------------------------- */
+.eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 0.86;
+  letter-spacing: 0.01em;
+}
+
+/* Big headline with a magenta gradient running through the letters. */
+.display-hot {
+  background-image: linear-gradient(
+    100deg,
+    #ffffff 0%,
+    #ffffff 38%,
+    var(--color-accent-bright) 62%,
+    var(--color-accent) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---------------------------------------------------------------------------
+   ATMOSPHERE
+   --------------------------------------------------------------------------- */
+
+/* Magenta bloom behind a section. Decorative only. */
+.glow-bloom {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.5;
+  pointer-events: none;
+  background: radial-gradient(
+    circle,
+    var(--color-accent) 0%,
+    rgba(255, 45, 120, 0) 70%
+  );
+}
+
+/* Artwork lifts and throws colour when you hover it. */
+.card-lift {
+  transition:
+    transform 0.5s var(--ease-out-soft),
+    box-shadow 0.5s var(--ease-out-soft);
+}
+.card-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 50px -12px rgba(255, 45, 120, 0.45);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.animate-rise {
+  animation: rise 0.9s var(--ease-out-soft) both;
+}
+
+/* Slow drift of the hero bloom, so the page is never completely static. */
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(4%, -3%, 0) scale(1.12);
+  }
+}
+
+.animate-drift {
+  animation: drift 18s ease-in-out infinite;
+}
+
+/* ---------------------------------------------------------------------------
+   MOTION SAFETY
+   People who get motion sickness have told their operating system so.
+   Everything decorative stops; nothing becomes unreadable.
+   --------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -90,67 +208,7 @@ html {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-}
-
-body {
-  background-color: var(--color-ink-950);
-  color: var(--color-bone);
-  font-family: var(--font-sans);
-  font-synthesis-weight: none;
-  text-rendering: optimizeLegibility;
-}
-
-/* Keyboard users must always be able to see where they are.
-   Never remove this without replacing it with something equally visible. */
-:focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 3px;
-  border-radius: 0;
-}
-
-::selection {
-  background-color: var(--color-bone);
-  color: var(--color-ink-950);
-}
-
-/* ---------------------------------------------------------------------------
-   REUSABLE TYPE PATTERNS
-   --------------------------------------------------------------------------- */
-
-/* Small wide-tracked uppercase label above a section heading. */
-.eyebrow {
-  font-size: 0.6875rem;
-  font-weight: 500;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--color-bone-dim);
-}
-
-/* Condensed poster headings.
-   Bebas is uppercase-only by design, so we force it — that way mixed-case
-   content from site.ts still renders consistently instead of half-transformed. */
-.display {
-  font-family: var(--font-display);
-  font-weight: 400;
-  text-transform: uppercase;
-  line-height: 0.86;
-  letter-spacing: 0.01em;
-}
-
-/* Bebas is condensed, so it reads smaller than a normal face at the same
-   font-size. Display text is set larger throughout to compensate. */
-
-@keyframes rise {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
-  to {
-    opacity: 1;
+  .card-lift:hover {
     transform: none;
   }
-}
-
-.animate-rise {
-  animation: rise 0.9s var(--ease-out-soft) both;
 }

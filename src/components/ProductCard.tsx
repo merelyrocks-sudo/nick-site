@@ -36,7 +36,7 @@ export default function ProductCard({ product }: { product: Product }) {
 
   return (
     <article className="group flex flex-col">
-      <div className="relative aspect-square overflow-hidden bg-ink-800">
+      <div className="card-lift relative aspect-square overflow-hidden bg-ink-800">
         <Image
           src={product.image}
           alt={product.name}
@@ -90,8 +90,8 @@ export default function ProductCard({ product }: { product: Product }) {
                       htmlFor={id}
                       className={`flex h-10 min-w-10 cursor-pointer items-center justify-center border px-3 text-xs uppercase tracking-[0.1em] transition-colors peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-bone ${
                         selected
-                          ? 'border-bone bg-bone text-ink-950'
-                          : 'border-line-strong text-bone-dim hover:border-bone hover:text-bone'
+                          ? 'border-accent bg-accent text-ink-950'
+                          : 'border-line-strong text-bone-dim hover:border-accent hover:text-accent'
                       }`}
                     >
                       {s}

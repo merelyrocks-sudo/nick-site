@@ -74,7 +74,7 @@ export default function AboutPage() {
                           href={link.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-sm text-bone-dim transition-colors hover:text-bone"
+                          className="text-sm text-bone-dim transition-colors hover:text-accent"
                         >
                           {link.label}
                           <span className="sr-only"> (opens in a new tab)</span>

@@ -51,7 +51,7 @@ export default function BuyButton({
         type="button"
         onClick={buy}
         disabled={!ready || loading}
-        className="w-full border border-line-strong px-8 py-4 text-xs font-medium uppercase tracking-[0.16em] text-bone transition-colors hover:border-bone hover:bg-bone hover:text-ink-950 disabled:cursor-not-allowed disabled:border-line disabled:bg-transparent disabled:text-bone-faint disabled:hover:bg-transparent disabled:hover:text-bone-faint"
+        className="w-full border border-line-strong px-8 py-4 text-xs font-medium uppercase tracking-[0.16em] text-bone transition-colors hover:border-accent hover:bg-accent hover:text-ink-950 disabled:cursor-not-allowed disabled:border-line disabled:bg-transparent disabled:text-bone-faint disabled:hover:bg-transparent disabled:hover:text-bone-faint"
       >
         {!ready ? 'Coming soon' : loading ? 'Opening checkout…' : 'Buy'}
       </button>

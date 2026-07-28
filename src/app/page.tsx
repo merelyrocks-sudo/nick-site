@@ -35,20 +35,31 @@ export default function Home() {
           className="object-cover"
         />
 
-        {/* Two overlays: a vertical fade so text at the bottom stays readable,
-            and a slight overall darkening so any photo works. */}
+        {/* Layered overlays, back to front:
+            1. vertical fade so text at the bottom stays readable
+            2. a magenta wash that ties the photo to the palette
+            3. a slow-drifting bloom so the hero is never completely still */}
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/60 to-ink-950/25"
+          className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/70 to-ink-950/30"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 mix-blend-color bg-gradient-to-tr from-accent/45 via-transparent to-accent-deep/35"
+        />
+        <div
+          aria-hidden="true"
+          className="glow-bloom animate-drift left-[-10%] top-[-15%] h-[55vh] w-[55vh]"
         />
 
         <Container wide className="relative pb-20 pt-40 sm:pb-24">
           <div className="animate-rise max-w-4xl">
             {/* Condensed face, so this runs very large before it feels big. */}
-            <h1 className="display text-[clamp(4.5rem,19vw,15rem)] text-bone">
+            <h1 className="display display-hot text-[clamp(4.5rem,19vw,15rem)]">
               {artist.name}
             </h1>
             <p className="mt-6 max-w-lg text-sm uppercase tracking-[0.22em] text-bone-dim sm:text-base">
+              <span className="mr-3 inline-block h-2 w-2 translate-y-[-2px] bg-accent" />
               {artist.tagline}
             </p>
 
@@ -69,8 +80,9 @@ export default function Home() {
       </section>
 
       {/* ================= FEATURED MUSIC ================= */}
-      <section className="py-24 sm:py-32">
-        <Container>
+      <section className="relative overflow-hidden py-24 sm:py-32">
+        <div aria-hidden="true" className="glow-bloom right-[-15%] top-[10%] h-[45vh] w-[45vh] opacity-30" />
+        <Container className="relative">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <SectionHeading
               eyebrow="Music"
@@ -91,7 +103,8 @@ export default function Home() {
       </section>
 
       {/* ================= ABOUT ================= */}
-      <section className="border-t border-line bg-ink-900 py-24 sm:py-32">
+      <section className="relative overflow-hidden border-t border-line bg-gradient-to-b from-ink-900 via-ink-950 to-ink-900 py-24 sm:py-32">
+        <div aria-hidden="true" className="glow-bloom left-[35%] top-[-20%] h-[50vh] w-[50vh] opacity-25" />
         <Container>
           <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
             <div className="relative aspect-[4/5] overflow-hidden rounded-none bg-ink-800">
@@ -121,8 +134,9 @@ export default function Home() {
       </section>
 
       {/* ================= LISTEN & FOLLOW ================= */}
-      <section className="py-24 sm:py-32">
-        <Container>
+      <section className="relative overflow-hidden py-24 sm:py-32">
+        <div aria-hidden="true" className="glow-bloom left-1/2 top-1/2 h-[60vh] w-[60vh] -translate-x-1/2 -translate-y-1/2 opacity-25" />
+        <Container className="relative">
           <SectionHeading
             eyebrow="Everywhere"
             title="Listen &amp; follow"
@@ -151,7 +165,7 @@ export default function Home() {
                         href={link.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-sm tracking-wide text-bone-dim transition-colors hover:text-bone"
+                        className="text-sm tracking-wide text-bone-dim transition-colors hover:text-accent"
                       >
                         {link.label}
                         <span className="sr-only"> (opens in a new tab)</span>
@@ -171,8 +185,8 @@ export default function Home() {
       </section>
 
       {/* ================= CONTACT ================= */}
-      <section className="border-t border-line py-24 sm:py-32">
-        <Container>
+      <section className="relative overflow-hidden border-t border-line bg-gradient-to-br from-accent-deep/25 via-ink-950 to-ink-950 py-24 sm:py-32">
+        <Container className="relative">
           <div className="mx-auto max-w-2xl text-center">
             <SectionHeading
               eyebrow="Contact"

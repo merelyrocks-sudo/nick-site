@@ -18,7 +18,7 @@ export default function Footer() {
             {contact.email && (
               <a
                 href={`mailto:${contact.email}`}
-                className="mt-6 inline-block text-sm text-bone-dim transition-colors hover:text-bone"
+                className="mt-6 inline-block text-sm text-bone-dim transition-colors hover:text-accent"
               >
                 {contact.email}
               </a>
@@ -35,7 +35,7 @@ export default function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-sm text-bone-dim transition-colors hover:text-bone"
+                    className="text-sm text-bone-dim transition-colors hover:text-accent"
                   >
                     {item.label}
                   </Link>
@@ -57,7 +57,7 @@ export default function Footer() {
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm text-bone-dim transition-colors hover:text-bone"
+                      className="text-sm text-bone-dim transition-colors hover:text-accent"
                     >
                       {link.label}
                       <span className="sr-only"> (opens in a new tab)</span>

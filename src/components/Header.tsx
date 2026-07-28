@@ -75,7 +75,7 @@ export default function Header() {
                     href={item.href}
                     aria-current={active ? 'page' : undefined}
                     className={`text-xs uppercase tracking-[0.2em] transition-colors duration-200 ${
-                      active ? 'text-bone' : 'text-bone-dim hover:text-bone'
+                      active ? 'text-accent' : 'text-bone-dim hover:text-accent'
                     }`}
                   >
                     {item.label}
@@ -129,7 +129,7 @@ export default function Header() {
                     href={item.href}
                     aria-current={active ? 'page' : undefined}
                     className={`display block border-b border-line py-4 text-3xl ${
-                      active ? 'text-bone' : 'text-bone-dim'
+                      active ? 'text-accent' : 'text-bone-dim'
                     }`}
                   >
                     {item.label}
