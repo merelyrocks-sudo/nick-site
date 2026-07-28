@@ -1,11 +1,10 @@
 # SETUP-TASKS — Things only Andrew can do
 
-Every account, key, and click that I cannot do for you. Nothing here is urgent
-until the phase listed in the **Needed by** column.
+Every account, key, and click that I cannot do for you.
 
 **Security rule, no exceptions:** never paste a password, a secret key
 (`sk_...`), bank details, or tax details into the chat. Secrets go into
-`.env.local` on your computer, and I will tell you the exact line number.
+`.env.local` on your computer, and I tell you the exact line.
 
 ---
 
@@ -13,146 +12,237 @@ until the phase listed in the **Needed by** column.
 
 | # | Task | Needed by | Status |
 |---|------|-----------|--------|
-| 0 | Install Node.js, then run `npm install` | **Now** — to view the site | ⬜ Do this first |
-| 1 | Send me Merely's real content (name, tagline, bio, links) | Phase 2 | ⬜ Waiting on you |
-| 2 | Send me real photos and cover artwork | Phase 2–3 | ⬜ Waiting on you |
-| 3 | Create a Stripe account | Phase 4 | ⬜ Not started |
-| 4 | Create products in Stripe test mode | Phase 4 | ⬜ Not started |
-| 5 | Paste Stripe **test** keys into `.env.local` | Phase 4 | ⬜ Not started |
-| 6 | Create a GitHub account | Phase 5 | ⬜ Not started |
-| 7 | Create a Vercel account and import the repo | Phase 5 | ⬜ Not started |
-| 8 | Buy a domain name | Phase 6 | ⬜ Not started |
-| 9 | Activate Stripe live mode (business + bank details) | Phase 6 | ⬜ Not started |
-| 10 | Review policy text before launch | Phase 6 | ⬜ Not started |
+| 1 | Add social + streaming links | Anytime | ⬜ **Do this now — 2 minutes** |
+| 2 | Add the real contact email | Anytime | ⬜ **Do this now — 30 seconds** |
+| 3 | Set album prices | Before Stripe | ⬜ Waiting on you |
+| 4 | Create a Stripe account | To take payment | ⬜ Not started |
+| 5 | Paste Stripe **test** keys into `.env.local` | To take payment | ⬜ Not started |
+| 6 | Run `npm run stripe:setup` | To take payment | ⬜ Not started |
+| 7 | Test checkout with a fake card | To take payment | ⬜ Not started |
+| 8 | Create a GitHub account | To go live | ⬜ Not started |
+| 9 | Create a Vercel account | To go live | ⬜ Not started |
+| 10 | Buy a domain name | To go live | ⬜ Not started |
+| 11 | Activate Stripe live mode | To take real money | ⬜ Not started |
+| 12 | Review policy text | Before launch | ⬜ Not started |
 
 ---
 
-## 0. Install Node.js and run `npm install` — *do this now*
+## 1. Add social + streaming links — *2 minutes*
 
-This is what lets you actually open the site on your own screen. Full
-step-by-step instructions are in `README.md`, section "Running the site on your
-own computer". Short version:
+Open **`src/content/site.ts`** in Notepad. Near the top you'll find two blocks.
+Paste each full web address between the quote marks:
 
-1. Install the **LTS** version from **https://nodejs.org**
-2. Open the `nick-site` folder, type `cmd` in the address bar, press Enter
-3. Run `npm install`, then `npm run dev`
-4. Open **http://localhost:3000**
+```ts
+export const streaming = {
+  spotify: '',        <-- paste between these quotes
+  appleMusic: '',
+  youtube: '',
+  soundcloud: '',
+  bandcamp: '',
+};
 
-I already verified the project builds cleanly, so if something fails here it is
-an environment issue on your machine — tell me the error text and I will fix it.
+export const social = {
+  instagram: '',
+  tiktok: '',
+  twitter: '',
+  facebook: '',
+};
+```
 
----
+Example of a filled-in line:
 
-## 1. Send me Merely's real content — *needed for Phase 2*
+```ts
+  instagram: 'https://www.instagram.com/merelyband',
+```
 
-Reply in the chat with whatever you have. Missing items stay as visible
-placeholders and can be filled in any time later — this does not block me.
+**Rules:**
 
-- Artist name, exactly as it should be displayed
-- Tagline — one short line, 3–8 words
-- Genre / one-sentence description of the sound
-- Bio — a paragraph or two. Rough notes are fine, I will polish them.
-- Contact email to publish on the site
-- Every social and streaming link that already exists (you mentioned some are done)
-- Release list: title, type (Album/EP/Single), year
-- Product list: name, price, and type. Example:
-  - `Logo Tee — $30 — apparel (S–XXL)`
-  - `Debut Album — Vinyl — $28 — physical`
-  - `Debut Album — Digital — $10 — digital`
+- Include the `https://` — a link without it will not work
+- No trailing slash needed, but harmless
+- **Leave anything you don't have as `''`.** Empty links are hidden
+  automatically — no dead buttons, no empty gaps
 
-## 2. Send me photos and artwork — *needed for Phase 2–3*
-
-Drop the files into the chat, or into a folder and tell me the name.
-Until then I use grey placeholders at the correct sizes, so the layout is
-already correct and swapping images later is a drop-in.
-
-| What | Ideal size | Notes |
-|---|---|---|
-| Hero photo | 2400 × 1600 px, landscape | The big image at the top of the home page. Should look good with text over it. |
-| Artist portrait | 1200 × 1500 px, portrait | For the About section |
-| Release cover art | 1000 × 1000 px, square | One per release |
-| Product photos | 1200 × 1200 px, square | One per product |
-
-JPG or PNG both fine. Send the largest version you have — I will compress them.
+Save the file. The site updates instantly. Links appear in the footer, on the
+home page, on About, and on Contact all at once.
 
 ---
 
-## 3. Create a Stripe account — *Phase 4*
+## 2. Add the real contact email — *30 seconds*
 
-> Do not start this until I tell you Phase 4 is ready.
+Same file, a little further down:
 
-1. Go to **https://stripe.com** and click **Sign up**.
-2. Use an email you control long-term. This becomes the money account.
+```ts
+export const contact = {
+  email: 'hello@example.com',   <-- replace this
+```
+
+This address is **published publicly** and appears on four pages. Use one you
+are happy to have scraped by spammers — a dedicated address is wise.
+
+---
+
+## 3. Set album prices — *before running Stripe setup*
+
+Every album is currently **$9.99**. In `src/content/site.ts`, scroll to the
+album products and change `priceCents`:
+
+```
+  priceCents: 999,    means $9.99
+  priceCents: 1200,   means $12.00
+  priceCents: 700,    means $7.00
+```
+
+Write the price **in cents, with no decimal point**.
+
+Do this *before* step 6 — the setup script sends these prices to Stripe, and
+changing a price afterwards means creating a new price in Stripe.
+
+The merch items (t-shirt, hoodie, vinyl) are still placeholders. Either set
+real names and prices, or set `available: false` to hide them.
+
+---
+
+## 4. Create a Stripe account
+
+1. Go to **https://stripe.com** → **Sign up**
+2. Use an email you will control long-term. This becomes the money account.
 3. Verify your email address.
 4. When Stripe asks you to "activate your account" with business and bank
-   details — **skip it for now**. Test mode works without it. We only activate
-   in Phase 6, right before launch.
-5. In the Stripe Dashboard, find the **Test mode** toggle in the top right and
-   make sure it is **ON**. Everything in Phase 4 happens in test mode.
+   details — **skip it**. Test mode works without it. Activate only at step 11.
+5. In the Dashboard, find the **Test mode** toggle at the top right and make
+   sure it is **ON**.
 
-## 4. Create products in Stripe test mode — *Phase 4*
+---
 
-Exact click-by-click steps will be given in Phase 4. In short: for each product
-you create a Product with a Price, then copy its **Price ID** (looks like
-`price_1AbCdEfGhIjK`). Price IDs are **not secret** — it is fine to paste those
-in the chat, and I will put them in the right place in the code.
-
-## 5. Paste Stripe test keys into `.env.local` — *Phase 4*
+## 5. Paste your test keys into `.env.local`
 
 > **Never paste `sk_test_...` or `sk_live_...` into the chat.**
 
-1. In the Stripe Dashboard with **Test mode ON**, go to **Developers → API keys**.
-2. Open the file `Desktop\Nick\Claude\nick-site\.env.local` in Notepad.
-3. Copy the **Publishable key** (starts `pk_test_`) and paste it directly after
-   the `=` on the line marked `[1]`.
-4. Click **Reveal test key** for the **Secret key** (starts `sk_test_`) and paste
-   it directly after the `=` on the line marked `[2]`.
-5. Save the file. Do not add quote marks or spaces.
-6. Tell me "keys are in" — I will verify they work without ever seeing them.
+1. In the Stripe Dashboard, **Test mode ON**, go to **Developers → API keys**
+2. Open `nick-site\.env.local` in Notepad
+3. Copy the **Publishable key** (starts `pk_test_`) and paste it after the `=`
+   on the line marked `[1]`
+4. Click **Reveal test key** next to the **Secret key** (starts `sk_test_`) and
+   paste it after the `=` on the line marked `[2]`
+5. Save
+
+**Format matters.** No quote marks, no spaces around the `=`:
+
+```
+STRIPE_SECRET_KEY=sk_test_51Abc...
+```
+
+Not:
+
+```
+STRIPE_SECRET_KEY = "sk_test_51Abc..."
+```
 
 ---
 
-## 6. Create a GitHub account — *Phase 5*
+## 6. Run the setup script — *one command*
 
-1. Go to **https://github.com** → **Sign up**.
-2. Pick any username. Free plan is all we need.
-3. Verify your email.
-4. Tell me your username. That is not secret.
-5. I will give you the exact commands to upload the code.
+There are 14 products. Rather than create each one by hand in the Dashboard
+and copy 14 IDs across without a typo, one command does it:
 
-## 7. Create a Vercel account — *Phase 5*
+```
+npm run stripe:setup
+```
 
-1. Go to **https://vercel.com** → **Sign Up**.
-2. Choose **Continue with GitHub** — this links the two automatically.
-3. Approve the permissions GitHub asks for.
-4. Free "Hobby" plan is enough. Do not add a payment method.
-5. I will then give you the exact import steps and the environment variables to paste.
+It creates every product and price in Stripe, then writes the price IDs back
+into `src/content/site.ts` automatically. You should see something like:
+
+```
+  Stripe TEST mode — 14 products found
+
+  + album-thrilla-killa        $ 9.99  price_1AbCdEf...
+  + album-merely-rocks-2       $ 9.99  price_1GhIjKl...
+  ...
+  Done. 14 created, 0 skipped.
+```
+
+**It is safe to run twice** — anything already created is skipped, not
+duplicated. **It refuses to run with a live key** unless you explicitly force
+it, so you cannot create real products by accident.
+
+Then stop the dev server (`Ctrl + C`) and run `npm run dev` again. The Buy
+buttons will be live.
 
 ---
 
-## 8. Buy a domain name — *Phase 6*
+## 7. Test checkout with a fake card
 
-- Cost is roughly **$10–20 per year** for a `.com`.
-- Recommended registrars: **Cloudflare** (cheapest, no upselling) or **Namecheap**.
-- Buy the domain only — decline hosting, email, SSL, and privacy upsells.
-  Vercel provides hosting and SSL free, and privacy is included at both registrars.
-- Tell me the domain once purchased and I will give you the exact DNS records.
+1. Go to any album page and click **Buy**
+2. Stripe's checkout page opens
+3. Use these **test card** details — they are not real and charge nothing:
 
-## 9. Activate Stripe live mode — *Phase 6*
+   | Field | Value |
+   |---|---|
+   | Card number | `4242 4242 4242 4242` |
+   | Expiry | any future date, e.g. `12/34` |
+   | CVC | any 3 digits, e.g. `123` |
+   | Name / address | anything |
 
-This is the step where Stripe legally must collect real information from you.
-It will ask for business details, your bank account, and tax information.
+4. Complete the purchase → you should land on the **Thank you** page
+5. Check **Payments** in the Stripe Dashboard — the order appears, with the
+   album name and product id attached
+
+Tell me once this works and I'll move to deployment.
+
+**Also worth testing:** click Buy, then hit back / close checkout. You should
+land on the **No charge made** page.
+
+---
+
+## 8. Create a GitHub account — *to go live*
+
+1. **https://github.com** → **Sign up**. Any username. Free plan is fine.
+2. Verify your email.
+3. Tell me your username — that is not secret.
+
+## 9. Create a Vercel account
+
+1. **https://vercel.com** → **Sign Up**
+2. Choose **Continue with GitHub** — this links them automatically
+3. Free "Hobby" plan. Do not add a payment method.
+
+## 10. Buy a domain name
+
+- Roughly **$10–20 per year** for a `.com`
+- **Cloudflare** (cheapest, no upselling) or **Namecheap**
+- Buy the domain only — decline hosting, email, SSL and privacy upsells.
+  Vercel gives you hosting and SSL free; privacy is included at both.
+
+## 11. Activate Stripe live mode
+
+Stripe must legally collect real information: business details, bank account,
+tax details.
 
 - **Enter these on the Stripe website only.** Never in this chat.
-- Expect it to take 10–20 minutes.
-- Payouts typically start 2–7 days after your first live sale.
+- Takes 10–20 minutes.
+- Payouts typically start 2–7 days after the first live sale.
+- Then repeat steps 5 and 6 with the **live** keys.
 
-## 10. Review policy text — *Phase 6*
+## 12. Review policy text
 
-I will write plain-English Privacy, Terms, Refund, and Shipping policies as a
-starting point. You must read them and adjust to match what you will actually
-do — especially the refund window and shipping times.
+I'll write plain-English Privacy, Terms, Refund and Shipping policies. You must
+read them and adjust to match what you'll actually do — especially the refund
+window and shipping times.
 
-I am not a lawyer and these are templates, not legal advice. For a small merch
-store they are usually adequate, but if you expect significant volume or sell
-into the EU/UK, have a professional look at them.
+I am not a lawyer and these are templates, not legal advice. For a small store
+they're usually adequate; if you expect real volume or sell into the EU/UK, have
+a professional look.
+
+---
+
+## Still outstanding on content
+
+| Item | Status |
+|---|---|
+| Track titles for Thrilla Killa, Merely Rocks, Merely Rocks 2, Are You Brutal 1 & 2 | Showing "Track 1…N" |
+| Years for Merely Lives, Merely Lives 2, Dig This, Already Dead | Hidden until known |
+| Cover art for Are You Brutal 1 & 2 | Showing "artwork coming soon" |
+| Better scan of the Get Out cover | Currently 281px, looks soft |
+| Already Dead tracks 13 and 14 | Unnamed — the document lists only 12 |
+| Merely Rocks tracklist mismatch | Document has 26 titles, folders have 30 files |
+| Real merch products | T-shirt/hoodie/vinyl are placeholders |

@@ -3,7 +3,7 @@
 **Project folder:** `Desktop\Nick\Claude\nick-site`
 **Stack:** Next.js 16 (App Router) · TypeScript · Tailwind CSS v4 · Stripe Checkout · GitHub · Vercel
 **Artist:** Merely
-**Last updated:** Phase 3 complete
+**Last updated:** Phase 4 complete — Stripe wired, awaiting your keys
 
 ---
 
@@ -15,8 +15,8 @@
 | 1 | Scaffold project, Git, tracking docs | ✅ Done |
 | 2 | Visual design system + home page | ✅ Done |
 | 3 | Music, merch, about, contact pages | ✅ **Done** |
-| 4 | Stripe Checkout (test mode) | ⬜ Next — waiting on your approval |
-| 5 | Deploy staging site to Vercel | ⬜ Not started |
+| 4 | Stripe Checkout (test mode) | ✅ **Built — needs your Stripe account** |
+| 5 | Deploy staging site to Vercel | ⬜ Next |
 | 6 | Launch: domain, Stripe live mode, policies, testing | ⬜ Not started |
 
 ---
@@ -72,14 +72,30 @@ their own copy. The form gets built when there is a reason for it.
 Policy pages (Privacy, Terms, Refunds, Shipping) remain placeholders until
 Phase 6, as planned.
 
-## Phase 4 — Next up (needs your approval to start)
+## Phase 3.5 — Real catalogue + audio previews ✅
 
-- [ ] Stripe SDK installed
-- [ ] `/api/checkout` route that creates a Checkout Session
-- [ ] Buy buttons wired, size passed through as line-item metadata
-- [ ] Success and cancel pages
-- [ ] Products with no Stripe price ID show a disabled button, not a broken one
-- [ ] Tested end-to-end with Stripe test card `4242 4242 4242 4242`
+- [x] 11 albums imported with real cover art
+- [x] 150 preview clips generated from Nick's masters (30s, 53MB)
+- [x] Real track listings recovered from Nick's own Google Docs for 6 albums
+- [x] `/music/[id]` album page per release, statically pre-rendered
+- [x] `TrackList` player: one shared audio element, keyboard accessible
+- [x] Are You Mental removed — no audio, nothing to play or sell
+- [x] No song titles invented; unknown tracks show "Track N"
+
+## Phase 4 — Stripe Checkout ✅ (needs your account to switch on)
+
+- [x] Stripe SDK installed
+- [x] `/api/checkout` creates a Checkout Session
+- [x] Price comes from Stripe, never from the browser — cannot be tampered with
+- [x] Size validated against the product's real size list
+- [x] Shipping address collected for physical goods only
+- [x] Buy buttons wired across album pages, store, and merch
+- [x] Order success and cancelled pages
+- [x] Products with no Stripe price ID show a disabled button, never a broken one
+- [x] `npm run stripe:setup` creates all 14 products and writes the price IDs
+      back automatically; refuses live keys, safe to run twice
+- [ ] **You:** create Stripe account, paste test keys, run the setup script
+- [ ] **You:** test with card `4242 4242 4242 4242`
 
 ## Phase 5
 
