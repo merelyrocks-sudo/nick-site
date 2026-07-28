@@ -246,9 +246,12 @@ export const releases: Release[] = [
     type: 'Album',
     year: '', // TODO
     artwork: '/images/releases/dig-this.jpg',
-    // Folder contains an unrelated sub-folder, so this count is a guess.
-    trackCount: 0, // TODO
-    links: {},
+    // Track count confirmed from the YouTube playlist itself.
+    trackCount: 17,
+    links: {
+      youtube:
+        'https://www.youtube.com/playlist?list=OLAK5uy_n6PI_9PPFRQIK6Mt5rKzfE-kqVTe6Dr6Y',
+    },
   },
   {
     id: 'already-dead',
