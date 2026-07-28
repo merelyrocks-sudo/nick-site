@@ -226,16 +226,6 @@ export const releases: Release[] = [
     links: {},
   },
   {
-    id: 'are-you-mental',
-    title: 'Are You Mental',
-    type: 'Album',
-    year: '2022',
-    artwork: '/images/releases/are-you-mental.jpg',
-    // No audio folder for this one, so the track count is unknown.
-    trackCount: 0, // TODO
-    links: {},
-  },
-  {
     id: 'are-you-brutal-2',
     title: 'Are You Brutal 2',
     type: 'Album',
@@ -368,10 +358,13 @@ export const releases: Release[] = [
     year: '', // TODO
     artwork: '/images/releases/already-dead.jpg',
     // Track count confirmed from the YouTube playlist itself.
-    trackCount: 12,
+    trackCount: 14,
     // Link intentionally removed — see the note above the releases list.
     // Old auto-generated playlist, kept here so it is not lost:
     // https://www.youtube.com/playlist?list=OLAK5uy_nSBOnip5qMbuWOP4q8mSZKi45-3eB1GCY
+    // NOTE: the CD rip holds 14 recordings, but Nick's document and the
+    // YouTube listing both name only 12. Titles 1-12 are his; tracks 13 and
+    // 14 are left unnamed rather than guessed. Worth checking by ear.
     tracks: [
       'Already Dead',
       'Mother\'s Babies Dyin\'',
@@ -385,7 +378,10 @@ export const releases: Release[] = [
       'Feelin\'',
       'Drawing Near',
       'Already Dead (Reprise)',
+      '',
+      '',
     ],
+    hasPreviews: true,
     links: {},
   },
 ];
@@ -425,6 +421,8 @@ export type Product = {
   kind: 'apparel' | 'physical' | 'digital';
   /** Only used when kind is 'apparel'. */
   sizes?: string[];
+  /** For digital albums: the release this product sells. */
+  releaseId?: string;
   /** From Stripe Dashboard, looks like price_1AbCdEf... Blank = button disabled. */
   stripePriceId: string;
   /** Set false to hide from the store without deleting it. */
@@ -468,24 +466,124 @@ export const products: Product[] = [
 
   // --- MUSIC STORE (digital) ----------------------------------------------
   {
-    id: 'album-digital',
-    name: 'Debut Album — Digital Download', // TODO
-    priceCents: 1000, // TODO: $10.00
-    description:
-      'TODO: describe what the buyer receives. NOTE: in Version 1 you email these files to the buyer manually after purchase.',
-    image: '/images/placeholder-release-1.png',
+    id: 'album-thrilla-killa',
+    releaseId: 'thrilla-killa',
+    name: 'Thrilla Killa (2026)',
+    priceCents: 999, // TODO: set the real price. 999 = $9.99
+    description: 'Full album download. High quality files, yours to keep.',
+    image: '/images/releases/thrilla-killa.jpg',
     kind: 'digital',
-    stripePriceId: '',
+    stripePriceId: '', // filled in during Stripe setup
     available: true,
   },
   {
-    id: 'single-digital',
-    name: 'Single — Digital Download', // TODO
-    priceCents: 199, // TODO: $1.99
-    description: 'TODO: describe the single.',
-    image: '/images/placeholder-release-2.png',
+    id: 'album-merely-rocks-2',
+    releaseId: 'merely-rocks-2',
+    name: 'Merely Rocks 2 (2025)',
+    priceCents: 999, // TODO: set the real price. 999 = $9.99
+    description: 'Full album download. High quality files, yours to keep.',
+    image: '/images/releases/merely-rocks-2.jpg',
     kind: 'digital',
-    stripePriceId: '',
+    stripePriceId: '', // filled in during Stripe setup
+    available: true,
+  },
+  {
+    id: 'album-merely-rocks',
+    releaseId: 'merely-rocks',
+    name: 'Merely Rocks (2024)',
+    priceCents: 999, // TODO: set the real price. 999 = $9.99
+    description: 'Full album download. High quality files, yours to keep.',
+    image: '/images/releases/merely-rocks-1.jpg',
+    kind: 'digital',
+    stripePriceId: '', // filled in during Stripe setup
+    available: true,
+  },
+  {
+    id: 'album-daze',
+    releaseId: 'daze',
+    name: 'Daze (2023)',
+    priceCents: 999, // TODO: set the real price. 999 = $9.99
+    description: 'Full album download. High quality files, yours to keep.',
+    image: '/images/releases/daze.jpg',
+    kind: 'digital',
+    stripePriceId: '', // filled in during Stripe setup
+    available: true,
+  },
+  {
+    id: 'album-are-you-brutal-2',
+    releaseId: 'are-you-brutal-2',
+    name: 'Are You Brutal 2 (2020)',
+    priceCents: 999, // TODO: set the real price. 999 = $9.99
+    description: 'Full album download. High quality files, yours to keep.',
+    image: ARTWORK_PENDING,
+    kind: 'digital',
+    stripePriceId: '', // filled in during Stripe setup
+    available: true,
+  },
+  {
+    id: 'album-are-you-brutal',
+    releaseId: 'are-you-brutal',
+    name: 'Are You Brutal (2019)',
+    priceCents: 999, // TODO: set the real price. 999 = $9.99
+    description: 'Full album download. High quality files, yours to keep.',
+    image: ARTWORK_PENDING,
+    kind: 'digital',
+    stripePriceId: '', // filled in during Stripe setup
+    available: true,
+  },
+  {
+    id: 'album-get-out',
+    releaseId: 'get-out',
+    name: 'Get Out (2017)',
+    priceCents: 999, // TODO: set the real price. 999 = $9.99
+    description: 'Full album download. High quality files, yours to keep.',
+    image: '/images/releases/get-out.jpg',
+    kind: 'digital',
+    stripePriceId: '', // filled in during Stripe setup
+    available: true,
+  },
+  {
+    id: 'album-merely-lives-2',
+    releaseId: 'merely-lives-2',
+    name: 'Merely Lives 2',
+    priceCents: 999, // TODO: set the real price. 999 = $9.99
+    description: 'Full album download. High quality files, yours to keep.',
+    image: '/images/releases/merely-lives-2.jpg',
+    kind: 'digital',
+    stripePriceId: '', // filled in during Stripe setup
+    available: true,
+  },
+  {
+    id: 'album-merely-lives',
+    releaseId: 'merely-lives',
+    name: 'Merely Lives',
+    priceCents: 999, // TODO: set the real price. 999 = $9.99
+    description: 'Full album download. High quality files, yours to keep.',
+    image: '/images/releases/merely-lives.jpg',
+    kind: 'digital',
+    stripePriceId: '', // filled in during Stripe setup
+    available: true,
+  },
+  {
+    id: 'album-dig-this',
+    releaseId: 'dig-this',
+    name: 'Dig This',
+    priceCents: 999, // TODO: set the real price. 999 = $9.99
+    description: 'Full album download. High quality files, yours to keep.',
+    image: '/images/releases/dig-this.jpg',
+    kind: 'digital',
+    stripePriceId: '', // filled in during Stripe setup
+    available: true,
+  },
+  {
+    id: 'album-already-dead',
+    releaseId: 'already-dead',
+    name: 'Already Dead',
+    priceCents: 999, // TODO: set the real price. 999 = $9.99
+    description: 'Full album download. High quality files, yours to keep.',
+    image: '/images/releases/already-dead.jpg',
+    kind: 'digital',
+    stripePriceId: '', // filled in during Stripe setup
     available: true,
   },
 ];
@@ -512,6 +610,38 @@ export const digitalProducts = products.filter(
 /** Looks up a product by id. Used by the checkout route. */
 export function getProduct(id: string): Product | undefined {
   return products.find((p) => p.id === id);
+}
+
+/** Looks up a release by id. Used by the album pages. */
+export function getRelease(id: string): Release | undefined {
+  return releases.find((r) => r.id === id);
+}
+
+/**
+ * The display name for one track.
+ * Falls back to "Track 3" when the real title is unknown — never invented.
+ */
+export function trackTitle(release: Release, index: number): string {
+  const t = release.tracks?.[index];
+  return t && t.trim() !== '' ? t : `Track ${index + 1}`;
+}
+
+/** True when we know the real title for this track. */
+export function hasRealTitle(release: Release, index: number): boolean {
+  const t = release.tracks?.[index];
+  return !!t && t.trim() !== '';
+}
+
+/** Path to a track's 30-second preview, or null if none exists. */
+export function previewPath(release: Release, index: number): string | null {
+  if (!release.hasPreviews) return null;
+  return `/audio/previews/${release.id}/${String(index + 1).padStart(2, '0')}.mp3`;
+}
+
+/** How many tracks to render for a release. */
+export function trackNumbers(release: Release): number[] {
+  const n = release.trackCount ?? release.tracks?.length ?? 0;
+  return Array.from({ length: n }, (_, i) => i);
 }
 
 /** Main site navigation. Order here is the order shown in the header. */

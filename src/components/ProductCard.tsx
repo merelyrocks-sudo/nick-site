@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useId, useState } from 'react';
 import { formatPrice, type Product } from '@/content/site';
+import BuyButton from './BuyButton';
 
 /**
  * A single product: photo, name, price, description, size picker, Buy button.
@@ -32,8 +33,6 @@ export default function ProductCard({ product }: { product: Product }) {
   const [size, setSize] = useState(
     hasSizes ? product.sizes![Math.floor(product.sizes!.length / 2)] : ''
   );
-
-  const purchasable = product.stripePriceId !== '';
 
   return (
     <article className="group flex flex-col">
@@ -107,19 +106,7 @@ export default function ProductCard({ product }: { product: Product }) {
         {/* mt-auto pins the button to the bottom so buttons line up across a
             row even when descriptions are different lengths. */}
         <div className="mt-auto pt-6">
-          <button
-            type="button"
-            disabled={!purchasable}
-            className="w-full border border-line-strong px-8 py-4 text-xs font-medium uppercase tracking-[0.16em] text-bone transition-colors hover:border-bone hover:bg-bone hover:text-ink-950 disabled:cursor-not-allowed disabled:border-line disabled:bg-transparent disabled:text-bone-faint disabled:hover:bg-transparent disabled:hover:text-bone-faint"
-          >
-            {purchasable ? 'Add to cart' : 'Coming soon'}
-          </button>
-
-          {!purchasable && (
-            <p className="mt-3 text-center text-xs text-bone-faint">
-              Checkout opens soon.
-            </p>
-          )}
+          <BuyButton product={product} size={hasSizes ? size : undefined} />
         </div>
       </div>
     </article>
