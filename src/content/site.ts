@@ -256,8 +256,12 @@ export const releases: Release[] = [
     type: 'Album',
     year: '', // TODO
     artwork: '/images/releases/already-dead.jpg',
-    trackCount: 0, // TODO
-    links: {},
+    // Track count confirmed from the YouTube playlist itself.
+    trackCount: 12,
+    links: {
+      youtube:
+        'https://www.youtube.com/playlist?list=OLAK5uy_nSBOnip5qMbuWOP4q8mSZKi45-3eB1GCY',
+    },
   },
 ];
 
