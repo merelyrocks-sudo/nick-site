@@ -117,9 +117,12 @@ export type Release = {
   id: string;
   title: string;
   type: 'Album' | 'EP' | 'Single';
+  /** Release year. Leave '' if unknown — the site hides it rather than guessing. */
   year: string;
   /** Path to square cover art inside /public. */
   artwork: string;
+  /** Number of tracks. Set to 0 to hide. */
+  trackCount?: number;
   /** Optional one-line description shown under the title. */
   blurb?: string;
   /** Per-release listen links. Leave '' to hide that button. */
@@ -131,34 +134,133 @@ export type Release = {
   };
 };
 
+/** Shown when a release has no cover art yet. */
+export const ARTWORK_PENDING = '/images/releases/artwork-pending.jpg';
+
+/**
+ * THE ORDER OF THIS LIST IS THE ORDER SHOWN ON THE SITE.
+ * Newest first is the convention. Move a block up or down to reorder.
+ * The home page shows the first three.
+ *
+ * Titles came from the CD folder names and the artwork filenames — check them.
+ * Years are all blank because the audio files only carry the date they were
+ * copied to this computer, which is not the release date. Fill them in and
+ * they appear automatically; left blank, the site simply omits the year
+ * rather than printing something wrong.
+ */
 export const releases: Release[] = [
   {
-    id: 'release-1',
-    title: 'Placeholder Album Title', // TODO
+    id: 'thrilla-killa',
+    title: 'Thrilla Killa',
     type: 'Album',
-    year: '2026', // TODO
-    artwork: '/images/placeholder-release-1.png', // TODO: swap for real cover art
-    blurb: 'TODO: one line about this release.',
-    links: {
-      spotify: '',
-      appleMusic: '',
-      youtube: '',
-      soundcloud: '',
-    },
+    year: '', // TODO
+    artwork: '/images/releases/thrilla-killa.jpg',
+    trackCount: 16,
+    links: {},
   },
   {
-    id: 'release-2',
-    title: 'Placeholder Single Title', // TODO
-    type: 'Single',
-    year: '2026', // TODO
-    artwork: '/images/placeholder-release-2.png', // TODO
-    blurb: 'TODO: one line about this release.',
-    links: {
-      spotify: '',
-      appleMusic: '',
-      youtube: '',
-      soundcloud: '',
-    },
+    id: 'merely-rocks-2',
+    title: 'Merely Rocks 2',
+    type: 'Album',
+    year: '', // TODO
+    artwork: '/images/releases/merely-rocks-2.jpg',
+    trackCount: 15,
+    links: {},
+  },
+  {
+    id: 'merely-rocks',
+    title: 'Merely Rocks',
+    type: 'Album',
+    year: '', // TODO
+    artwork: '/images/releases/merely-rocks-1.jpg',
+    trackCount: 15,
+    links: {},
+  },
+  {
+    id: 'daze',
+    title: 'Daze',
+    type: 'Album',
+    year: '', // TODO
+    artwork: '/images/releases/daze.jpg',
+    trackCount: 15,
+    links: {},
+  },
+  {
+    id: 'are-you-mental',
+    title: 'Are You Mental',
+    type: 'Album',
+    year: '', // TODO
+    artwork: '/images/releases/are-you-mental.jpg',
+    // No audio folder for this one, so the track count is unknown.
+    trackCount: 0, // TODO
+    links: {},
+  },
+  {
+    id: 'are-you-brutal-2',
+    title: 'Are You Brutal 2',
+    type: 'Album',
+    year: '', // TODO
+    artwork: ARTWORK_PENDING, // TODO: no cover art found for this release
+    trackCount: 12,
+    links: {},
+  },
+  {
+    id: 'are-you-brutal',
+    title: 'Are You Brutal',
+    type: 'Album',
+    year: '', // TODO
+    artwork: ARTWORK_PENDING, // TODO: no cover art found for this release
+    trackCount: 12,
+    links: {},
+  },
+  {
+    id: 'get-out',
+    title: 'Get Out',
+    type: 'Album',
+    year: '', // TODO
+    // WARNING: source artwork is only 281x281px and looks soft.
+    // Replace with a larger scan when you find one.
+    artwork: '/images/releases/get-out.jpg',
+    trackCount: 25,
+    links: {},
+  },
+  {
+    id: 'merely-lives-2',
+    title: 'Merely Lives 2',
+    type: 'Album',
+    year: '', // TODO
+    // Shares artwork with Merely Lives — swap if a part 2 cover exists.
+    artwork: '/images/releases/merely-lives.jpg',
+    trackCount: 11,
+    links: {},
+  },
+  {
+    id: 'merely-lives',
+    title: 'Merely Lives',
+    type: 'Album',
+    year: '', // TODO
+    artwork: '/images/releases/merely-lives.jpg',
+    trackCount: 11,
+    links: {},
+  },
+  {
+    id: 'dig-this',
+    title: 'Dig This',
+    type: 'Album',
+    year: '', // TODO
+    artwork: '/images/releases/dig-this.jpg',
+    // Folder contains an unrelated sub-folder, so this count is a guess.
+    trackCount: 0, // TODO
+    links: {},
+  },
+  {
+    id: 'already-dead',
+    title: 'Already Dead',
+    type: 'Album',
+    year: '', // TODO
+    artwork: '/images/releases/already-dead.jpg',
+    trackCount: 0, // TODO
+    links: {},
   },
 ];
 

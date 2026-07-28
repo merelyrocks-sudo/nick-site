@@ -17,6 +17,14 @@ export default function ReleaseCard({ release }: { release: Release }) {
     { label: 'SoundCloud', href: release.links.soundcloud },
   ].filter((l) => l.href);
 
+  // Build the meta line from whatever is actually known. A missing year or
+  // track count disappears cleanly instead of leaving a stray separator.
+  const meta = [
+    release.type,
+    release.year,
+    release.trackCount ? `${release.trackCount} tracks` : '',
+  ].filter(Boolean);
+
   return (
     <article className="group">
       <div className="relative aspect-square overflow-hidden rounded-none bg-ink-800">
@@ -33,7 +41,7 @@ export default function ReleaseCard({ release }: { release: Release }) {
 
       <div className="mt-5">
         <p className="text-[0.6875rem] uppercase tracking-[0.28em] text-bone-faint">
-          {release.type} · {release.year}
+          {meta.join(' · ')}
         </p>
         <h3 className="display mt-3 text-3xl text-bone">{release.title}</h3>
         {release.blurb && (
