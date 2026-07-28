@@ -144,6 +144,17 @@ export const ARTWORK_PENDING = '/images/releases/artwork-pending.jpg';
  *
  * Titles came from the CD folder names and the artwork filenames — check them.
  * A blank year is safe: the site omits it rather than printing a guess.
+ *
+ * WHY THE YOUTUBE LINKS ARE EMPTY
+ * -------------------------------
+ * The catalogue was distributed through a CD Baby account Nick no longer has
+ * access to. That delivery is what created the auto-generated "Merely - Topic"
+ * channel on YouTube. Those playlists still work, but plays through them are
+ * credited to the old distribution account rather than to Nick.
+ *
+ * The two known playlist URLs are preserved in comments on their releases so
+ * nothing is lost. Put them back, or replace them with links from the new
+ * distribution, by filling in the `links` object on any release.
  */
 export const releases: Release[] = [
   {
@@ -248,10 +259,10 @@ export const releases: Release[] = [
     artwork: '/images/releases/dig-this.jpg',
     // Track count confirmed from the YouTube playlist itself.
     trackCount: 17,
-    links: {
-      youtube:
-        'https://www.youtube.com/playlist?list=OLAK5uy_n6PI_9PPFRQIK6Mt5rKzfE-kqVTe6Dr6Y',
-    },
+    // Link intentionally removed — see the note above the releases list.
+    // Old auto-generated playlist, kept here so it is not lost:
+    // https://www.youtube.com/playlist?list=OLAK5uy_n6PI_9PPFRQIK6Mt5rKzfE-kqVTe6Dr6Y
+    links: {},
   },
   {
     id: 'already-dead',
@@ -261,10 +272,10 @@ export const releases: Release[] = [
     artwork: '/images/releases/already-dead.jpg',
     // Track count confirmed from the YouTube playlist itself.
     trackCount: 12,
-    links: {
-      youtube:
-        'https://www.youtube.com/playlist?list=OLAK5uy_nSBOnip5qMbuWOP4q8mSZKi45-3eB1GCY',
-    },
+    // Link intentionally removed — see the note above the releases list.
+    // Old auto-generated playlist, kept here so it is not lost:
+    // https://www.youtube.com/playlist?list=OLAK5uy_nSBOnip5qMbuWOP4q8mSZKi45-3eB1GCY
+    links: {},
   },
 ];
 
