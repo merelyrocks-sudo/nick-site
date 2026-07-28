@@ -62,13 +62,13 @@ export const artist = {
 
 export const images = {
   /** The big photo at the top of the home page. Landscape, 2400 x 1600 px. */
-  hero: '/images/placeholder-hero.png',
+  hero: '/images/hero.jpg',
   /** Alt text describes the photo for screen readers and when images fail. */
-  heroAlt: 'Merely', // TODO: describe the real photo once added, e.g. "Merely performing live"
+  heroAlt: 'The Merely logo in rusted metal and barbed wire on dark riveted steel plates',
 
   /** Portrait shown in the About section. 1200 x 1500 px. */
-  portrait: '/images/placeholder-portrait.png',
-  portraitAlt: 'Portrait of Merely', // TODO: refine once the real photo is added
+  portrait: '/images/portrait.jpg',
+  portraitAlt: 'Merely artwork: a winged rabbit figure in a navy dress, standing in a faded pink room',
 } as const;
 
 // ---------------------------------------------------------------------------
