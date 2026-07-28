@@ -1,15 +1,31 @@
 @import "tailwindcss";
 
 /* ---------------------------------------------------------------------------
-   FONTS — self-hosted, served from our own domain.
-   These are npm packages, not Google Fonts. No external request, no tracking,
-   faster first paint.
+   FONTS — the actual font files live in public/fonts/ and are part of this
+   project. Nothing is downloaded from Google, and nothing is resolved through
+   npm, so a font can never break the build or require a reinstall.
 
    Bebas Neue: condensed, uppercase-only. The gig-poster face. Headings only.
    Inter: everything else. Bebas has no lowercase, so body text must never use it.
+
+   font-display: swap means text is readable immediately in a fallback face
+   and upgrades when the real font arrives, instead of showing nothing.
    --------------------------------------------------------------------------- */
-@import "@fontsource/bebas-neue/400.css";
-@import "@fontsource-variable/inter";
+@font-face {
+  font-family: "Bebas Neue";
+  src: url("/fonts/bebas-neue-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter Variable";
+  src: url("/fonts/inter-variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
 
 /* ---------------------------------------------------------------------------
    DESIGN TOKENS
