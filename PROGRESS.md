@@ -3,7 +3,7 @@
 **Project folder:** `Desktop\Nick\Claude\nick-site`
 **Stack:** Next.js 16 (App Router) · TypeScript · Tailwind CSS v4 · Stripe Checkout · GitHub · Vercel
 **Artist:** Merely
-**Last updated:** Phase 2 complete
+**Last updated:** Phase 3 complete
 
 ---
 
@@ -13,9 +13,9 @@
 |-------|-----------|--------|
 | 0 | Branding & content questions | ✅ Done (answers pending, placeholders in use) |
 | 1 | Scaffold project, Git, tracking docs | ✅ Done |
-| 2 | Visual design system + home page | ✅ **Done** |
-| 3 | Music, merch, about, contact pages | ⬜ Next — waiting on your approval |
-| 4 | Stripe Checkout (test mode) | ⬜ Not started |
+| 2 | Visual design system + home page | ✅ Done |
+| 3 | Music, merch, about, contact pages | ✅ **Done** |
+| 4 | Stripe Checkout (test mode) | ⬜ Next — waiting on your approval |
 | 5 | Deploy staging site to Vercel | ⬜ Not started |
 | 6 | Launch: domain, Stripe live mode, policies, testing | ⬜ Not started |
 
@@ -50,16 +50,29 @@
 - [x] Colour contrast measured against WCAG AA — `bone-faint` was failing at 3.6:1
       and was lightened to 4.96:1
 
-## Phase 3 — Next up (needs your approval to start)
+## Phase 3 — Complete ✅
 
-- [ ] `/music` — full release list with artwork, audio player placeholders, streaming links
-- [ ] `/merch` — apparel + physical product cards with size selection
-- [ ] `/store` — digital music products
-- [ ] `/about` — full bio
-- [ ] `/contact` — contact details and form (mailto-based in V1, no backend)
-- [ ] Policy pages: Privacy, Terms, Refund, Shipping (placeholder text)
+- [x] `/music` — full release grid with artwork and per-release streaming links
+- [x] `/merch` — apparel and physical products, with keyboard-accessible size picker
+- [x] `/store` — digital downloads, with the manual-delivery expectation set clearly
+- [x] `/about` — full bio, sticky portrait on desktop
+- [x] `/contact` — email-first, no form (see note below)
+- [x] `PageHeader` component so every inner page shares one masthead and one `h1`
+- [x] `ProductCard` component with a Buy button that stays disabled until a real
+      Stripe price ID exists — never a live-looking button that fails
+- [x] Empty states everywhere: no releases, no products, no links all render
+      deliberate copy instead of blank gaps
+- [x] Verified: 10 routes, all 200, exactly one `h1` each, zero images missing alt
 
-## Phase 4
+**Why there is no contact form:** a form needs a server to receive it, spam
+filtering, and somewhere to store or forward messages — all Version 2 work. A
+plain email address arrives reliably, works everywhere, and gives the sender
+their own copy. The form gets built when there is a reason for it.
+
+Policy pages (Privacy, Terms, Refunds, Shipping) remain placeholders until
+Phase 6, as planned.
+
+## Phase 4 — Next up (needs your approval to start)
 
 - [ ] Stripe SDK installed
 - [ ] `/api/checkout` route that creates a Checkout Session
