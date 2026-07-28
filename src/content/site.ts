@@ -49,6 +49,23 @@ export const artist = {
 } as const;
 
 // ---------------------------------------------------------------------------
+// 1b. MAIN IMAGES
+// ---------------------------------------------------------------------------
+// Put your files in the `public/images/` folder, then change the filename here.
+// Example: save `nick-hero.jpg` into public/images/ and write '/images/nick-hero.jpg'
+
+export const images = {
+  /** The big photo at the top of the home page. Landscape, 2400 x 1600 px. */
+  hero: '/images/placeholder-hero.png',
+  /** Alt text describes the photo for screen readers and when images fail. */
+  heroAlt: 'TODO: describe the hero photo, e.g. "Nick performing on stage"',
+
+  /** Portrait shown in the About section. 1200 x 1500 px. */
+  portrait: '/images/placeholder-portrait.png',
+  portraitAlt: 'TODO: describe the portrait, e.g. "Portrait of Nick"',
+} as const;
+
+// ---------------------------------------------------------------------------
 // 2. CONTACT
 // ---------------------------------------------------------------------------
 
@@ -114,7 +131,7 @@ export const releases: Release[] = [
     title: 'Placeholder Album Title', // TODO
     type: 'Album',
     year: '2026', // TODO
-    artwork: '/images/placeholder-release-1.svg', // TODO: swap for real cover art
+    artwork: '/images/placeholder-release-1.png', // TODO: swap for real cover art
     blurb: 'TODO: one line about this release.',
     links: {
       spotify: '',
@@ -128,7 +145,7 @@ export const releases: Release[] = [
     title: 'Placeholder Single Title', // TODO
     type: 'Single',
     year: '2026', // TODO
-    artwork: '/images/placeholder-release-2.svg', // TODO
+    artwork: '/images/placeholder-release-2.png', // TODO
     blurb: 'TODO: one line about this release.',
     links: {
       spotify: '',
@@ -187,7 +204,7 @@ export const products: Product[] = [
     name: 'Logo T-Shirt', // TODO
     priceCents: 3000, // TODO: $30.00
     description: 'TODO: describe the shirt — colour, fabric, fit.',
-    image: '/images/placeholder-product-1.svg',
+    image: '/images/placeholder-product-1.png',
     kind: 'apparel',
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     stripePriceId: '', // filled in during Phase 4
@@ -198,7 +215,7 @@ export const products: Product[] = [
     name: 'Embroidered Hoodie', // TODO
     priceCents: 6500, // TODO: $65.00
     description: 'TODO: describe the hoodie.',
-    image: '/images/placeholder-product-2.svg',
+    image: '/images/placeholder-product-2.png',
     kind: 'apparel',
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     stripePriceId: '',
@@ -209,7 +226,7 @@ export const products: Product[] = [
     name: 'Debut Album — Vinyl LP', // TODO
     priceCents: 2800, // TODO: $28.00
     description: 'TODO: describe the pressing — colour, gatefold, insert.',
-    image: '/images/placeholder-product-3.svg',
+    image: '/images/placeholder-product-3.png',
     kind: 'physical',
     stripePriceId: '',
     available: true,
@@ -222,7 +239,7 @@ export const products: Product[] = [
     priceCents: 1000, // TODO: $10.00
     description:
       'TODO: describe what the buyer receives. NOTE: in Version 1 you email these files to the buyer manually after purchase.',
-    image: '/images/placeholder-release-1.svg',
+    image: '/images/placeholder-release-1.png',
     kind: 'digital',
     stripePriceId: '',
     available: true,
@@ -232,7 +249,7 @@ export const products: Product[] = [
     name: 'Single — Digital Download', // TODO
     priceCents: 199, // TODO: $1.99
     description: 'TODO: describe the single.',
-    image: '/images/placeholder-release-2.svg',
+    image: '/images/placeholder-release-2.png',
     kind: 'digital',
     stripePriceId: '',
     available: true,
@@ -263,15 +280,44 @@ export function getProduct(id: string): Product | undefined {
   return products.find((p) => p.id === id);
 }
 
+/** Main site navigation. Order here is the order shown in the header. */
+export const nav = [
+  { label: 'Music', href: '/music' },
+  { label: 'Store', href: '/store' },
+  { label: 'Merch', href: '/merch' },
+  { label: 'About', href: '/about' },
+  { label: 'Contact', href: '/contact' },
+] as const;
+
+/** Legal pages shown in the footer. Real text is written in Phase 6. */
+export const policyLinks = [
+  { label: 'Privacy', href: '/privacy' },
+  { label: 'Terms', href: '/terms' },
+  { label: 'Refunds', href: '/refunds' },
+  { label: 'Shipping', href: '/shipping' },
+] as const;
+
 /** Streaming + social links, flattened and with the empty ones removed. */
-export const allLinks = [
+export const streamingLinks = [
   { label: 'Spotify', href: streaming.spotify },
   { label: 'Apple Music', href: streaming.appleMusic },
   { label: 'YouTube', href: streaming.youtube },
   { label: 'SoundCloud', href: streaming.soundcloud },
   { label: 'Bandcamp', href: streaming.bandcamp },
+].filter((l) => l.href !== '');
+
+export const socialLinks = [
   { label: 'Instagram', href: social.instagram },
   { label: 'TikTok', href: social.tiktok },
   { label: 'X', href: social.twitter },
   { label: 'Facebook', href: social.facebook },
 ].filter((l) => l.href !== '');
+
+/** Every external link, streaming and social together. */
+export const allLinks = [...streamingLinks, ...socialLinks];
+
+/**
+ * True when no links have been filled in yet. The UI uses this to show a
+ * tasteful "links coming soon" state instead of an empty gap.
+ */
+export const hasAnyLinks = allLinks.length > 0;

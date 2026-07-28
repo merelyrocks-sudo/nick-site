@@ -1,23 +1,131 @@
 @import "tailwindcss";
 
-/* --------------------------------------------------------------------------
-   Placeholder styling only. The real design system lands in Phase 2.
-   The site is dark-first, so there is no light/dark toggle to reason about.
-   -------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------
+   FONTS — self-hosted, served from our own domain.
+   These are npm packages, not Google Fonts. No external request, no tracking,
+   faster first paint. To change the typeface later, swap these two imports and
+   the --font-* tokens below. Nothing else in the codebase needs to change.
+   --------------------------------------------------------------------------- */
+@import "@fontsource-variable/inter";
+@import "@fontsource/instrument-serif/400.css";
+@import "@fontsource/instrument-serif/400-italic.css";
 
-@theme inline {
-  --color-background: #000000;
-  --color-foreground: #ffffff;
+/* ---------------------------------------------------------------------------
+   DESIGN TOKENS
+   The whole visual identity is defined here. Change a value here and it
+   updates consistently across every page.
+   --------------------------------------------------------------------------- */
+@theme {
+  /* --- Surfaces. Layered near-blacks, not pure black, so edges read softly. */
+  --color-ink-950: #08080a; /* page background */
+  --color-ink-900: #0f0f12; /* raised panels */
+  --color-ink-800: #17171b; /* cards */
+  --color-ink-700: #202027; /* hover state on cards */
+
+  /* --- Text. */
+  /* Contrast ratios below are measured against --color-ink-950.
+     WCAG AA requires 4.5:1 for body text. Do not darken these values
+     without re-checking, or the site becomes unreadable for some people. */
+  --color-bone: #f6f2ea; /* primary text — warm white, softer than #fff. 18:1 */
+  --color-bone-dim: #a8a29a; /* secondary text. 7.9:1 */
+  --color-bone-faint: #827e76; /* captions, meta. 4.96:1 — at the AA limit */
+
+  /* --- Accent. The one warm note against all the black.
+         This is the single value to change if Nick has a brand colour. */
+  --color-accent: #d4b483;
+  --color-accent-bright: #e8cfa6;
+
+  /* --- Hairlines. */
+  --color-line: rgba(246, 242, 234, 0.1);
+  --color-line-strong: rgba(246, 242, 234, 0.22);
+
+  /* --- Type families. */
   --font-sans:
-    system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    "Inter Variable", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Instrument Serif", Georgia, "Times New Roman", serif;
+
+  /* --- Motion. Slow and heavy reads as cinematic; fast reads as an app. */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---------------------------------------------------------------------------
+   BASE
+   --------------------------------------------------------------------------- */
+html {
+  background-color: var(--color-ink-950);
+  scroll-behavior: smooth;
+}
+
+/* People who get motion sickness have told their OS so. Respect it. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 body {
+  background-color: var(--color-ink-950);
+  color: var(--color-bone);
   font-family: var(--font-sans);
+  font-synthesis-weight: none;
+  text-rendering: optimizeLegibility;
 }
 
-/* Visible keyboard focus everywhere. Accessibility baseline, kept in Phase 2. */
+/* Keyboard users must always be able to see where they are.
+   Never remove this without replacing it with something equally visible. */
 :focus-visible {
-  outline: 2px solid #ffffff;
+  outline: 2px solid var(--color-accent-bright);
   outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Text selection in brand colours rather than default browser blue. */
+::selection {
+  background-color: var(--color-accent);
+  color: var(--color-ink-950);
+}
+
+/* ---------------------------------------------------------------------------
+   REUSABLE TYPE PATTERNS
+   Used across pages so headings stay consistent without repeating classes.
+   --------------------------------------------------------------------------- */
+
+/* The small wide-tracked uppercase label above a section heading. */
+.eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+/* Large editorial serif headings. */
+.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+}
+
+/* Slow reveal for hero content. Deliberately subtle. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.animate-rise {
+  animation: rise 0.9s var(--ease-out-soft) both;
 }

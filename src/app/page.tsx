@@ -1,24 +1,193 @@
-import { artist } from "@/content/site";
-
-// PLACEHOLDER PAGE — replaced entirely in Phase 2 by the real home page.
-// This exists so the project builds and runs end to end after Phase 1.
+import Image from 'next/image';
+import Container from '@/components/Container';
+import Button from '@/components/Button';
+import SectionHeading from '@/components/SectionHeading';
+import ReleaseCard from '@/components/ReleaseCard';
+import {
+  artist,
+  images,
+  contact,
+  releases,
+  streamingLinks,
+  socialLinks,
+  allLinks,
+} from '@/content/site';
 
 export default function Home() {
+  // Show at most three releases on the home page; the rest live on /music.
+  const featured = releases.slice(0, 3);
+
   return (
-    <main className="flex flex-1 items-center justify-center px-6 py-24">
-      <div className="max-w-xl text-center">
-        <p className="text-xs uppercase tracking-[0.3em] text-white/40">
-          Phase 1 complete
-        </p>
-        <h1 className="mt-6 text-5xl font-semibold tracking-tight sm:text-6xl">
-          {artist.name}
-        </h1>
-        <p className="mt-4 text-lg text-white/60">{artist.tagline}</p>
-        <p className="mt-10 text-sm leading-relaxed text-white/40">
-          The project is set up and running. The real design and home page are
-          built in Phase 2.
-        </p>
-      </div>
-    </main>
+    // -mt-20 pulls the hero up under the fixed header so the image runs
+    // edge to edge behind it. The header is transparent until you scroll.
+    <>
+      {/* ================= HERO ================= */}
+      <section className="relative -mt-20 flex min-h-[88svh] items-end overflow-hidden">
+        <Image
+          src={images.hero}
+          alt={images.heroAlt}
+          fill
+          // The hero is the largest element visible on load, so we tell the
+          // browser to fetch it first. This is the single biggest thing you
+          // can do for perceived load speed.
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+
+        {/* Two overlays: a vertical fade so text at the bottom stays readable,
+            and a slight overall darkening so any photo works. */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/60 to-ink-950/25"
+        />
+
+        <Container wide className="relative pb-20 pt-40 sm:pb-24">
+          <div className="animate-rise max-w-3xl">
+            <h1 className="display text-[clamp(3rem,12vw,9rem)] text-bone">
+              {artist.name}
+            </h1>
+            <p className="mt-6 max-w-lg text-lg leading-relaxed text-bone-dim sm:text-xl">
+              {artist.tagline}
+            </p>
+
+            <div className="mt-10 flex flex-wrap gap-4">
+              {streamingLinks.length > 0 ? (
+                <Button href={streamingLinks[0].href} external>
+                  Listen on {streamingLinks[0].label}
+                </Button>
+              ) : (
+                <Button href="/music">Listen</Button>
+              )}
+              <Button href="/merch" variant="secondary">
+                Shop merch
+              </Button>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* ================= FEATURED MUSIC ================= */}
+      <section className="py-24 sm:py-32">
+        <Container>
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <SectionHeading
+              eyebrow="Music"
+              title="Latest releases"
+              description={artist.genre}
+            />
+            <Button href="/music" variant="ghost">
+              All music →
+            </Button>
+          </div>
+
+          <div className="mt-14 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
+            {featured.map((release) => (
+              <ReleaseCard key={release.id} release={release} />
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* ================= ABOUT ================= */}
+      <section className="border-t border-line bg-ink-900 py-24 sm:py-32">
+        <Container>
+          <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-sm bg-ink-800">
+              <Image
+                src={images.portrait}
+                alt={images.portraitAlt}
+                fill
+                sizes="(min-width: 1024px) 45vw, 100vw"
+                className="object-cover"
+              />
+            </div>
+
+            <div>
+              <SectionHeading eyebrow="About" title="The story" />
+              {/* Only the opening paragraph here — the full bio is on /about. */}
+              <p className="mt-6 text-base leading-relaxed text-bone-dim">
+                {artist.bio[0]}
+              </p>
+              <div className="mt-9">
+                <Button href="/about" variant="secondary">
+                  Read the full story
+                </Button>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* ================= LISTEN & FOLLOW ================= */}
+      <section className="py-24 sm:py-32">
+        <Container>
+          <SectionHeading
+            eyebrow="Everywhere"
+            title="Listen &amp; follow"
+            description="New music, and everything in between."
+            align="center"
+          />
+
+          {allLinks.length > 0 ? (
+            <div className="mx-auto mt-14 max-w-4xl">
+              {streamingLinks.length > 0 && (
+                <ul className="flex flex-wrap justify-center gap-3">
+                  {streamingLinks.map((link) => (
+                    <li key={link.label}>
+                      <Button href={link.href} external variant="secondary">
+                        {link.label}
+                      </Button>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {socialLinks.length > 0 && (
+                <ul className="mt-6 flex flex-wrap justify-center gap-x-8 gap-y-3">
+                  {socialLinks.map((link) => (
+                    <li key={link.label}>
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm tracking-wide text-bone-dim transition-colors hover:text-accent"
+                      >
+                        {link.label}
+                        <span className="sr-only"> (opens in a new tab)</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ) : (
+            <p className="mt-10 text-center text-sm text-bone-faint">
+              Streaming and social links will appear here once they are added in{' '}
+              <code className="text-bone-dim">src/content/site.ts</code>.
+            </p>
+          )}
+        </Container>
+      </section>
+
+      {/* ================= CONTACT ================= */}
+      <section className="border-t border-line py-24 sm:py-32">
+        <Container>
+          <div className="mx-auto max-w-2xl text-center">
+            <SectionHeading
+              eyebrow="Contact"
+              title="Get in touch"
+              description="Bookings, press, features, or anything else."
+              align="center"
+            />
+            <div className="mt-10 flex flex-wrap justify-center gap-4">
+              <Button href={`mailto:${contact.email}`}>{contact.email}</Button>
+              <Button href="/contact" variant="secondary">
+                Contact page
+              </Button>
+            </div>
+          </div>
+        </Container>
+      </section>
+    </>
   );
 }

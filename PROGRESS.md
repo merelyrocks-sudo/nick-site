@@ -11,9 +11,9 @@
 | Phase | What it is | Status |
 |-------|-----------|--------|
 | 0 | Branding & content questions | ✅ Done (answers pending, placeholders in use) |
-| 1 | Scaffold project, Git, tracking docs | ✅ **Done** |
-| 2 | Visual design system + home page | ⬜ Next — waiting on your approval |
-| 3 | Music, merch, about, contact pages | ⬜ Not started |
+| 1 | Scaffold project, Git, tracking docs | ✅ Done |
+| 2 | Visual design system + home page | ✅ **Done** |
+| 3 | Music, merch, about, contact pages | ⬜ Next — waiting on your approval |
 | 4 | Stripe Checkout (test mode) | ⬜ Not started |
 | 5 | Deploy staging site to Vercel | ⬜ Not started |
 | 6 | Launch: domain, Stripe live mode, policies, testing | ⬜ Not started |
@@ -33,17 +33,23 @@
 
 ---
 
-## Phase 2 — Next up (needs your approval to start)
+## Phase 2 — Complete ✅
 
-- [ ] Dark cinematic design system: colour tokens, typography scale, spacing
-- [ ] Site shell: sticky header, mobile nav, footer with policy links
-- [ ] Home page hero: artist name, tagline, featured image, listen CTA
-- [ ] Home page sections: featured music, short about, social/streaming strip, contact
-- [ ] Placeholder artwork generated at correct dimensions
-- [ ] Responsive at phone / tablet / desktop
-- [ ] Accessibility pass: keyboard navigation, focus rings, alt text, colour contrast
+- [x] Dark cinematic design system — all tokens in `globals.css`
+- [x] Self-hosted typefaces (Instrument Serif + Inter) installed via npm, **not** Google Fonts
+- [x] Site shell: sticky header that fades in on scroll, accessible mobile menu, full footer
+- [x] Home page hero: full-bleed image, artist name, tagline, listen + shop actions
+- [x] Home page sections: featured music, about preview, listen/follow strip, contact
+- [x] Placeholder PNGs generated at exact target dimensions
+- [x] Stub pages for every nav and footer link, so nothing 404s mid-build
+- [x] Responsive at phone / tablet / desktop
+- [x] Accessibility: skip link, one `h1`, ordered headings, alt text on every image,
+      `aria-expanded` on the menu, `aria-current` on the active page, visible focus rings,
+      `prefers-reduced-motion` respected
+- [x] Colour contrast measured against WCAG AA — `bone-faint` was failing at 3.6:1
+      and was lightened to 4.96:1
 
-## Phase 3
+## Phase 3 — Next up (needs your approval to start)
 
 - [ ] `/music` — full release list with artwork, audio player placeholders, streaming links
 - [ ] `/merch` — apparel + physical product cards with size selection

@@ -1,0 +1,69 @@
+import Link from 'next/link';
+import { ReactNode } from 'react';
+
+type Variant = 'primary' | 'secondary' | 'ghost';
+
+const base =
+  'inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 ' +
+  'text-sm font-medium tracking-wide transition-colors duration-300 ' +
+  'disabled:cursor-not-allowed disabled:opacity-40';
+
+const variants: Record<Variant, string> = {
+  // Solid warm accent. Use once per screen — it marks the single main action.
+  primary: 'bg-accent text-ink-950 hover:bg-accent-bright',
+  // Outlined. For secondary actions sitting next to a primary.
+  secondary:
+    'border border-line-strong text-bone hover:bg-ink-800 hover:border-bone/40',
+  // Text only. For tertiary actions and long link lists.
+  ghost: 'text-bone-dim hover:text-bone',
+};
+
+/**
+ * One button component for the whole site so every action looks and behaves
+ * the same. Renders a real <a> when given href, and a real <button> otherwise —
+ * this matters for keyboard and screen reader users.
+ */
+export default function Button({
+  children,
+  href,
+  variant = 'primary',
+  external = false,
+  className = '',
+  ...props
+}: {
+  children: ReactNode;
+  href?: string;
+  variant?: Variant;
+  external?: boolean;
+  className?: string;
+} & React.ButtonHTMLAttributes<HTMLButtonElement>) {
+  const styles = `${base} ${variants[variant]} ${className}`;
+
+  if (href) {
+    if (external) {
+      return (
+        <a
+          href={href}
+          className={styles}
+          target="_blank"
+          // noreferrer/noopener prevents the opened page from tampering with ours
+          rel="noopener noreferrer"
+        >
+          {children}
+          <span className="sr-only"> (opens in a new tab)</span>
+        </a>
+      );
+    }
+    return (
+      <Link href={href} className={styles}>
+        {children}
+      </Link>
+    );
+  }
+
+  return (
+    <button className={styles} {...props}>
+      {children}
+    </button>
+  );
+}
