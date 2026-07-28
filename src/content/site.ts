@@ -123,6 +123,17 @@ export type Release = {
   artwork: string;
   /** Number of tracks. Set to 0 to hide. */
   trackCount?: number;
+  /**
+   * Track titles in order, taken from Nick's own album documents.
+   * Leave empty and the site falls back to "Track 1", "Track 2", ... which is
+   * honest placeholder text rather than invented song names.
+   */
+  tracks?: string[];
+  /**
+   * True when 30-second preview clips exist for this release at
+   * /public/audio/previews/<id>/01.mp3, 02.mp3 and so on.
+   */
+  hasPreviews?: boolean;
   /** Optional one-line description shown under the title. */
   blurb?: string;
   /** Per-release listen links. Leave '' to hide that button. */
@@ -164,6 +175,7 @@ export const releases: Release[] = [
     year: '2026',
     artwork: '/images/releases/thrilla-killa.jpg',
     trackCount: 16,
+    hasPreviews: true,
     links: {},
   },
   {
@@ -173,6 +185,7 @@ export const releases: Release[] = [
     year: '2025',
     artwork: '/images/releases/merely-rocks-2.jpg',
     trackCount: 15,
+    hasPreviews: true,
     links: {},
   },
   {
@@ -182,6 +195,7 @@ export const releases: Release[] = [
     year: '2024',
     artwork: '/images/releases/merely-rocks-1.jpg',
     trackCount: 15,
+    hasPreviews: true,
     links: {},
   },
   {
@@ -191,6 +205,24 @@ export const releases: Release[] = [
     year: '2023',
     artwork: '/images/releases/daze.jpg',
     trackCount: 15,
+    tracks: [
+      'I Know That You Don\'t',
+      'Fell On Deaf Ears',
+      'Walpurgis (I Get Around)',
+      'Alive Inside',
+      'Feed Your Head',
+      'Err Is Human',
+      'Daze',
+      'Yours Entwined (In Your Head)',
+      'I\'m Feelin\' Fine',
+      'Quoth The Pause',
+      'The Black Cat',
+      'Went Down To The Levee',
+      'Would You Care?',
+      'Henry The Ape I Am',
+      'Strange Ways',
+    ],
+    hasPreviews: true,
     links: {},
   },
   {
@@ -210,6 +242,7 @@ export const releases: Release[] = [
     year: '2020',
     artwork: ARTWORK_PENDING, // TODO: no cover art found for this release
     trackCount: 12,
+    hasPreviews: true,
     links: {},
   },
   {
@@ -219,6 +252,7 @@ export const releases: Release[] = [
     year: '2019',
     artwork: ARTWORK_PENDING, // TODO: no cover art found for this release
     trackCount: 12,
+    hasPreviews: true,
     links: {},
   },
   {
@@ -229,7 +263,22 @@ export const releases: Release[] = [
     // WARNING: source artwork is only 281x281px and looks soft.
     // Replace with a larger scan when you find one.
     artwork: '/images/releases/get-out.jpg',
-    trackCount: 25,
+    trackCount: 12,
+    tracks: [
+      'Killer Diller',
+      'I Get Around',
+      'Mosquito',
+      'Cuckoo Ca-Choo',
+      'Redneck',
+      'Bled',
+      'Foot In Mouth',
+      'Hey There, Scarecrow',
+      'Rag And Bone',
+      'Leadfoot',
+      'Leave Me Alone',
+      'Dirtbag',
+    ],
+    hasPreviews: true,
     links: {},
   },
   {
@@ -240,6 +289,20 @@ export const releases: Release[] = [
     // Shares artwork with Merely Lives — swap if a part 2 cover exists.
     artwork: '/images/releases/merely-lives.jpg',
     trackCount: 11,
+    tracks: [
+      'I Can\'t Raise Life From The Grave',
+      'Darkest Hour',
+      'Ahha!',
+      'Let Me Wander In Your Garden',
+      'Four Winds Blow (Carry Me Home)',
+      'The Moor',
+      'Hark! The Angels Come',
+      'So Become Of What\'s In Store',
+      'The Night Is Young',
+      'Soon The Day Will Come',
+      'Mere Mortals',
+    ],
+    hasPreviews: true,
     links: {},
   },
   {
@@ -249,6 +312,20 @@ export const releases: Release[] = [
     year: '', // TODO
     artwork: '/images/releases/merely-lives.jpg',
     trackCount: 11,
+    tracks: [
+      'Come! Come! To The Heart-beats Drum',
+      'The Dark Of Night',
+      'No More',
+      'Woe Is Me',
+      'The Mona Lisa',
+      'You Call Me Rapture',
+      '2 Wallow In',
+      'Merely',
+      'You Wither Away',
+      'Come!',
+      'I Am But A Mortal Man',
+    ],
+    hasPreviews: true,
     links: {},
   },
   {
@@ -262,6 +339,26 @@ export const releases: Release[] = [
     // Link intentionally removed — see the note above the releases list.
     // Old auto-generated playlist, kept here so it is not lost:
     // https://www.youtube.com/playlist?list=OLAK5uy_n6PI_9PPFRQIK6Mt5rKzfE-kqVTe6Dr6Y
+    tracks: [
+      'Excuse The Hell Outta Me',
+      'Like I Care',
+      'Dig This',
+      'Me? I Feel Fine',
+      'Where The Hell Have You Been?',
+      'Mud Diver',
+      'I\'ll Do It Anyway',
+      'Dig Me That Hole',
+      'Pisces',
+      'I Feel Fine, In My Mind',
+      'Had It All',
+      'I Love You Madly',
+      'Crayzee For You',
+      'Hey Man, What\'s The Plan?',
+      'Like I Do',
+      'Who Do I Serve?',
+      'Eat Crow',
+    ],
+    hasPreviews: true,
     links: {},
   },
   {
@@ -275,6 +372,20 @@ export const releases: Release[] = [
     // Link intentionally removed — see the note above the releases list.
     // Old auto-generated playlist, kept here so it is not lost:
     // https://www.youtube.com/playlist?list=OLAK5uy_nSBOnip5qMbuWOP4q8mSZKi45-3eB1GCY
+    tracks: [
+      'Already Dead',
+      'Mother\'s Babies Dyin\'',
+      'Pour Me Out',
+      'It\'s Alright Mama',
+      'Knowin\'',
+      'Hole In My Head',
+      'All Gone',
+      'Goin\' Nowhere',
+      'In The Day',
+      'Feelin\'',
+      'Drawing Near',
+      'Already Dead (Reprise)',
+    ],
     links: {},
   },
 ];
