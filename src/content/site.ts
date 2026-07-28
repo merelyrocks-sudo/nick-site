@@ -548,7 +548,8 @@ export const products: Product[] = [
     name: 'Merely Lives 2',
     priceCents: 999, // TODO: set the real price. 999 = $9.99
     description: 'Full album download. High quality files, yours to keep.',
-    image: '/images/releases/merely-lives-2.jpg',
+    // Shares cover art with Merely Lives — no separate part 2 cover exists yet.
+    image: '/images/releases/merely-lives.jpg',
     kind: 'digital',
     stripePriceId: '', // filled in during Stripe setup
     available: true,
