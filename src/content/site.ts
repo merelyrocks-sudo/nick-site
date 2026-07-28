@@ -440,7 +440,7 @@ export const products: Product[] = [
     kind: 'apparel',
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     stripePriceId: '', // filled in during Phase 4
-    available: true,
+    available: false, // placeholder — set true once this is a real product
   },
   {
     id: 'hoodie',
@@ -451,7 +451,7 @@ export const products: Product[] = [
     kind: 'apparel',
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     stripePriceId: '',
-    available: true,
+    available: false, // placeholder — set true once this is a real product
   },
   {
     id: 'vinyl-lp',
@@ -461,7 +461,7 @@ export const products: Product[] = [
     image: '/images/placeholder-product-3.png',
     kind: 'physical',
     stripePriceId: '',
-    available: true,
+    available: false, // placeholder — set true once this is a real product
   },
 
   // --- MUSIC STORE (digital) ----------------------------------------------
