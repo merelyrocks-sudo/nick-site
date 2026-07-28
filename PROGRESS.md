@@ -1,8 +1,9 @@
-# PROGRESS — Nick Artist Site (Version 1)
+# PROGRESS — Merely Artist Site (Version 1)
 
 **Project folder:** `Desktop\Nick\Claude\nick-site`
 **Stack:** Next.js 16 (App Router) · TypeScript · Tailwind CSS v4 · Stripe Checkout · GitHub · Vercel
-**Last updated:** Phase 1 complete
+**Artist:** Merely
+**Last updated:** Phase 2 complete
 
 ---
 

@@ -23,28 +23,34 @@
 
 export const artist = {
   /** Displayed large in the hero. Capitalization here is what visitors see. */
-  name: 'NICK', // TODO: replace with the full artist name
+  name: 'Merely',
 
   /** One short line under the name. Aim for 3-8 words. */
-  tagline: 'Placeholder tagline goes here', // TODO
+  tagline: 'New music, on the way',
 
   /** Used in the browser tab and in Google search results. */
-  seoTitle: 'Nick — Official Site', // TODO
+  seoTitle: 'Merely — Official Site',
 
   /** The grey text under the link in Google results. Aim for ~150 characters. */
   seoDescription:
-    'Official website of Nick. Listen to new music, read the story, and shop official merch.', // TODO
+    'Official site of Merely. New music, the story so far, and official merch.',
 
   /** Genre or one-line description of the sound. Shown in the About section. */
-  genre: 'Placeholder genre', // TODO
+  genre: 'Solo artist. New music coming soon.', // TODO: name the genre once decided
 
   /**
    * The bio. Each string in this list becomes its own paragraph.
    * Add or remove paragraphs freely.
+   *
+   * NOTE: this is a first draft written to be true of almost any emerging solo
+   * artist, so the site reads properly today instead of showing TODO text.
+   * It deliberately contains no invented facts — no fake cities, credits, or
+   * release history. Replace it with the real story when you have it.
    */
   bio: [
-    'TODO: First paragraph of the bio. Who is Nick, where is he from, what does he make? This is the paragraph most people will actually read, so it should carry the story.',
-    'TODO: Second paragraph. Notable releases, shows, collaborations, or what is coming next.',
+    'Merely is a solo project built on the idea that a song should sound like one person telling the truth, not a committee guessing at a trend. Every part is written, played, and shaped by hand — slowly, and until it feels right.',
+    'The work so far has happened quietly: demos recorded in small rooms, arrangements rebuilt from scratch more times than is reasonable, and a growing collection of songs waiting for the right moment. That moment is close.',
+    'New music is on the way. This site is where it lands first.',
   ],
 } as const;
 
@@ -58,11 +64,11 @@ export const images = {
   /** The big photo at the top of the home page. Landscape, 2400 x 1600 px. */
   hero: '/images/placeholder-hero.png',
   /** Alt text describes the photo for screen readers and when images fail. */
-  heroAlt: 'TODO: describe the hero photo, e.g. "Nick performing on stage"',
+  heroAlt: 'Merely', // TODO: describe the real photo once added, e.g. "Merely performing live"
 
   /** Portrait shown in the About section. 1200 x 1500 px. */
   portrait: '/images/placeholder-portrait.png',
-  portraitAlt: 'TODO: describe the portrait, e.g. "Portrait of Nick"',
+  portraitAlt: 'Portrait of Merely', // TODO: refine once the real photo is added
 } as const;
 
 // ---------------------------------------------------------------------------

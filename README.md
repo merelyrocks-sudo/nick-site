@@ -1,6 +1,6 @@
-# Nick — Official Artist Site
+# Merely — Official Artist Site
 
-The website for Nick. Built with Next.js, TypeScript, and Tailwind CSS.
+The website for Merely. Built with Next.js, TypeScript, and Tailwind CSS.
 Hosted on Vercel. Payments through Stripe.
 
 ---

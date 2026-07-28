@@ -14,7 +14,7 @@ until the phase listed in the **Needed by** column.
 | # | Task | Needed by | Status |
 |---|------|-----------|--------|
 | 0 | Install Node.js, then run `npm install` | **Now** — to view the site | ⬜ Do this first |
-| 1 | Send me Nick's real content (name, tagline, bio, links) | Phase 2 | ⬜ Waiting on you |
+| 1 | Send me Merely's real content (name, tagline, bio, links) | Phase 2 | ⬜ Waiting on you |
 | 2 | Send me real photos and cover artwork | Phase 2–3 | ⬜ Waiting on you |
 | 3 | Create a Stripe account | Phase 4 | ⬜ Not started |
 | 4 | Create products in Stripe test mode | Phase 4 | ⬜ Not started |
@@ -43,7 +43,7 @@ an environment issue on your machine — tell me the error text and I will fix i
 
 ---
 
-## 1. Send me Nick's real content — *needed for Phase 2*
+## 1. Send me Merely's real content — *needed for Phase 2*
 
 Reply in the chat with whatever you have. Missing items stay as visible
 placeholders and can be filled in any time later — this does not block me.
