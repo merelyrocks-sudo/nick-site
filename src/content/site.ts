@@ -143,17 +143,14 @@ export const ARTWORK_PENDING = '/images/releases/artwork-pending.jpg';
  * The home page shows the first three.
  *
  * Titles came from the CD folder names and the artwork filenames — check them.
- * Years are all blank because the audio files only carry the date they were
- * copied to this computer, which is not the release date. Fill them in and
- * they appear automatically; left blank, the site simply omits the year
- * rather than printing something wrong.
+ * A blank year is safe: the site omits it rather than printing a guess.
  */
 export const releases: Release[] = [
   {
     id: 'thrilla-killa',
     title: 'Thrilla Killa',
     type: 'Album',
-    year: '', // TODO
+    year: '2026',
     artwork: '/images/releases/thrilla-killa.jpg',
     trackCount: 16,
     links: {},
@@ -162,7 +159,7 @@ export const releases: Release[] = [
     id: 'merely-rocks-2',
     title: 'Merely Rocks 2',
     type: 'Album',
-    year: '', // TODO
+    year: '2025',
     artwork: '/images/releases/merely-rocks-2.jpg',
     trackCount: 15,
     links: {},
@@ -171,7 +168,7 @@ export const releases: Release[] = [
     id: 'merely-rocks',
     title: 'Merely Rocks',
     type: 'Album',
-    year: '', // TODO
+    year: '2024',
     artwork: '/images/releases/merely-rocks-1.jpg',
     trackCount: 15,
     links: {},
@@ -180,7 +177,7 @@ export const releases: Release[] = [
     id: 'daze',
     title: 'Daze',
     type: 'Album',
-    year: '', // TODO
+    year: '2023',
     artwork: '/images/releases/daze.jpg',
     trackCount: 15,
     links: {},
@@ -189,7 +186,7 @@ export const releases: Release[] = [
     id: 'are-you-mental',
     title: 'Are You Mental',
     type: 'Album',
-    year: '', // TODO
+    year: '2022',
     artwork: '/images/releases/are-you-mental.jpg',
     // No audio folder for this one, so the track count is unknown.
     trackCount: 0, // TODO
@@ -199,7 +196,7 @@ export const releases: Release[] = [
     id: 'are-you-brutal-2',
     title: 'Are You Brutal 2',
     type: 'Album',
-    year: '', // TODO
+    year: '2020',
     artwork: ARTWORK_PENDING, // TODO: no cover art found for this release
     trackCount: 12,
     links: {},
@@ -208,7 +205,7 @@ export const releases: Release[] = [
     id: 'are-you-brutal',
     title: 'Are You Brutal',
     type: 'Album',
-    year: '', // TODO
+    year: '2019',
     artwork: ARTWORK_PENDING, // TODO: no cover art found for this release
     trackCount: 12,
     links: {},
@@ -217,7 +214,7 @@ export const releases: Release[] = [
     id: 'get-out',
     title: 'Get Out',
     type: 'Album',
-    year: '', // TODO
+    year: '2017',
     // WARNING: source artwork is only 281x281px and looks soft.
     // Replace with a larger scan when you find one.
     artwork: '/images/releases/get-out.jpg',
