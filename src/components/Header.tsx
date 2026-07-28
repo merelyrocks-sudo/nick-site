@@ -59,7 +59,7 @@ export default function Header() {
       <div className="mx-auto flex h-20 w-full max-w-[1600px] items-center justify-between px-6 sm:px-8 lg:px-12">
         <Link
           href="/"
-          className="display text-xl tracking-tight text-bone sm:text-2xl"
+          className="display text-2xl text-bone sm:text-3xl"
         >
           {artist.name}
         </Link>
@@ -74,10 +74,8 @@ export default function Header() {
                   <Link
                     href={item.href}
                     aria-current={active ? 'page' : undefined}
-                    className={`text-sm tracking-wide transition-colors duration-300 ${
-                      active
-                        ? 'text-accent'
-                        : 'text-bone-dim hover:text-bone'
+                    className={`text-xs uppercase tracking-[0.2em] transition-colors duration-200 ${
+                      active ? 'text-bone' : 'text-bone-dim hover:text-bone'
                     }`}
                   >
                     {item.label}
@@ -130,8 +128,8 @@ export default function Header() {
                   <Link
                     href={item.href}
                     aria-current={active ? 'page' : undefined}
-                    className={`block border-b border-line py-4 text-lg ${
-                      active ? 'text-accent' : 'text-bone'
+                    className={`display block border-b border-line py-4 text-3xl ${
+                      active ? 'text-bone' : 'text-bone-dim'
                     }`}
                   >
                     {item.label}

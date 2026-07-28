@@ -3,48 +3,54 @@
 /* ---------------------------------------------------------------------------
    FONTS — self-hosted, served from our own domain.
    These are npm packages, not Google Fonts. No external request, no tracking,
-   faster first paint. To change the typeface later, swap these two imports and
-   the --font-* tokens below. Nothing else in the codebase needs to change.
+   faster first paint.
+
+   Bebas Neue: condensed, uppercase-only. The gig-poster face. Headings only.
+   Inter: everything else. Bebas has no lowercase, so body text must never use it.
    --------------------------------------------------------------------------- */
+@import "@fontsource/bebas-neue/400.css";
 @import "@fontsource-variable/inter";
-@import "@fontsource/instrument-serif/400.css";
-@import "@fontsource/instrument-serif/400-italic.css";
 
 /* ---------------------------------------------------------------------------
    DESIGN TOKENS
    The whole visual identity is defined here. Change a value here and it
    updates consistently across every page.
+
+   Direction: hard and cold. True black, monochrome, sharp corners, no warmth.
    --------------------------------------------------------------------------- */
 @theme {
-  /* --- Surfaces. Layered near-blacks, not pure black, so edges read softly. */
-  --color-ink-950: #08080a; /* page background */
-  --color-ink-900: #0f0f12; /* raised panels */
-  --color-ink-800: #17171b; /* cards */
-  --color-ink-700: #202027; /* hover state on cards */
+  /* --- Surfaces. True black, with barely-there steps above it. */
+  --color-ink-950: #000000; /* page background */
+  --color-ink-900: #070707; /* raised panels */
+  --color-ink-800: #0e0e0e; /* cards */
+  --color-ink-700: #191919; /* hover state on cards */
 
-  /* --- Text. */
-  /* Contrast ratios below are measured against --color-ink-950.
+  /* --- Text.
+     Contrast ratios are measured against pure black.
      WCAG AA requires 4.5:1 for body text. Do not darken these values
      without re-checking, or the site becomes unreadable for some people. */
-  --color-bone: #f6f2ea; /* primary text — warm white, softer than #fff. 18:1 */
-  --color-bone-dim: #a8a29a; /* secondary text. 7.9:1 */
-  --color-bone-faint: #827e76; /* captions, meta. 4.96:1 — at the AA limit */
+  --color-bone: #ffffff; /* primary text. 21:1 */
+  --color-bone-dim: #a1a1a1; /* secondary text. 8.1:1 */
+  --color-bone-faint: #787878; /* captions, meta. 4.8:1 — at the AA limit */
 
-  /* --- Accent. The one warm note against all the black.
-         This is the single value to change if Merely has a brand colour. */
-  --color-accent: #d4b483;
-  --color-accent-bright: #e8cfa6;
+  /* --- Accent.
+     Deliberately pure white: the palette is monochrome, and the emphasis
+     comes from weight and scale rather than colour. This is the one place
+     to introduce a brand colour later — change these two values and the
+     accent appears everywhere at once. */
+  --color-accent: #ffffff;
+  --color-accent-bright: #ffffff;
 
   /* --- Hairlines. */
-  --color-line: rgba(246, 242, 234, 0.1);
-  --color-line-strong: rgba(246, 242, 234, 0.22);
+  --color-line: rgba(255, 255, 255, 0.14);
+  --color-line-strong: rgba(255, 255, 255, 0.32);
 
   /* --- Type families. */
   --font-sans:
     "Inter Variable", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-display: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --font-display: "Bebas Neue", "Arial Narrow", Impact, sans-serif;
 
-  /* --- Motion. Slow and heavy reads as cinematic; fast reads as an app. */
+  /* --- Motion. */
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -81,40 +87,43 @@ body {
 /* Keyboard users must always be able to see where they are.
    Never remove this without replacing it with something equally visible. */
 :focus-visible {
-  outline: 2px solid var(--color-accent-bright);
+  outline: 2px solid var(--color-accent);
   outline-offset: 3px;
-  border-radius: 2px;
+  border-radius: 0;
 }
 
-/* Text selection in brand colours rather than default browser blue. */
 ::selection {
-  background-color: var(--color-accent);
+  background-color: var(--color-bone);
   color: var(--color-ink-950);
 }
 
 /* ---------------------------------------------------------------------------
    REUSABLE TYPE PATTERNS
-   Used across pages so headings stay consistent without repeating classes.
    --------------------------------------------------------------------------- */
 
-/* The small wide-tracked uppercase label above a section heading. */
+/* Small wide-tracked uppercase label above a section heading. */
 .eyebrow {
   font-size: 0.6875rem;
   font-weight: 500;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: var(--color-bone-dim);
 }
 
-/* Large editorial serif headings. */
+/* Condensed poster headings.
+   Bebas is uppercase-only by design, so we force it — that way mixed-case
+   content from site.ts still renders consistently instead of half-transformed. */
 .display {
   font-family: var(--font-display);
   font-weight: 400;
-  line-height: 0.95;
-  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  line-height: 0.86;
+  letter-spacing: 0.01em;
 }
 
-/* Slow reveal for hero content. Deliberately subtle. */
+/* Bebas is condensed, so it reads smaller than a normal face at the same
+   font-size. Display text is set larger throughout to compensate. */
+
 @keyframes rise {
   from {
     opacity: 0;

@@ -11,14 +11,14 @@ export default function Footer() {
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
           {/* Identity */}
           <div className="lg:col-span-2">
-            <p className="display text-3xl text-bone">{artist.name}</p>
+            <p className="display text-4xl text-bone">{artist.name}</p>
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-bone-faint">
               {artist.tagline}
             </p>
             {contact.email && (
               <a
                 href={`mailto:${contact.email}`}
-                className="mt-6 inline-block text-sm text-bone-dim transition-colors hover:text-accent"
+                className="mt-6 inline-block text-sm text-bone-dim transition-colors hover:text-bone"
               >
                 {contact.email}
               </a>
@@ -27,7 +27,7 @@ export default function Footer() {
 
           {/* Site pages */}
           <div>
-            <h2 className="text-xs font-medium uppercase tracking-[0.18em] text-bone-faint">
+            <h2 className="text-[0.6875rem] font-medium uppercase tracking-[0.28em] text-bone-faint">
               Explore
             </h2>
             <ul className="mt-5 space-y-3">
@@ -46,7 +46,7 @@ export default function Footer() {
 
           {/* External links — only rendered if any exist */}
           <div>
-            <h2 className="text-xs font-medium uppercase tracking-[0.18em] text-bone-faint">
+            <h2 className="text-[0.6875rem] font-medium uppercase tracking-[0.28em] text-bone-faint">
               Listen &amp; Follow
             </h2>
             {allLinks.length > 0 ? (

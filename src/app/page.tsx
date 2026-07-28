@@ -43,11 +43,12 @@ export default function Home() {
         />
 
         <Container wide className="relative pb-20 pt-40 sm:pb-24">
-          <div className="animate-rise max-w-3xl">
-            <h1 className="display text-[clamp(3rem,12vw,9rem)] text-bone">
+          <div className="animate-rise max-w-4xl">
+            {/* Condensed face, so this runs very large before it feels big. */}
+            <h1 className="display text-[clamp(4.5rem,19vw,15rem)] text-bone">
               {artist.name}
             </h1>
-            <p className="mt-6 max-w-lg text-lg leading-relaxed text-bone-dim sm:text-xl">
+            <p className="mt-6 max-w-lg text-sm uppercase tracking-[0.22em] text-bone-dim sm:text-base">
               {artist.tagline}
             </p>
 
@@ -93,7 +94,7 @@ export default function Home() {
       <section className="border-t border-line bg-ink-900 py-24 sm:py-32">
         <Container>
           <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-sm bg-ink-800">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-none bg-ink-800">
               <Image
                 src={images.portrait}
                 alt={images.portraitAlt}
@@ -150,7 +151,7 @@ export default function Home() {
                         href={link.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-sm tracking-wide text-bone-dim transition-colors hover:text-accent"
+                        className="text-sm tracking-wide text-bone-dim transition-colors hover:text-bone"
                       >
                         {link.label}
                         <span className="sr-only"> (opens in a new tab)</span>

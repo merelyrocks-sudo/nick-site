@@ -19,7 +19,7 @@ export default function ReleaseCard({ release }: { release: Release }) {
 
   return (
     <article className="group">
-      <div className="relative aspect-square overflow-hidden rounded-sm bg-ink-800">
+      <div className="relative aspect-square overflow-hidden rounded-none bg-ink-800">
         <Image
           src={release.artwork}
           alt={`Cover artwork for ${release.title}`}
@@ -32,10 +32,10 @@ export default function ReleaseCard({ release }: { release: Release }) {
       </div>
 
       <div className="mt-5">
-        <p className="text-xs uppercase tracking-[0.18em] text-bone-faint">
+        <p className="text-[0.6875rem] uppercase tracking-[0.28em] text-bone-faint">
           {release.type} · {release.year}
         </p>
-        <h3 className="display mt-2 text-2xl text-bone">{release.title}</h3>
+        <h3 className="display mt-3 text-3xl text-bone">{release.title}</h3>
         {release.blurb && (
           <p className="mt-2 text-sm leading-relaxed text-bone-dim">
             {release.blurb}
@@ -50,7 +50,7 @@ export default function ReleaseCard({ release }: { release: Release }) {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-accent underline-offset-4 transition-colors hover:text-accent-bright hover:underline"
+                  className="text-xs uppercase tracking-[0.14em] text-bone-dim underline-offset-4 transition-colors hover:text-bone hover:underline"
                 >
                   {link.label}
                   <span className="sr-only">

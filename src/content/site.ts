@@ -25,8 +25,8 @@ export const artist = {
   /** Displayed large in the hero. Capitalization here is what visitors see. */
   name: 'Merely',
 
-  /** One short line under the name. Aim for 3-8 words. */
-  tagline: 'New music, on the way',
+  /** One short line under the name. Aim for 3-8 words. Renders in caps. */
+  tagline: 'New music coming soon',
 
   /** Used in the browser tab and in Google search results. */
   seoTitle: 'Merely — Official Site',
@@ -36,7 +36,7 @@ export const artist = {
     'Official site of Merely. New music, the story so far, and official merch.',
 
   /** Genre or one-line description of the sound. Shown in the About section. */
-  genre: 'Solo artist. New music coming soon.', // TODO: name the genre once decided
+  genre: 'Indie / alternative. Solo project. First releases on the way.',
 
   /**
    * The bio. Each string in this list becomes its own paragraph.
@@ -48,9 +48,9 @@ export const artist = {
    * release history. Replace it with the real story when you have it.
    */
   bio: [
-    'Merely is a solo project built on the idea that a song should sound like one person telling the truth, not a committee guessing at a trend. Every part is written, played, and shaped by hand — slowly, and until it feels right.',
-    'The work so far has happened quietly: demos recorded in small rooms, arrangements rebuilt from scratch more times than is reasonable, and a growing collection of songs waiting for the right moment. That moment is close.',
-    'New music is on the way. This site is where it lands first.',
+    'Merely is a solo project. One person, writing and building the whole thing — guitars, noise, and everything underneath.',
+    'The songs get made in small rooms and taken apart more times than is reasonable. Nothing goes out until it sounds like the thing that was in his head, which takes as long as it takes.',
+    'First releases are close. This is where they land.',
   ],
 } as const;
 
