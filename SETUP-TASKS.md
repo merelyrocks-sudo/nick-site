@@ -13,6 +13,7 @@ until the phase listed in the **Needed by** column.
 
 | # | Task | Needed by | Status |
 |---|------|-----------|--------|
+| 0 | Install Node.js, then run `npm install` | **Now** — to view the site | ⬜ Do this first |
 | 1 | Send me Nick's real content (name, tagline, bio, links) | Phase 2 | ⬜ Waiting on you |
 | 2 | Send me real photos and cover artwork | Phase 2–3 | ⬜ Waiting on you |
 | 3 | Create a Stripe account | Phase 4 | ⬜ Not started |
@@ -23,6 +24,22 @@ until the phase listed in the **Needed by** column.
 | 8 | Buy a domain name | Phase 6 | ⬜ Not started |
 | 9 | Activate Stripe live mode (business + bank details) | Phase 6 | ⬜ Not started |
 | 10 | Review policy text before launch | Phase 6 | ⬜ Not started |
+
+---
+
+## 0. Install Node.js and run `npm install` — *do this now*
+
+This is what lets you actually open the site on your own screen. Full
+step-by-step instructions are in `README.md`, section "Running the site on your
+own computer". Short version:
+
+1. Install the **LTS** version from **https://nodejs.org**
+2. Open the `nick-site` folder, type `cmd` in the address bar, press Enter
+3. Run `npm install`, then `npm run dev`
+4. Open **http://localhost:3000**
+
+I already verified the project builds cleanly, so if something fails here it is
+an environment issue on your machine — tell me the error text and I will fix it.
 
 ---
 
