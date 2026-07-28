@@ -77,7 +77,7 @@ export const images = {
 
 export const contact = {
   /** WARNING: this address is published publicly on the site. */
-  email: 'hello@example.com', // TODO: replace with the real contact address
+  email: 'merelyrocks@gmail.com',
 
   /** Optional. Set to '' to hide. */
   bookingEmail: '', // TODO (optional)
@@ -95,13 +95,13 @@ export const contact = {
 export const streaming = {
   spotify: '', // TODO e.g. https://open.spotify.com/artist/xxxxx
   appleMusic: '', // TODO
-  youtube: '', // TODO
+  youtube: 'https://www.youtube.com/channel/UCCbGnstwWpe-dT4TEoR3nig',
   soundcloud: '', // TODO
   bandcamp: '', // TODO (optional)
 } as const;
 
 export const social = {
-  instagram: '', // TODO
+  instagram: 'https://www.instagram.com/merelyrocks/',
   tiktok: '', // TODO
   twitter: '', // TODO (X)
   facebook: '', // TODO (optional)
