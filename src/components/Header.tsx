@@ -3,7 +3,8 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { artist, nav } from '@/content/site';
+import { artist, nav, newsletter } from '@/content/site';
+import { SocialRow } from '@/components/PlatformLinks';
 
 /**
  * Sticky site header.
@@ -64,27 +65,46 @@ export default function Header() {
           {artist.name}
         </Link>
 
-        {/* Desktop navigation */}
-        <nav aria-label="Main" className="hidden md:block">
-          <ul className="flex items-center gap-9">
-            {nav.map((item) => {
-              const active = pathname === item.href;
-              return (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    aria-current={active ? 'page' : undefined}
-                    className={`text-xs uppercase tracking-[0.2em] transition-colors duration-200 ${
-                      active ? 'text-accent' : 'text-bone-dim hover:text-accent'
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
+        {/* Desktop navigation + social bar */}
+        <div className="hidden items-center gap-9 md:flex">
+          <nav aria-label="Main">
+            <ul className="flex items-center gap-9">
+              {nav.map((item) => {
+                const active = pathname === item.href;
+                return (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      aria-current={active ? 'page' : undefined}
+                      className={`text-xs uppercase tracking-[0.2em] transition-colors duration-200 ${
+                        active ? 'text-accent' : 'text-bone-dim hover:text-accent'
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+
+          {/* Quick-access socials. Renders nothing until links exist in
+              site.ts; the rule keeps it visually separate from the nav. */}
+          <div className="flex items-center gap-4 border-l border-line pl-6">
+            <SocialRow size="h-4 w-4" className="gap-1 [&_a]:h-9 [&_a]:w-9" />
+            {newsletter.url && (
+              <a
+                href={newsletter.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border border-line-strong px-4 py-2 text-[0.625rem] font-medium uppercase tracking-[0.18em] text-bone transition-colors duration-200 hover:border-accent hover:bg-accent hover:text-ink-950"
+              >
+                Subscribe
+                <span className="sr-only"> (opens in a new tab)</span>
+              </a>
+            )}
+          </div>
+        </div>
 
         {/* Mobile menu toggle */}
         <button
@@ -138,6 +158,7 @@ export default function Header() {
               );
             })}
           </ul>
+          <SocialRow className="mt-6" size="h-5 w-5" />
         </nav>
       </div>
     </header>

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import PlayerChip from '@/components/PlayerChip';
 import { artist } from '@/content/site';
 
 // NOTE ON FONTS
@@ -46,6 +47,10 @@ export default function RootLayout({
         </main>
 
         <Footer />
+
+        {/* Floating preview player, bottom-left on every page. Renders
+            nothing if the newest release has no preview clips. */}
+        <PlayerChip />
       </body>
     </html>
   );

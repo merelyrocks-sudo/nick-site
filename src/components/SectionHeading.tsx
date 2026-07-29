@@ -22,9 +22,9 @@ export default function SectionHeading({
   return (
     <div className={centered ? 'text-center' : ''}>
       {eyebrow && <p className="eyebrow">{eyebrow}</p>}
-      {/* Sizes run large because Bebas is condensed — it occupies far less
+      {/* Sizes run large because Anton is condensed — it occupies far less
           width than a normal face at the same font-size. */}
-      <Tag className="display display-chrome mt-5 text-5xl sm:text-6xl lg:text-7xl">
+      <Tag className="display display-ember mt-5 text-5xl sm:text-6xl lg:text-7xl">
         {title}
       </Tag>
       {description && (

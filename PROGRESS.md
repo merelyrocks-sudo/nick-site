@@ -3,7 +3,7 @@
 **Project folder:** `Desktop\Nick\Claude\nick-site`
 **Stack:** Next.js 16 (App Router) · TypeScript · Tailwind CSS v4 · Stripe Checkout · GitHub · Vercel
 **Artist:** Merely
-**Last updated:** Phase 4 complete — Stripe wired, awaiting your keys
+**Last updated:** Dark-but-warm home page redesign built, awaiting your review
 
 ---
 
@@ -11,13 +11,36 @@
 
 | Phase | What it is | Status |
 |-------|-----------|--------|
-| 0 | Branding & content questions | ✅ Done (answers pending, placeholders in use) |
+| 0 | Branding & content questions | ✅ Done |
 | 1 | Scaffold project, Git, tracking docs | ✅ Done |
 | 2 | Visual design system + home page | ✅ Done |
-| 3 | Music, merch, about, contact pages | ✅ **Done** |
-| 4 | Stripe Checkout (test mode) | ✅ **Built — needs your Stripe account** |
-| 5 | Deploy staging site to Vercel | ⬜ Next |
+| 3 | Music, merch, about, contact pages | ✅ Done |
+| 4 | Stripe Checkout (test mode) | ✅ Built — needs Nick's Stripe account |
+| 4b | **Redesign: dark-but-warm home page** | ✅ **Built — REVIEW at localhost:3000** |
+| 4c | Roll the warm design out to inner pages | ⬜ After your approval |
+| 5 | Deploy staging site to Vercel | ⬜ Next (previous attempt failed — will diagnose via Vercel CLI) |
 | 6 | Launch: domain, Stripe live mode, policies, testing | ⬜ Not started |
+
+## What changed in the redesign (4b)
+
+- **Palette:** cold chrome/blood red replaced with warm amber (#c4631f) on
+  brown-warmed blacks. Amber passes WCAG AA at ~4.8:1; buttons are amber
+  with dark ink text.
+- **Type:** Bebas Neue replaced with Anton (self-hosted woff2, 18 KB).
+- **Home hero:** full-screen rabbit artwork, staggered load-in, massive
+  ember-gradient name, Thrilla Killa announcement card with real cover art,
+  Stream/Buy/Tour CTAs.
+- **Streaming hub:** 8-service grid — live tiles for real links (YouTube
+  today), dimmed "soon" tiles for the rest; a Spotify embed appears
+  automatically once a Spotify artist URL exists in site.ts.
+- **Floating player:** bottom-left chip previews the newest release's
+  first track on every page.
+- **Tour section:** "No shows currently — stay tuned" + Book Merely CTA.
+- **Header:** social icon row (desktop + mobile menu) and a Subscribe
+  button that appears when a newsletter URL is set in site.ts.
+- **Copy truthfulness:** tagline is now "Thrilla Killa — out now"; genre and
+  bio no longer claim "first releases coming" next to 11 albums.
+- The barbed-wire banner moved to the About preview section.
 
 ---
 

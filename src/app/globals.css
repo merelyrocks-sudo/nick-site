@@ -5,8 +5,8 @@
    resolve, so a font can never break the build.
    --------------------------------------------------------------------------- */
 @font-face {
-  font-family: "Bebas Neue";
-  src: url("/fonts/bebas-neue-400.woff2") format("woff2");
+  font-family: "Anton";
+  src: url("/fonts/anton-400.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -21,43 +21,51 @@
 }
 
 /* ---------------------------------------------------------------------------
-   DESIGN TOKENS — black, deep red, chrome.
-   Classic rock: near-black grounds, blood red for anything that acts,
-   brushed silver for headlines and text.
+   DESIGN TOKENS — dark but warm.
+   Near-black grounds warmed with brown, burnt amber for anything that acts,
+   warm cream for text. The cold chrome and blood red are gone: this palette
+   pulls from rust, stage light, and the warm pink of the cover art.
+
+   CONTRAST NOTES (measured against ink-950)
+   -----------------------------------------
+   Amber is inherently brighter than red at the same saturation, so the warm
+   accent passes WCAG AA (4.5:1) where the old red failed at 3.4:1.
+     accent        #c4631f  ≈ 4.8:1  — usable even for body text
+     accent-bright #e58239  ≈ 6.3:1
+     bone          #f5efe4  ≈ 16.9:1
+     bone-dim      #c7bba8  ≈ 10.5:1
+     bone-faint    #8d8271  ≈ 4.8:1
+   Buttons are amber with DARK ink text (≈4.8:1), not white text (≈4.0:1).
    --------------------------------------------------------------------------- */
 @theme {
-  /* --- Surfaces. */
-  --color-ink-950: #0a0a0a; /* page background */
-  --color-ink-900: #121212; /* raised panels */
-  --color-ink-800: #1a1a1a; /* cards */
-  --color-ink-700: #262626; /* hover */
+  /* --- Surfaces. Black warmed with a breath of brown. */
+  --color-ink-950: #0b0a08; /* page background */
+  --color-ink-900: #14110d; /* raised panels */
+  --color-ink-800: #1c1813; /* cards */
+  --color-ink-700: #2a241c; /* hover */
 
-  /* --- Text. Silver-leaning rather than pure white.
-     Contrast measured against --color-ink-950; AA needs 4.5:1 for body text. */
-  --color-bone: #f2f2f2; /* primary. 17.4:1 */
-  --color-bone-dim: #b8bcc2; /* secondary. 9.1:1 */
-  --color-bone-faint: #85898f; /* captions. 5.6:1 */
+  /* --- Text. Warm cream rather than clinical white. */
+  --color-bone: #f5efe4; /* primary */
+  --color-bone-dim: #c7bba8; /* secondary */
+  --color-bone-faint: #8d8271; /* captions */
 
-  /* --- Accent: deep blood red.
-     IMPORTANT: red on black is only 3.4:1, which FAILS AA for body text.
-     Red is therefore used for FILLS, RULES and LARGE DISPLAY TEXT only.
-     Buttons are red with WHITE text, which passes at 5.9:1. */
-  --color-accent: #c41e24;
-  --color-accent-bright: #e02a31;
-  --color-accent-deep: #7a0f14;
+  /* --- Accent: burnt amber, like light through a whiskey bottle. */
+  --color-accent: #c4631f;
+  --color-accent-bright: #e58239;
+  --color-accent-deep: #6e3410;
 
-  /* --- Chrome. Used for the metallic sheen on headings. */
-  --color-chrome-hi: #ffffff;
-  --color-chrome-mid: #b8bcc2;
-  --color-chrome-lo: #6e7278;
+  /* --- Ember. Warm gold sheen on display headlines. */
+  --color-ember-hi: #fff6e6;
+  --color-ember-mid: #e6c890;
+  --color-ember-lo: #8a6b3f;
 
   /* --- Hairlines. */
-  --color-line: rgba(242, 242, 242, 0.12);
-  --color-line-strong: rgba(242, 242, 242, 0.32);
+  --color-line: rgba(245, 239, 228, 0.12);
+  --color-line-strong: rgba(245, 239, 228, 0.32);
 
   --font-sans:
     "Inter Variable", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-display: "Bebas Neue", "Arial Narrow", Impact, sans-serif;
+  --font-display: "Anton", "Arial Narrow", Impact, sans-serif;
 
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -112,7 +120,7 @@ body::before {
   color: var(--color-bone-faint);
 }
 
-/* A short red rule before an eyebrow label. Purely decorative. */
+/* A short amber rule before an eyebrow label. Purely decorative. */
 .eyebrow::before {
   content: "";
   display: inline-block;
@@ -127,19 +135,20 @@ body::before {
   font-family: var(--font-display);
   font-weight: 400;
   text-transform: uppercase;
-  line-height: 0.86;
+  line-height: 0.9;
   letter-spacing: 0.01em;
 }
 
-/* Brushed-chrome headline. Light rakes across the letterforms. */
-.display-chrome {
+/* Ember headline. Warm light rakes across the letterforms, like a marquee
+   sign at golden hour rather than cold chrome. */
+.display-ember {
   background-image: linear-gradient(
     176deg,
-    var(--color-chrome-hi) 0%,
-    var(--color-chrome-mid) 34%,
-    var(--color-chrome-lo) 52%,
-    var(--color-chrome-mid) 66%,
-    var(--color-chrome-hi) 100%
+    var(--color-ember-hi) 0%,
+    var(--color-ember-mid) 34%,
+    var(--color-ember-lo) 52%,
+    var(--color-ember-mid) 66%,
+    var(--color-ember-hi) 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -150,7 +159,7 @@ body::before {
    ATMOSPHERE
    --------------------------------------------------------------------------- */
 
-/* Dull red haze behind a section — like stage light bleeding through smoke. */
+/* Warm haze behind a section — stage light bleeding through smoke. */
 .haze {
   position: absolute;
   border-radius: 9999px;
@@ -160,7 +169,7 @@ body::before {
   background: radial-gradient(
     circle,
     var(--color-accent) 0%,
-    rgba(196, 30, 36, 0) 70%
+    rgba(196, 99, 31, 0) 70%
   );
 }
 
@@ -171,9 +180,9 @@ body::before {
     90deg,
     transparent 0%,
     var(--color-accent) 12%,
-    rgba(242, 242, 242, 0.28) 30%,
+    rgba(245, 239, 228, 0.28) 30%,
     transparent 48%,
-    rgba(242, 242, 242, 0.18) 62%,
+    rgba(245, 239, 228, 0.18) 62%,
     var(--color-accent-deep) 84%,
     transparent 100%
   );
@@ -186,7 +195,7 @@ body::before {
 }
 .card-lift:hover {
   transform: translateY(-5px);
-  box-shadow: 0 20px 46px -14px rgba(196, 30, 36, 0.6);
+  box-shadow: 0 20px 46px -14px rgba(196, 99, 31, 0.55);
 }
 
 @keyframes rise {
@@ -202,6 +211,42 @@ body::before {
 
 .animate-rise {
   animation: rise 0.9s var(--ease-out-soft) both;
+}
+
+/* Slow drift for haze blooms, so the background is never completely still.
+   Referenced by the hero — this animation existing is what makes it move. */
+@keyframes drift {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(6%, -4%, 0) scale(1.15);
+  }
+}
+
+.animate-drift {
+  animation: drift 26s ease-in-out infinite alternate;
+}
+
+/* Staggered entrance for the hero: each .hero-reveal child rises in turn.
+   The delay is set inline via --reveal-delay. */
+@keyframes hero-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+.hero-reveal {
+  opacity: 0;
+  animation: hero-reveal 1s var(--ease-out-soft) forwards;
+  animation-delay: var(--reveal-delay, 0s);
 }
 
 /* ---------------------------------------------------------------------------
@@ -241,7 +286,8 @@ body::before {
     transform: none;
   }
   /* Never hide content from someone who has asked for less motion. */
-  .reveal {
+  .reveal,
+  .hero-reveal {
     opacity: 1;
     transform: none;
   }

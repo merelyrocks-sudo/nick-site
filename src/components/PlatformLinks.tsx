@@ -16,9 +16,12 @@ type Entry = { key: BrandKey; label: string; href: string };
 const STREAMING: Entry[] = [
   { key: 'spotify', label: 'Spotify', href: streaming.spotify },
   { key: 'appleMusic', label: 'Apple Music', href: streaming.appleMusic },
-  { key: 'youtubeMusic', label: 'YouTube Music', href: streaming.youtube },
+  { key: 'youtube', label: 'YouTube', href: streaming.youtube },
+  { key: 'youtubeMusic', label: 'YouTube Music', href: streaming.youtubeMusic },
   { key: 'soundcloud', label: 'SoundCloud', href: streaming.soundcloud },
   { key: 'bandcamp', label: 'Bandcamp', href: streaming.bandcamp },
+  { key: 'tidal', label: 'Tidal', href: streaming.tidal },
+  { key: 'amazonMusic', label: 'Amazon Music', href: streaming.amazonMusic },
 ];
 
 const SOCIAL: Entry[] = [
@@ -42,7 +45,7 @@ export function StreamingBar({ className = '' }: { className?: string }) {
             href={item.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center gap-3 border border-line-strong px-6 py-4 text-xs font-medium uppercase tracking-[0.16em] text-bone transition-colors duration-200 hover:border-accent hover:bg-accent hover:text-white"
+            className="group flex items-center gap-3 border border-line-strong px-6 py-4 text-xs font-medium uppercase tracking-[0.16em] text-bone transition-colors duration-200 hover:border-accent hover:bg-accent hover:text-ink-950"
           >
             <BrandIcon name={item.key} className="h-5 w-5" />
             {item.label}

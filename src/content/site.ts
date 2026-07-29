@@ -26,17 +26,17 @@ export const artist = {
   name: 'Merely',
 
   /** One short line under the name. Aim for 3-8 words. Renders in caps. */
-  tagline: 'New music coming soon',
+  tagline: 'Thrilla Killa — out now',
 
   /** Used in the browser tab and in Google search results. */
   seoTitle: 'Merely — Official Site',
 
   /** The grey text under the link in Google results. Aim for ~150 characters. */
   seoDescription:
-    'Official site of Merely. New music, the story so far, and official merch.',
+    'Official site of Merely. Eleven albums of indie rock, the story so far, and official merch.',
 
   /** Genre or one-line description of the sound. Shown in the About section. */
-  genre: 'Indie / alternative. Solo project. First releases on the way.',
+  genre: 'Indie / alternative. Solo project. Eleven albums and counting.',
 
   /**
    * The bio. Each string in this list becomes its own paragraph.
@@ -50,7 +50,7 @@ export const artist = {
   bio: [
     'Merely is a solo project. One person, writing and building the whole thing — guitars, noise, and everything underneath.',
     'The songs get made in small rooms and taken apart more times than is reasonable. Nothing goes out until it sounds like the thing that was in his head, which takes as long as it takes.',
-    'First releases are close. This is where they land.',
+    'Eleven albums so far. This is where they live, and where the next one lands.',
   ],
 } as const;
 
@@ -90,14 +90,18 @@ export const contact = {
 // 3. STREAMING + SOCIAL LINKS
 // ---------------------------------------------------------------------------
 // Paste the full web address including https://
-// Leave as '' to hide that link entirely.
+// Leave as '' and the service shows in the hub as a dimmed "soon" tile —
+// it fills in automatically the moment you paste a real URL.
 
 export const streaming = {
   spotify: '', // TODO e.g. https://open.spotify.com/artist/xxxxx
   appleMusic: '', // TODO
   youtube: 'https://www.youtube.com/channel/UCCbGnstwWpe-dT4TEoR3nig',
+  youtubeMusic: '', // TODO (optional — often the same artist as YouTube)
   soundcloud: '', // TODO
   bandcamp: '', // TODO (optional)
+  tidal: '', // TODO (optional)
+  amazonMusic: '', // TODO (optional)
 } as const;
 
 export const social = {
@@ -105,6 +109,18 @@ export const social = {
   tiktok: '', // TODO
   twitter: '', // TODO (X)
   facebook: '', // TODO (optional)
+} as const;
+
+// ---------------------------------------------------------------------------
+// 3b. NEWSLETTER
+// ---------------------------------------------------------------------------
+// V1 has no newsletter system of its own. When you create a free signup
+// (Buttondown, Mailchimp, etc.), paste the public signup page URL here and
+// the Subscribe button appears in the header automatically.
+
+export const newsletter = {
+  /** Public signup URL. Set to '' to hide the Subscribe button. */
+  url: '', // TODO (optional) e.g. https://buttondown.email/merely
 } as const;
 
 // ---------------------------------------------------------------------------
