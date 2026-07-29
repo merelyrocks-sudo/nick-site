@@ -18,8 +18,25 @@
 | 4 | Stripe Checkout (test mode) | ✅ Built — needs Nick's Stripe account |
 | 4b | **Redesign: dark-but-warm home page** | ✅ **Built — REVIEW at localhost:3000** |
 | 4c | Roll the warm design out to inner pages | ⬜ After your approval |
-| 5 | Deploy staging site to Vercel | ⬜ Next (previous attempt failed — will diagnose via Vercel CLI) |
+| 5 | Deploy staging site to Vercel | ✅ **LIVE — https://merely-rocks-merely.vercel.app** |
 | 6 | Launch: domain, Stripe live mode, policies, testing | ⬜ Not started |
+
+## Deployment notes (Phase 5)
+
+- Live at **https://merely-rocks-merely.vercel.app** (project `merely-rocks`
+  under the `merely` Vercel team).
+- **What was failing before:** the dashboard import had connected the wrong
+  GitHub repo (`merelyrocks-sudo/Merely`, which has no Next.js app in it) and
+  the team had SSO login protection turned on for all deployments, so even
+  working URLs showed a login wall.
+- **Fixed via Vercel CLI:** repo reconnected to `merelyrocks-sudo/nick-site`,
+  SSO protection disabled, production deploy is green.
+- **Auto-deploy is on:** every push to `main` on GitHub now deploys
+  automatically. The daily workflow is: I commit + push, the site updates.
+- Two leftover projects from the failed attempts still exist (`merely`,
+  `merelyrocks`) — safe to delete once you confirm you don't want them.
+- Stripe env vars are NOT set in Vercel yet — deliberate. The site handles
+  it gracefully; they get added when Nick's Stripe account exists.
 
 ## What changed in the redesign (4b)
 
