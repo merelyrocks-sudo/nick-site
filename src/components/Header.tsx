@@ -60,9 +60,11 @@ export default function Header() {
       <div className="mx-auto flex h-20 w-full max-w-[1600px] items-center justify-between px-6 sm:px-8 lg:px-12">
         <Link
           href="/"
-          className="display text-2xl text-bone sm:text-3xl"
+          className="display flex items-baseline text-2xl tracking-[0.04em] text-bone sm:text-3xl"
         >
           {artist.name}
+          {/* The amber full stop — the whole logo mark. Quiet on purpose. */}
+          <span aria-hidden="true" className="ml-1 block h-1.5 w-1.5 bg-accent sm:h-2 sm:w-2" />
         </Link>
 
         {/* Desktop navigation + social bar */}

@@ -29,18 +29,19 @@
 - **Type:** Bebas Neue replaced with Anton (self-hosted woff2, 18 KB).
 - **Home hero:** full-screen rabbit artwork, staggered load-in, massive
   ember-gradient name, Thrilla Killa announcement card with real cover art,
-  Stream/Buy/Tour CTAs.
+  Stream Now / Buy CTAs.
 - **Streaming hub:** 8-service grid — live tiles for real links (YouTube
   today), dimmed "soon" tiles for the rest; a Spotify embed appears
   automatically once a Spotify artist URL exists in site.ts.
 - **Floating player:** bottom-left chip previews the newest release's
   first track on every page.
-- **Tour section:** "No shows currently — stay tuned" + Book Merely CTA.
-- **Header:** social icon row (desktop + mobile menu) and a Subscribe
-  button that appears when a newsletter URL is set in site.ts.
+- **Header:** MERELY wordmark with amber full stop, social icon row, and a
+  Subscribe button that appears when a newsletter URL is set in site.ts.
+- **Brand panel:** the rejected barbed-wire banner was replaced with a
+  pure-typography poster component (BrandPanel.tsx) — sharp at any size.
+- **Removed per feedback:** tour dates section, all booking references.
 - **Copy truthfulness:** tagline is now "Thrilla Killa — out now"; genre and
   bio no longer claim "first releases coming" next to 11 albums.
-- The barbed-wire banner moved to the About preview section.
 
 ---
 

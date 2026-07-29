@@ -6,7 +6,7 @@ import { artist, contact, streamingLinks, socialLinks } from '@/content/site';
 
 export const metadata: Metadata = {
   title: 'Contact',
-  description: `Get in touch with ${artist.name} — bookings, press, and enquiries.`,
+  description: `Get in touch with ${artist.name} — press, features, and enquiries.`,
 };
 
 /**
@@ -24,7 +24,7 @@ export default function ContactPage() {
       <PageHeader
         eyebrow="Contact"
         title="Get in touch"
-        description="Bookings, press, features, or anything else."
+        description="Press, features, or anything else."
       />
 
       <section className="py-20 sm:py-28">
@@ -40,20 +40,6 @@ export default function ContactPage() {
                   {contact.email}
                 </Button>
               </div>
-
-              {contact.bookingEmail && (
-                <div className="mt-12">
-                  <h2 className="eyebrow">Bookings</h2>
-                  <div className="mt-6">
-                    <Button
-                      href={`mailto:${contact.bookingEmail}`}
-                      variant="secondary"
-                    >
-                      {contact.bookingEmail}
-                    </Button>
-                  </div>
-                </div>
-              )}
 
               {contact.location && (
                 <div className="mt-12">

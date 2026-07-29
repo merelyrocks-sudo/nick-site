@@ -61,12 +61,12 @@ export const artist = {
 // Example: save `nick-hero.jpg` into public/images/ and write '/images/nick-hero.jpg'
 
 export const images = {
-  /** The big photo at the top of the home page. Landscape, 2400 x 1600 px. */
-  hero: '/images/hero.jpg',
-  /** Alt text describes the photo for screen readers and when images fail. */
-  heroAlt: 'The Merely logo in rusted metal and barbed wire on dark riveted steel plates',
-
-  /** Portrait shown in the About section. 1200 x 1500 px. */
+  /**
+   * The winged-rabbit artwork. Used full-screen in the home hero and as the
+   * portrait in the About section. When a real photo of Nick exists, add it
+   * as a separate entry here rather than replacing this — the rabbit is the
+   * album art, not the artist.
+   */
   portrait: '/images/portrait.jpg',
   portraitAlt: 'Merely artwork: a winged rabbit figure in a navy dress, standing in a faded pink room',
 } as const;
@@ -78,9 +78,6 @@ export const images = {
 export const contact = {
   /** WARNING: this address is published publicly on the site. */
   email: 'merelyrocks@gmail.com',
-
-  /** Optional. Set to '' to hide. */
-  bookingEmail: '', // TODO (optional)
 
   /** Shown on the contact section, e.g. 'Los Angeles, CA'. Set to '' to hide. */
   location: '', // TODO (optional)

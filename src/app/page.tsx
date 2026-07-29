@@ -6,6 +6,7 @@ import SectionHeading from '@/components/SectionHeading';
 import ReleaseCard from '@/components/ReleaseCard';
 import Reveal from '@/components/Reveal';
 import StreamingHub from '@/components/StreamingHub';
+import BrandPanel from '@/components/BrandPanel';
 import {
   artist,
   images,
@@ -78,9 +79,6 @@ export default function Home() {
                 <Button href="#listen">Stream now</Button>
                 <Button href="/store" variant="secondary">
                   Buy
-                </Button>
-                <Button href="#tour" variant="ghost">
-                  Tour dates
                 </Button>
               </div>
             </div>
@@ -175,50 +173,14 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* ================= TOUR ================= */}
-      {/* Real dates land here when they exist. Until then the section says so
-          plainly rather than pretending — and points at Instagram, which is
-          where announcements will actually happen first. */}
-      <section id="tour" className="relative scroll-mt-20 overflow-hidden py-24 sm:py-32">
-        <div aria-hidden="true" className="haze left-[35%] top-[-20%] h-[50vh] w-[50vh] opacity-25" />
-        <Container className="relative">
-          <Reveal>
-            <div className="mx-auto max-w-2xl text-center">
-              <SectionHeading
-                eyebrow="Live"
-                title="Tour dates"
-                align="center"
-              />
-              <p className="mt-6 text-base leading-relaxed text-bone-dim">
-                No shows currently — stay tuned. When something is booked,
-                this is where it appears first.
-              </p>
-              <div className="mt-9">
-                <Button href="/contact" variant="secondary">
-                  Book Merely
-                </Button>
-              </div>
-            </div>
-          </Reveal>
-        </Container>
-      </section>
-
       {/* ================= ABOUT ================= */}
-      {/* The barbed-wire banner lives here — the rabbit owns the hero. */}
+      {/* The brand panel lives here — pure-typography poster, no photo yet. */}
       <section className="relative overflow-hidden border-t border-line bg-gradient-to-b from-ink-900 via-ink-950 to-ink-900 py-24 sm:py-32">
         <div aria-hidden="true" className="haze left-[-10%] bottom-[-20%] h-[50vh] w-[50vh] opacity-25" />
         <Container>
           <Reveal>
           <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-none bg-ink-800">
-              <Image
-                src={images.hero}
-                alt={images.heroAlt}
-                fill
-                sizes="(min-width: 1024px) 45vw, 100vw"
-                className="object-cover"
-              />
-            </div>
+            <BrandPanel />
 
             <div>
               <SectionHeading eyebrow="About" title="The story" />
@@ -244,7 +206,7 @@ export default function Home() {
             <SectionHeading
               eyebrow="Contact"
               title="Get in touch"
-              description="Bookings, press, features, or anything else."
+              description="Press, features, or anything else."
               align="center"
             />
             <div className="mt-10 flex flex-wrap justify-center gap-4">
