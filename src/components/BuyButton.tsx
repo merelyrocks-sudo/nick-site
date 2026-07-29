@@ -62,6 +62,12 @@ export default function BuyButton({
         </p>
       )}
 
+      {ready && (
+        <p className="mt-3 text-center text-xs text-bone-faint">
+          Secure checkout via Stripe.
+        </p>
+      )}
+
       {/* role=alert so screen readers announce failures immediately. */}
       {error && (
         <p role="alert" className="mt-3 text-center text-xs text-red-400">

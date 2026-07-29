@@ -91,8 +91,8 @@ export const contact = {
 // it fills in automatically the moment you paste a real URL.
 
 export const streaming = {
-  spotify: '', // TODO e.g. https://open.spotify.com/artist/xxxxx
-  appleMusic: '', // TODO
+  spotify: 'https://open.spotify.com/artist/4s3TTBCeMLeCYPTVQrOGEw?si=sQFpj2iqTaySVpshw7aeyw',
+  appleMusic: 'https://music.apple.com/us/artist/merely/1625077159',
   youtube: 'https://www.youtube.com/channel/UCCbGnstwWpe-dT4TEoR3nig',
   youtubeMusic: '', // TODO (optional — often the same artist as YouTube)
   soundcloud: '', // TODO
@@ -103,7 +103,7 @@ export const streaming = {
 
 export const social = {
   instagram: 'https://www.instagram.com/merelyrocks/',
-  tiktok: '', // TODO
+  tiktok: 'https://www.tiktok.com/@merelyrocks?is_from_webapp=1&sender_device=pc',
   twitter: '', // TODO (X)
   facebook: '', // TODO (optional)
 } as const;
