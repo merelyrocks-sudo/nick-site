@@ -4,7 +4,18 @@ Next.js 16 (App Router) + TypeScript + Tailwind CSS. Stripe Checkout (test mode)
 
 ## 1. Current state
 
-**Working tree is clean. Local repo is 2 commits ahead of `origin/main` — those commits are NOT pushed yet.**
+**Working tree is clean and fully in sync with `origin/main` (verified 2026-07-30) — nothing unpushed.**
+
+Site is live at **https://merely-rocks.vercel.app** (see PROGRESS.md Phase 5).
+Home page and inner pages were redesigned since this doc was last accurate:
+warm amber/brown palette (not the black/red/chrome described further below —
+see PROGRESS.md §"What changed in the redesign (4b)" for the current look).
+Spotify, Apple Music, YouTube, Instagram, TikTok, and X links are live in
+`site.ts`. Soundcloud, Bandcamp, and a Facebook Page are still genuinely
+TODO — Nick confirmed (2026-07-30) none of those three exist yet, so they
+stay hidden until he has them; don't ask again until he brings it up.
+Real Privacy/Terms/Refunds/Shipping policy text has been written (was
+placeholder as of the section below).
 
 Built and passing (`npx tsc --noEmit`, `npm run build`, 27 routes) as of the last commit:
 
@@ -22,8 +33,7 @@ Built and passing (`npx tsc --noEmit`, `npm run build`, 27 routes) as of the las
 **Not done:**
 
 - **Stripe products not yet created.** Every `stripePriceId` in `site.ts` is `''`. All Buy buttons currently render "Coming soon" (disabled). Nick needs his own Stripe account before this can move.
-- **Vercel deployment status unconfirmed.** Last known state: GitHub account confusion was resolved (repo lives at `merelyrocks-sudo/nick-site`, confirmed non-empty), Andrew was told to re-import in Vercel and verify Framework Preset auto-detects "Next.js," but no confirmation was received that the deploy succeeded.
-- **The 2 local commits above are unpushed** — push before touching Vercel again, or the deploy will build stale content.
+- ~~Vercel deployment status unconfirmed~~ — **resolved**: live and confirmed at https://merely-rocks.vercel.app, auto-deploy on every push to `main` (see PROGRESS.md).
 - No domain purchased yet (deferred intentionally, see §3).
 - No Tour/Shows section (was in the user's design spec, never built).
 - No embedded Spotify/Bandcamp player (needs a real Spotify artist URL, which doesn't exist yet).
