@@ -90,7 +90,7 @@ export const contact = {
 // Leave as '' and the service shows in the hub as a dimmed "soon" tile —
 // it fills in automatically the moment you paste a real URL.
 
-export const streaming = {
+export const streaming: Record<string, string> = {
   spotify: 'https://open.spotify.com/artist/4s3TTBCeMLeCYPTVQrOGEw?si=sQFpj2iqTaySVpshw7aeyw',
   appleMusic: 'https://music.apple.com/us/artist/merely/1625077159',
   youtube: 'https://www.youtube.com/channel/UCCbGnstwWpe-dT4TEoR3nig',
@@ -99,14 +99,14 @@ export const streaming = {
   bandcamp: '', // TODO (optional)
   tidal: '', // TODO (optional)
   amazonMusic: '', // TODO (optional)
-} as const;
+};
 
-export const social = {
+export const social: Record<string, string> = {
   instagram: 'https://www.instagram.com/merelyrocks/',
   tiktok: 'https://www.tiktok.com/@merelyrocks?is_from_webapp=1&sender_device=pc',
-  twitter: '', // TODO (X)
-  facebook: '', // TODO (optional)
-} as const;
+  twitter: 'https://x.com/MerelyRocks',
+  facebook: 'https://www.facebook.com/nick.barrett.311',
+};
 
 // ---------------------------------------------------------------------------
 // 3b. NEWSLETTER
