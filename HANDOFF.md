@@ -50,10 +50,11 @@ Built and passing (`npx tsc --noEmit`, `npm run build`, 27 routes) as of the las
 - Digital album price: **$9.99 (999 cents) per album**, confirmed explicitly by the user ("9.99 is fine") — IN REPO on all 11 digital products
 - Old CD Baby playlists (kept in code comments, deliberately not linked live — see §3): `Already Dead` — `https://www.youtube.com/playlist?list=OLAK5uy_nSBOnip5qMbuWOP4q8mSZKi45-3eB1GCY`; `Dig This` — `https://www.youtube.com/playlist?list=OLAK5uy_n6PI_9PPFRQIK6Mt5rKzfE-kqVTe6Dr6Y`
 - GitHub account in use: **merelyrocks-sudo** (not VampVFX115 — that account's remote was deliberately removed)
-- Discography (11 albums, newest first) — IN REPO: Thrilla Killa (2026), Merely Rocks 2 (2025), Merely Rocks (2024), Daze (2023, full 15 titles), Are You Brutal 2 (2020), Are You Brutal (2019), Get Out (2017, full 12 titles), Merely Lives 2, Merely Lives (full 11 titles), Dig This (full 17 titles), Already Dead (12 of 14 titled — see gap below)
+- Discography (11 albums, newest first) — IN REPO: Thrilla Killa (2026), Merely Rocks II (2025), Merely Rocks I (2024), Daze (2023, full 15 titles), Are You Brutal 2 (2020), Are You Brutal (2019), Get Out (2021 — Nick confirmed 2026-07-30: recorded 2021, released 2022, but display 2021; full 12 titles), Merely Lives 2, Merely Lives (full 11 titles), Dig This (full 17 titles), Already Dead (12 of 14 titled — see gap below)
+- **Naming note (Nick, 2026-07-30):** the two-part albums use Roman numerals — "Merely Rocks I" / "Merely Rocks II" — not "Part One/Two" or a bare "2". Apply the same convention to any other multi-part release (e.g. Are You Brutal / Are You Brutal 2 → "Are You Brutal I" / "Are You Brutal II") once Nick confirms he wants that one changed too — he hasn't said so explicitly yet, only spoke to the Merely Rocks pair.
 - **Not in repo / still needed from Nick:**
   - Spotify, Apple Music, SoundCloud, Bandcamp, TikTok, X, Facebook links — all currently `''` (hidden)
-  - Track titles for Thrilla Killa, Merely Rocks, Merely Rocks 2, Are You Brutal, Are You Brutal 2
+  - Track titles for Thrilla Killa, Merely Rocks I, Merely Rocks II, Are You Brutal, Are You Brutal 2
   - Release years for Merely Lives, Merely Lives 2, Dig This, Already Dead
   - Cover art for Are You Brutal and Are You Brutal 2 (none found in source files)
   - A larger scan of the Get Out cover (current source is only 281×281px)

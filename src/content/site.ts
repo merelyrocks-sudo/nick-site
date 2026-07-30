@@ -71,6 +71,62 @@ export const images = {
   portraitAlt: 'Merely artwork: a winged rabbit figure in a navy dress, standing in a faded pink room',
 } as const;
 
+/**
+ * Per-page hero images used by <PageHero>. Each page gets a warm full-bleed
+ * artwork so the site reads as one continuous design instead of a polished
+ * home page followed by flat inner pages.
+ *
+ * Only files that already exist in /public are referenced. Replace any of
+ * these with a better asset (e.g. a real photo for /about) without renaming
+ * the keys — every page imports the map by key.
+ */
+export const pageHeroes = {
+  music: {
+    src: '/images/releases/thrilla-killa.jpg',
+    alt: 'Cover artwork for Thrilla Killa',
+  },
+  store: {
+    src: '/images/releases/thrilla-killa.jpg',
+    alt: 'Cover artwork for Thrilla Killa',
+  },
+  merch: {
+    src: '/images/placeholder-product-1.png',
+    alt: 'Logo T-Shirt product mockup',
+  },
+  about: {
+    src: images.portrait,
+    alt: images.portraitAlt,
+  },
+  contact: {
+    src: '/images/releases/daze.jpg',
+    alt: 'Cover artwork for Daze',
+  },
+  privacy: {
+    src: '/images/releases/merely-rocks-2.jpg',
+    alt: 'Cover artwork for Merely Rocks 2',
+  },
+  terms: {
+    src: '/images/releases/merely-rocks-2.jpg',
+    alt: 'Cover artwork for Merely Rocks 2',
+  },
+  refunds: {
+    src: '/images/releases/merely-rocks-2.jpg',
+    alt: 'Cover artwork for Merely Rocks 2',
+  },
+  shipping: {
+    src: '/images/releases/merely-rocks-2.jpg',
+    alt: 'Cover artwork for Merely Rocks 2',
+  },
+  success: {
+    src: '/images/releases/thrilla-killa.jpg',
+    alt: 'Cover artwork for Thrilla Killa',
+  },
+  cancelled: {
+    src: '/images/releases/dig-this.jpg',
+    alt: 'Cover artwork for Dig This',
+  },
+} as const;
+
 // ---------------------------------------------------------------------------
 // 2. CONTACT
 // ---------------------------------------------------------------------------
@@ -193,7 +249,7 @@ export const releases: Release[] = [
   },
   {
     id: 'merely-rocks-2',
-    title: 'Merely Rocks 2',
+    title: 'Merely Rocks II',
     type: 'Album',
     year: '2025',
     artwork: '/images/releases/merely-rocks-2.jpg',
@@ -203,7 +259,7 @@ export const releases: Release[] = [
   },
   {
     id: 'merely-rocks',
-    title: 'Merely Rocks',
+    title: 'Merely Rocks I',
     type: 'Album',
     year: '2024',
     artwork: '/images/releases/merely-rocks-1.jpg',
@@ -262,7 +318,7 @@ export const releases: Release[] = [
     id: 'get-out',
     title: 'Get Out',
     type: 'Album',
-    year: '2017',
+    year: '2021',
     // WARNING: source artwork is only 281x281px and looks soft.
     // Replace with a larger scan when you find one.
     artwork: '/images/releases/get-out.jpg',
@@ -492,7 +548,7 @@ export const products: Product[] = [
   {
     id: 'album-merely-rocks-2',
     releaseId: 'merely-rocks-2',
-    name: 'Merely Rocks 2 (2025)',
+    name: 'Merely Rocks II (2025)',
     priceCents: 999, // TODO: set the real price. 999 = $9.99
     description: 'Full album download. High quality files, yours to keep.',
     image: '/images/releases/merely-rocks-2.jpg',
@@ -503,7 +559,7 @@ export const products: Product[] = [
   {
     id: 'album-merely-rocks',
     releaseId: 'merely-rocks',
-    name: 'Merely Rocks (2024)',
+    name: 'Merely Rocks I (2024)',
     priceCents: 999, // TODO: set the real price. 999 = $9.99
     description: 'Full album download. High quality files, yours to keep.',
     image: '/images/releases/merely-rocks-1.jpg',
@@ -547,7 +603,7 @@ export const products: Product[] = [
   {
     id: 'album-get-out',
     releaseId: 'get-out',
-    name: 'Get Out (2017)',
+    name: 'Get Out (2021)',
     priceCents: 999, // TODO: set the real price. 999 = $9.99
     description: 'Full album download. High quality files, yours to keep.',
     image: '/images/releases/get-out.jpg',
