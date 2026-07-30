@@ -18,13 +18,16 @@
 | 4 | Stripe Checkout (test mode) | ✅ Built — needs Nick's Stripe account |
 | 4b | **Redesign: dark-but-warm home page** | ✅ **Built — REVIEW at localhost:3000** |
 | 4c | Roll the warm design out to inner pages | ⬜ After your approval |
-| 5 | Deploy staging site to Vercel | ✅ **LIVE — https://merely-rocks-merely.vercel.app** |
+| 5 | Deploy staging site to Vercel | ✅ **LIVE — https://merely-rocks.vercel.app** |
 | 6 | Launch: domain, Stripe live mode, policies, testing | ⬜ Not started |
 
 ## Deployment notes (Phase 5)
 
-- Live at **https://merely-rocks-merely.vercel.app** (project `merely-rocks`
-  under the `merely` Vercel team).
+- Live at **https://merely-rocks.vercel.app** (project `merely-rocks`
+  under the `merely` Vercel team). This is the assigned Production Domain —
+  use this one. `merely-rocks-merely.vercel.app` also resolves (it's a
+  secondary Vercel-generated alias) but Vercel auto-adds a `noindex` header
+  to it, so search engines won't see it. Don't share that one.
 - **What was failing before:** the dashboard import had connected the wrong
   GitHub repo (`merelyrocks-sudo/Merely`, which has no Next.js app in it) and
   the team had SSO login protection turned on for all deployments, so even

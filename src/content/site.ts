@@ -105,7 +105,7 @@ export const social: Record<string, string> = {
   instagram: 'https://www.instagram.com/merelyrocks/',
   tiktok: 'https://www.tiktok.com/@merelyrocks?is_from_webapp=1&sender_device=pc',
   twitter: 'https://x.com/MerelyRocks',
-  facebook: 'https://www.facebook.com/nick.barrett.311',
+  facebook: '', // TODO (optional) — a real band Page, not a personal profile
 };
 
 // ---------------------------------------------------------------------------
