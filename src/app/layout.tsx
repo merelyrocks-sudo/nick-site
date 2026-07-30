@@ -3,7 +3,7 @@ import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import PlayerChip from '@/components/PlayerChip';
-import { artist } from '@/content/site';
+import { artist, images } from '@/content/site';
 
 // NOTE ON FONTS
 // We deliberately do NOT use `next/font/google`. The typefaces are installed as
@@ -11,6 +11,7 @@ import { artist } from '@/content/site';
 // domain: faster first paint, no external request, no visitor data sent to Google.
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://merely-rocks.vercel.app'),
   title: {
     default: artist.seoTitle,
     // Sub-pages set their own title and it gets slotted in here.
@@ -21,6 +22,16 @@ export const metadata: Metadata = {
     title: artist.seoTitle,
     description: artist.seoDescription,
     type: 'website',
+    // The winged-rabbit artwork — what a link preview shows on iMessage,
+    // Discord, X, Facebook, etc. Without this, sharing the site shows a
+    // blank grey box instead of art.
+    images: [{ url: images.portrait, width: 1024, height: 1024 }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: artist.seoTitle,
+    description: artist.seoDescription,
+    images: [images.portrait],
   },
 };
 
