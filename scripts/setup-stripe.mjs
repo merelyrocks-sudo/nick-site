@@ -55,23 +55,35 @@ if (!key) {
   No STRIPE_SECRET_KEY found in .env.local
 
   Open the file .env.local in this folder and paste your Stripe secret key
-  after the "=" on the line marked [2]. It starts with sk_test_
+  after the "=" on the line marked [2]. It starts with sk_test_ (or
+  rk_test_ if you were invited as a team member with a restricted key).
 `);
   process.exit(1);
 }
 
-if (key.startsWith('sk_live_') && !live) {
-  console.error(`
-  That is a LIVE key. This would create real products customers can buy.
+// Stripe issues two kinds of secret-style key: a full "sk_" secret key (the
+// account owner sees this), and a "rk_" restricted key (what an invited
+// team member gets — scoped to their own permissions). Both come in test
+// and live flavors, and both must be blocked here if they're live.
+const isLive = key.startsWith('sk_live_') || key.startsWith('rk_live_');
+const isTest = key.startsWith('sk_test_') || key.startsWith('rk_test_');
 
-  Use a test key (sk_test_...) while setting up. If you really mean to do
-  this on the live account, run:  npm run stripe:setup -- --live
+if (isLive && !live) {
+  console.error(`
+  That is a LIVE key (${key.startsWith('rk_') ? 'restricted key' : 'secret key'}).
+  This would create real products customers can buy with real money.
+
+  In the Stripe Dashboard, toggle to Test mode (top right) before copying
+  the key. A test key starts with sk_test_ or rk_test_.
+
+  If you really mean to do this on the live account, run:
+    npm run stripe:setup -- --live
 `);
   process.exit(1);
 }
 
 const stripe = new Stripe(key);
-const mode = key.startsWith('sk_test_') ? 'TEST' : 'LIVE';
+const mode = isTest ? 'TEST' : isLive ? 'LIVE' : 'UNKNOWN';
 
 // --- pull the products straight out of site.ts ----------------------------
 const source = fs.readFileSync(SITE, 'utf8');
@@ -137,6 +149,7 @@ for (const { block, id } of blocks) {
 
   Check that STRIPE_SECRET_KEY in .env.local is copied in full, with no
   quote marks and no spaces around the "=". It should start with sk_test_
+  or rk_test_ (a restricted key, if you were invited as a team member).
 `);
     } else {
       console.error(`\n  Stripe error while creating "${name}":\n  ${msg}\n`);
