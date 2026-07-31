@@ -48,3 +48,7 @@ next-env.d.ts
 
 # Obsidian vault — personal notes, not part of the website project.
 /Nicks Site/
+
+# Old "shared with you" email notifications — no actual content (just Google
+# Docs share links, not attachments), not part of the website project.
+/Albums/
