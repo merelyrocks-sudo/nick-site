@@ -138,20 +138,29 @@ Phase 6, as planned.
 - [x] Products with no Stripe price ID show a disabled button, never a broken one
 - [x] `npm run stripe:setup` creates all 14 products and writes the price IDs
       back automatically; refuses live keys, safe to run twice
-- [ ] **You:** create Stripe account, paste test keys, run the setup script
-- [ ] **You:** test with card `4242 4242 4242 4242`
+- [x] **You:** create Stripe account, paste test keys, run the setup script —
+      done, 14 products created in test mode, price IDs written into `site.ts`
+- [ ] **You:** test with card `4242 4242 4242 4242` — blocked on Phase 5 below
 
-## Phase 5
+## Phase 5 — live deployment
 
-- [ ] Push to GitHub
-- [ ] Import to Vercel, add environment variables
-- [ ] Staging URL live and tested on a real phone
+- [x] Push to GitHub — `main` clean and in sync with `origin/main`
+- [x] Import to Vercel — live at https://merely-rocks.vercel.app, auto-deploys
+      on every push to `main`
+- [ ] **Add environment variables in Vercel** ← **the one blocker.** The
+      deployed checkout returns `503 Payments are not set up yet` because
+      `.env.local` is gitignored and never reaches Vercel. Step-by-step in
+      **LAUNCH.md**.
+- [ ] Redeploy, then confirm checkout reaches Stripe
+- [ ] Test purchase on the live URL, and on a real phone
 
-## Phase 6
+## Phase 6 — optional, any order
 
-- [ ] Custom domain connected
-- [ ] Stripe live mode keys swapped in
-- [ ] Real policy text reviewed
+- [ ] Stripe live mode keys swapped in (needs Nick's banking/tax verification)
+- [ ] Custom domain connected (deliberately deferred — `.vercel.app` works)
+- [x] Real policy text written (Privacy, Terms, Refunds, Shipping)
+- [ ] Policy text reviewed by a human
+- [ ] Remaining content from Nick — see **FOR-NICK.md**
 - [ ] Full pre-launch test pass
 
 ---

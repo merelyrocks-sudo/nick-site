@@ -17,7 +17,19 @@ stay hidden until he has them; don't ask again until he brings it up.
 Real Privacy/Terms/Refunds/Shipping policy text has been written (was
 placeholder as of the section below).
 
-Built and passing (`npx tsc --noEmit`, `npm run build`, 27 routes) as of the last commit:
+**Stripe test-mode products now exist.** All 14 products (11 digital albums +
+3 merch placeholders) have real `stripePriceId` values in `site.ts` — verified
+2026-07-30, zero empty. `npm run stripe:setup` has already been run against a
+test key. The §"Not done" bullet below claiming otherwise is obsolete.
+
+**Known live blocker (found 2026-07-30):** the Vercel project has **no Stripe
+environment variables set**, so the deployed Buy buttons render as enabled but
+`POST /api/checkout` returns `503 {"error":"Payments are not set up yet."}`.
+`.env.local` is gitignored and never reaches Vercel — the values must be added
+by hand in the Vercel dashboard. Full instructions in **LAUNCH.md**. This is a
+configuration gap, not a code defect; checkout works locally.
+
+Built and passing (`npx tsc --noEmit` clean, `npm run build`, 27 routes) as of the last commit:
 
 - Pages: home, `/music`, `/music/[id]` (11 album detail pages, `generateStaticParams`), `/store`, `/merch`, `/about`, `/contact`. Policy pages (`/privacy`, `/terms`, `/refunds`, `/shipping`) exist as routes but have placeholder/no real legal text yet.
 - Content-as-code: all site text/data lives in `src/content/site.ts`, the only file meant for non-developer edits.
@@ -32,7 +44,8 @@ Built and passing (`npx tsc --noEmit`, `npm run build`, 27 routes) as of the las
 
 **Not done:**
 
-- **Stripe products not yet created.** Every `stripePriceId` in `site.ts` is `''`. All Buy buttons currently render "Coming soon" (disabled). Nick needs his own Stripe account before this can move.
+- ~~**Stripe products not yet created.** Every `stripePriceId` in `site.ts` is `''`.~~ — **resolved 2026-07-30**: all 14 products created in Stripe **test mode**, price IDs written into `site.ts`, Buy buttons enabled. Still test mode — no real money. Live mode is blocked on Nick completing Stripe's banking/tax verification.
+- **Vercel env vars not set** — the deployed site cannot reach Stripe. See the blocker note in §1 and the fix in LAUNCH.md. **This is the only thing between the current state and a working store.**
 - ~~Vercel deployment status unconfirmed~~ — **resolved**: live and confirmed at https://merely-rocks.vercel.app, auto-deploy on every push to `main` (see PROGRESS.md).
 - No domain purchased yet (deferred intentionally, see §3).
 - No Tour/Shows section (was in the user's design spec, never built).
@@ -81,10 +94,24 @@ Built and passing (`npx tsc --noEmit`, `npm run build`, 27 routes) as of the las
 
 ## 4. Open questions / blockers
 
-- **Blocker:** Nick has not yet created his own Stripe account. Nothing in §"Stripe" can proceed until he does (see SETUP-TASKS.md for the exact non-technical steps already written for him).
-- **Blocker/unconfirmed:** Vercel deployment success was never confirmed after the GitHub account-mismatch fix. Verify before doing more design work on top of it.
-- **Unpushed commits:** the two most recent commits (magenta redesign, then red/chrome redesign) are local-only. Push to `origin/main` and confirm Vercel picks them up.
-- **Design not yet approved:** the black/red/chrome redesign was just shipped in response to feedback but has not been reviewed by the user yet. Don't treat it as final.
+- **ACTIVE BLOCKER — Vercel environment variables.** Deployed checkout returns
+  503. Andrew must add `STRIPE_SECRET_KEY`,
+  `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`, and
+  `NEXT_PUBLIC_SITE_URL=https://merely-rocks.vercel.app` in the Vercel
+  dashboard, then redeploy. Note the site URL differs from `.env.local`'s
+  localhost value — using localhost there would send paying customers to a dead
+  page after checkout. See LAUNCH.md.
+- **Blocker (live payments only):** Nick has a Stripe account and test keys
+  work, but has not completed Stripe's account verification (banking/tax).
+  Until then the store is test-mode only. Test mode is fully functional.
+- ~~Nick has not yet created his own Stripe account~~ — resolved.
+- ~~Vercel deployment success was never confirmed~~ — resolved: live and
+  confirmed serving current content at https://merely-rocks.vercel.app.
+- ~~Unpushed commits~~ — resolved: working tree clean, `main` in sync with
+  `origin/main` (verified 2026-07-30).
+- **Design:** the current live look is the warm amber/brown palette, not the
+  black/red/chrome described in §3 — §3 is a historical record of the decision
+  trail and has not been rewritten. Still not explicitly signed off by the user.
 - **Merely Rocks track count mismatch** (26 documented vs. 30 audio files) needs Nick to listen and clarify — don't guess which 4 files are extras/alternates.
 - **Already Dead tracks 13–14** are unidentified audio with no documented titles — same, needs Nick.
 - Whether Nick wants the old CD Baby playlists linked back in at all, given the royalty-crediting issue, is still an open call for him — currently resolved by omission, not by an explicit final decision.
@@ -93,18 +120,28 @@ Built and passing (`npx tsc --noEmit`, `npm run build`, 27 routes) as of the las
 
 (Numbering follows the project's own phase structure referenced in PROGRESS.md / SETUP-TASKS.md.)
 
-**Phase 4 — Stripe (blocked on Nick):**
-1. Nick creates a Stripe account under merelyrocks@gmail.com.
-2. Andrew pastes Nick's **test** secret key into `.env.local` (never into chat).
-3. Run `npm run stripe:setup` to create all 11 digital album products in Stripe test mode and auto-write `stripePriceId` values into `site.ts`.
-4. Test a full purchase with Stripe's test card `4242 4242 4242 4242`.
-5. Once verified, repeat with live keys (`--live` flag required) only after Nick has completed Stripe's account verification (banking/tax).
+**See LAUNCH.md for the operational version of this. Summary:**
 
-**Phase 5 — Deployment confirmation + domain:**
-1. Push the two pending local commits.
-2. Confirm the Vercel deploy is green and the live `.vercel.app` URL matches local.
-3. Re-run the Stripe test-mode purchase flow against the live deployed URL, not just localhost.
-4. Once confirmed stable, revisit domain purchase (deferred, see §3) and connect it in Vercel.
+**Phase 4 — Stripe test mode ✅ done:**
+1. ~~Nick creates a Stripe account~~ ✅
+2. ~~Test secret key into `.env.local`~~ ✅
+3. ~~Run `npm run stripe:setup`~~ ✅ — 14 products created, price IDs written
+4. Test purchase with `4242 4242 4242 4242` — **pending**, blocked on the Vercel
+   env var fix below (must be tested against the live URL, not just localhost)
+
+**Phase 5 — make the live site actually transact (the current work):**
+1. Add the three env vars in Vercel, applied to all environments.
+2. Redeploy (env vars only take effect on a new build).
+3. Confirm `POST /api/checkout` returns a `checkout.stripe.com` URL, not a 503.
+4. Complete a test purchase on the live URL; confirm it appears in Nick's Stripe
+   Dashboard with the album name in the order metadata.
+
+**Phase 6 — real money + domain (both optional, any order):**
+1. Nick finishes Stripe verification → live key → `npm run stripe:setup -- --live`
+   → commit the new price IDs → swap the keys in Vercel → redeploy.
+   Remember Stripe prices are immutable: get $9.99 right before going live.
+2. Domain purchase remains deliberately deferred. `.vercel.app` is fine; adding
+   a domain later requires only a DNS change and a `NEXT_PUBLIC_SITE_URL` update.
 
 **Phase 6 — Content completion + polish:**
 1. Fill remaining content gaps listed in §2 as Nick supplies them (track titles, years, cover art, streaming links, real bio, real merch).

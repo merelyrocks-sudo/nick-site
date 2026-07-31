@@ -10,20 +10,26 @@ Every account, key, and click that I cannot do for you.
 
 ## Status board
 
+**Updated 2026-07-30.** Most of this board is done. Only rows 7a, 7b and 11 are
+actually outstanding. **The operational instructions now live in LAUNCH.md** —
+this file is kept for the background detail behind each step.
+
 | # | Task | Needed by | Status |
 |---|------|-----------|--------|
-| 1 | Add social + streaming links | Anytime | ⬜ **Do this now — 2 minutes** |
-| 2 | Add the real contact email | Anytime | ⬜ **Do this now — 30 seconds** |
-| 3 | Set album prices | Before Stripe | ⬜ Waiting on you |
-| 4 | Create a Stripe account | To take payment | ⬜ Not started |
-| 5 | Paste Stripe **test** keys into `.env.local` | To take payment | ⬜ Not started |
-| 6 | Run `npm run stripe:setup` | To take payment | ⬜ Not started |
-| 7 | Test checkout with a fake card | To take payment | ⬜ Not started |
-| 8 | Create a GitHub account | To go live | ⬜ Not started |
-| 9 | Create a Vercel account | To go live | ⬜ Not started |
-| 10 | Buy a domain name | To go live | ⬜ Not started |
-| 11 | Activate Stripe live mode | To take real money | ⬜ Not started |
-| 12 | Review policy text | Before launch | ⬜ Not started |
+| 1 | Add social + streaming links | Anytime | ✅ Spotify, Apple Music, YouTube, Instagram, TikTok, X live. SoundCloud/Bandcamp/Facebook don't exist yet — hidden on purpose |
+| 2 | Add the real contact email | Anytime | ✅ merelyrocks@gmail.com |
+| 3 | Set album prices | Before Stripe | ✅ $9.99 per digital album |
+| 4 | Create a Stripe account | To take payment | ✅ Done |
+| 5 | Paste Stripe **test** keys into `.env.local` | To take payment | ✅ Done |
+| 6 | Run `npm run stripe:setup` | To take payment | ✅ 14 products created in test mode |
+| 7a | **Add the 3 env vars in Vercel + redeploy** | **To take payment** | 🔴 **BLOCKER — see LAUNCH.md.** Live Buy buttons return 503 without this |
+| 7b | Test checkout with a fake card, on the live URL | To take payment | ⬜ Blocked by 7a |
+| 8 | Create a GitHub account | To go live | ✅ merelyrocks-sudo |
+| 9 | Create a Vercel account | To go live | ✅ Live at merely-rocks.vercel.app |
+| 10 | Buy a domain name | Optional | ⬜ Deliberately deferred — `.vercel.app` works fine, a domain can be added any time |
+| 11 | Activate Stripe live mode | To take real money | ⬜ Waiting on Nick's banking/tax verification |
+| 12 | Review policy text | Before launch | ⬜ Real text written; a human should read it once |
+| 13 | Remaining content from Nick | Polish | ⬜ See FOR-NICK.md |
 
 ---
 
