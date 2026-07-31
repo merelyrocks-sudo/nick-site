@@ -1,30 +1,35 @@
 # LAUNCH — the last steps to a working store
 
-**Status as of 2026-07-30:** the site is live and correct. Everything is built.
-There is exactly **one** thing standing between you and a working store, and it
-takes about three minutes.
+## ✅ RESOLVED 2026-07-30 — the store is live and taking (test) payments
+
+The blocker described below has been fixed. For the record, what was wrong:
+
+> The live site's Buy buttons looked enabled but did nothing.
+> `POST /api/checkout` returned `503 {"error":"Payments are not set up yet."}`
+> because `.env.local` is gitignored and Vercel had never seen the Stripe keys.
+
+**What was done:**
+
+1. All three environment variables set in the Vercel project `merely/merely-rocks`
+   via the Vercel CLI, across Production, Preview and Development. The two Stripe
+   values were read directly out of `.env.local` and piped to the CLI — they were
+   never displayed, logged, or pasted anywhere.
+2. `NEXT_PUBLIC_SITE_URL` set to `https://merely-rocks.vercel.app` (deliberately
+   *not* the localhost value from `.env.local`).
+3. Redeployed to production (`vercel --prod`). Build clean, TypeScript clean,
+   27 routes, aliased to https://merely-rocks.vercel.app.
+
+**Verified after deploy:** `POST /api/checkout` now returns `200` with a real
+`https://checkout.stripe.com/c/pay/...` session URL, for multiple products.
+
+**The only thing left in test mode is you completing one fake purchase** — see
+"Then: test a fake purchase" below. After that, the remaining work is switching
+Stripe to live keys, which needs Nick's account verification.
 
 ---
 
-## The one blocker
-
-The live site's Buy buttons look enabled, but clicking them does nothing.
-
-I tested this directly against https://merely-rocks.vercel.app/api/checkout and
-got back:
-
-```
-HTTP 503  {"error":"Payments are not set up yet."}
-```
-
-**Why:** `.env.local` lives on your computer and is gitignored — by design, so
-your Stripe keys never reach GitHub. But that means **Vercel has never seen
-them**. The server-side checkout route finds no `STRIPE_SECRET_KEY`, so it
-refuses to start a checkout session. Locally it works; live it doesn't.
-
-This is not a bug in the code. It's a missing configuration step.
-
----
+<details>
+<summary>Original instructions — kept for reference, and for when you switch to live keys</summary>
 
 ## Fix it — Vercel Environment Variables
 
@@ -57,12 +62,13 @@ Nick's).
    Vercel → **Deployments** tab → the most recent deployment → **⋯** menu →
    **Redeploy**. Roughly a minute.
 
-5. Tell me when it's done and I'll re-run the same probe to confirm it returns a
-   real `checkout.stripe.com` URL instead of the 503.
+5. Confirm `POST /api/checkout` returns a `checkout.stripe.com` URL, not a 503.
+
+</details>
 
 ---
 
-## Then: test a fake purchase
+## Then: test a fake purchase ← **you are here**
 
 Once the redeploy is green, on the **live** site (not localhost):
 

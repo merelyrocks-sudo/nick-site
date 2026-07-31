@@ -22,8 +22,8 @@ this file is kept for the background detail behind each step.
 | 4 | Create a Stripe account | To take payment | ✅ Done |
 | 5 | Paste Stripe **test** keys into `.env.local` | To take payment | ✅ Done |
 | 6 | Run `npm run stripe:setup` | To take payment | ✅ 14 products created in test mode |
-| 7a | **Add the 3 env vars in Vercel + redeploy** | **To take payment** | 🔴 **BLOCKER — see LAUNCH.md.** Live Buy buttons return 503 without this |
-| 7b | Test checkout with a fake card, on the live URL | To take payment | ⬜ Blocked by 7a |
+| 7a | Add the 3 env vars in Vercel + redeploy | To take payment | ✅ Done 2026-07-30 — set via Vercel CLI across Production/Preview/Development, redeployed, verified `/api/checkout` returns a real Stripe session URL |
+| 7b | Test checkout with a fake card, on the live URL | To take payment | ⬜ **Next — 2 minutes.** Card `4242 4242 4242 4242`, any future expiry, any CVC |
 | 8 | Create a GitHub account | To go live | ✅ merelyrocks-sudo |
 | 9 | Create a Vercel account | To go live | ✅ Live at merely-rocks.vercel.app |
 | 10 | Buy a domain name | Optional | ⬜ Deliberately deferred — `.vercel.app` works fine, a domain can be added any time |

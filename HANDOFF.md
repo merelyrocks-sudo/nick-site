@@ -22,12 +22,20 @@ placeholder as of the section below).
 2026-07-30, zero empty. `npm run stripe:setup` has already been run against a
 test key. The §"Not done" bullet below claiming otherwise is obsolete.
 
-**Known live blocker (found 2026-07-30):** the Vercel project has **no Stripe
-environment variables set**, so the deployed Buy buttons render as enabled but
-`POST /api/checkout` returns `503 {"error":"Payments are not set up yet."}`.
-`.env.local` is gitignored and never reaches Vercel — the values must be added
-by hand in the Vercel dashboard. Full instructions in **LAUNCH.md**. This is a
-configuration gap, not a code defect; checkout works locally.
+**Live checkout works (fixed 2026-07-30).** The Vercel project previously had no
+Stripe environment variables, so deployed Buy buttons rendered enabled but
+`POST /api/checkout` returned `503 {"error":"Payments are not set up yet."}` —
+`.env.local` is gitignored and never reaches Vercel. Resolved: all three vars
+(`STRIPE_SECRET_KEY`, `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`,
+`NEXT_PUBLIC_SITE_URL=https://merely-rocks.vercel.app`) set on the Vercel project
+`merely/merely-rocks` across Production/Preview/Development via the Vercel CLI,
+then redeployed. Verified: `/api/checkout` returns `200` with a real
+`checkout.stripe.com/c/pay/...` session URL.
+
+**Standing gotcha:** these Vercel vars do not sync with `.env.local`. Any time
+the keys change locally — notably the test→live switch — they must be updated in
+Vercel separately and the project redeployed, or checkout breaks live while
+still working on localhost.
 
 Built and passing (`npx tsc --noEmit` clean, `npm run build`, 27 routes) as of the last commit:
 
@@ -45,7 +53,7 @@ Built and passing (`npx tsc --noEmit` clean, `npm run build`, 27 routes) as of t
 **Not done:**
 
 - ~~**Stripe products not yet created.** Every `stripePriceId` in `site.ts` is `''`.~~ — **resolved 2026-07-30**: all 14 products created in Stripe **test mode**, price IDs written into `site.ts`, Buy buttons enabled. Still test mode — no real money. Live mode is blocked on Nick completing Stripe's banking/tax verification.
-- **Vercel env vars not set** — the deployed site cannot reach Stripe. See the blocker note in §1 and the fix in LAUNCH.md. **This is the only thing between the current state and a working store.**
+- ~~**Vercel env vars not set**~~ — **resolved 2026-07-30**, see §1. Live checkout now reaches Stripe successfully.
 - ~~Vercel deployment status unconfirmed~~ — **resolved**: live and confirmed at https://merely-rocks.vercel.app, auto-deploy on every push to `main` (see PROGRESS.md).
 - No domain purchased yet (deferred intentionally, see §3).
 - No Tour/Shows section (was in the user's design spec, never built).
@@ -94,13 +102,14 @@ Built and passing (`npx tsc --noEmit` clean, `npm run build`, 27 routes) as of t
 
 ## 4. Open questions / blockers
 
-- **ACTIVE BLOCKER — Vercel environment variables.** Deployed checkout returns
-  503. Andrew must add `STRIPE_SECRET_KEY`,
-  `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`, and
-  `NEXT_PUBLIC_SITE_URL=https://merely-rocks.vercel.app` in the Vercel
-  dashboard, then redeploy. Note the site URL differs from `.env.local`'s
-  localhost value — using localhost there would send paying customers to a dead
-  page after checkout. See LAUNCH.md.
+- ~~**ACTIVE BLOCKER — Vercel environment variables**~~ — **resolved
+  2026-07-30.** All three vars set across all environments, redeployed, live
+  checkout verified reaching Stripe. Note `NEXT_PUBLIC_SITE_URL` is
+  intentionally different from `.env.local`'s localhost value — using localhost
+  in Vercel would send paying customers to a dead page after checkout.
+- **Next action (small):** complete one test purchase on the live URL with card
+  `4242 4242 4242 4242` and confirm it lands in Nick's Stripe Dashboard with the
+  album name in the order metadata. Nothing blocks this.
 - **Blocker (live payments only):** Nick has a Stripe account and test keys
   work, but has not completed Stripe's account verification (banking/tax).
   Until then the store is test-mode only. Test mode is fully functional.

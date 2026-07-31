@@ -147,12 +147,12 @@ Phase 6, as planned.
 - [x] Push to GitHub — `main` clean and in sync with `origin/main`
 - [x] Import to Vercel — live at https://merely-rocks.vercel.app, auto-deploys
       on every push to `main`
-- [ ] **Add environment variables in Vercel** ← **the one blocker.** The
-      deployed checkout returns `503 Payments are not set up yet` because
-      `.env.local` is gitignored and never reaches Vercel. Step-by-step in
-      **LAUNCH.md**.
-- [ ] Redeploy, then confirm checkout reaches Stripe
-- [ ] Test purchase on the live URL, and on a real phone
+- [x] **Add environment variables in Vercel** — done 2026-07-30. Was the one
+      blocker: deployed checkout returned `503 Payments are not set up yet`
+      because `.env.local` is gitignored and never reaches Vercel.
+- [x] Redeploy, then confirm checkout reaches Stripe — verified,
+      `/api/checkout` returns `200` + a `checkout.stripe.com/c/pay/...` URL
+- [ ] Test purchase on the live URL, and on a real phone ← **next**
 
 ## Phase 6 — optional, any order
 
