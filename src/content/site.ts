@@ -508,7 +508,7 @@ export const products: Product[] = [
     image: '/images/placeholder-product-1.png',
     kind: 'apparel',
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    stripePriceId: '', // filled in during Phase 4
+    stripePriceId: 'price_1Tz4vqQ0jYrsWdaS52b1GpSP', // filled in during Phase 4
     available: false, // placeholder — set true once this is a real product
   },
   {
@@ -519,7 +519,7 @@ export const products: Product[] = [
     image: '/images/placeholder-product-2.png',
     kind: 'apparel',
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-    stripePriceId: '',
+    stripePriceId: 'price_1Tz4vrQ0jYrsWdaSOKgbWGHc',
     available: false, // placeholder — set true once this is a real product
   },
   {
@@ -529,7 +529,7 @@ export const products: Product[] = [
     description: 'TODO: describe the pressing — colour, gatefold, insert.',
     image: '/images/placeholder-product-3.png',
     kind: 'physical',
-    stripePriceId: '',
+    stripePriceId: 'price_1Tz4vrQ0jYrsWdaSWfQ4wuTX',
     available: false, // placeholder — set true once this is a real product
   },
 
@@ -542,7 +542,7 @@ export const products: Product[] = [
     description: 'Full album download. High quality files, yours to keep.',
     image: '/images/releases/thrilla-killa.jpg',
     kind: 'digital',
-    stripePriceId: '', // filled in during Stripe setup
+    stripePriceId: 'price_1Tz4vsQ0jYrsWdaSdcVXGbom', // filled in during Stripe setup
     available: true,
   },
   {
@@ -553,7 +553,7 @@ export const products: Product[] = [
     description: 'Full album download. High quality files, yours to keep.',
     image: '/images/releases/merely-rocks-2.jpg',
     kind: 'digital',
-    stripePriceId: '', // filled in during Stripe setup
+    stripePriceId: 'price_1Tz4vsQ0jYrsWdaSWTP5ziMD', // filled in during Stripe setup
     available: true,
   },
   {
@@ -564,7 +564,7 @@ export const products: Product[] = [
     description: 'Full album download. High quality files, yours to keep.',
     image: '/images/releases/merely-rocks-1.jpg',
     kind: 'digital',
-    stripePriceId: '', // filled in during Stripe setup
+    stripePriceId: 'price_1Tz4vsQ0jYrsWdaSWSutpj5v', // filled in during Stripe setup
     available: true,
   },
   {
@@ -575,7 +575,7 @@ export const products: Product[] = [
     description: 'Full album download. High quality files, yours to keep.',
     image: '/images/releases/daze.jpg',
     kind: 'digital',
-    stripePriceId: '', // filled in during Stripe setup
+    stripePriceId: 'price_1Tz4vtQ0jYrsWdaS2fwL0DAe', // filled in during Stripe setup
     available: true,
   },
   {
@@ -586,7 +586,7 @@ export const products: Product[] = [
     description: 'Full album download. High quality files, yours to keep.',
     image: ARTWORK_PENDING,
     kind: 'digital',
-    stripePriceId: '', // filled in during Stripe setup
+    stripePriceId: 'price_1Tz4vtQ0jYrsWdaSKAyaRFXA', // filled in during Stripe setup
     available: true,
   },
   {
@@ -597,7 +597,7 @@ export const products: Product[] = [
     description: 'Full album download. High quality files, yours to keep.',
     image: ARTWORK_PENDING,
     kind: 'digital',
-    stripePriceId: '', // filled in during Stripe setup
+    stripePriceId: 'price_1Tz4vuQ0jYrsWdaSRanU8Hjq', // filled in during Stripe setup
     available: true,
   },
   {
@@ -608,7 +608,7 @@ export const products: Product[] = [
     description: 'Full album download. High quality files, yours to keep.',
     image: '/images/releases/get-out.jpg',
     kind: 'digital',
-    stripePriceId: '', // filled in during Stripe setup
+    stripePriceId: 'price_1Tz4vuQ0jYrsWdaSgwuB5j2p', // filled in during Stripe setup
     available: true,
   },
   {
@@ -620,7 +620,7 @@ export const products: Product[] = [
     // Shares cover art with Merely Lives — no separate part 2 cover exists yet.
     image: '/images/releases/merely-lives.jpg',
     kind: 'digital',
-    stripePriceId: '', // filled in during Stripe setup
+    stripePriceId: 'price_1Tz4vvQ0jYrsWdaSfHiRllMw', // filled in during Stripe setup
     available: true,
   },
   {
@@ -631,7 +631,7 @@ export const products: Product[] = [
     description: 'Full album download. High quality files, yours to keep.',
     image: '/images/releases/merely-lives.jpg',
     kind: 'digital',
-    stripePriceId: '', // filled in during Stripe setup
+    stripePriceId: 'price_1Tz4vvQ0jYrsWdaSUcMSOP6D', // filled in during Stripe setup
     available: true,
   },
   {
@@ -642,7 +642,7 @@ export const products: Product[] = [
     description: 'Full album download. High quality files, yours to keep.',
     image: '/images/releases/dig-this.jpg',
     kind: 'digital',
-    stripePriceId: '', // filled in during Stripe setup
+    stripePriceId: 'price_1Tz4vwQ0jYrsWdaS5kKr6di5', // filled in during Stripe setup
     available: true,
   },
   {
@@ -653,7 +653,7 @@ export const products: Product[] = [
     description: 'Full album download. High quality files, yours to keep.',
     image: '/images/releases/already-dead.jpg',
     kind: 'digital',
-    stripePriceId: '', // filled in during Stripe setup
+    stripePriceId: 'price_1Tz4vwQ0jYrsWdaSOm2tBZih', // filled in during Stripe setup
     available: true,
   },
 ];
