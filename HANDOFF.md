@@ -32,6 +32,17 @@ Stripe environment variables, so deployed Buy buttons rendered enabled but
 then redeployed. Verified: `/api/checkout` returns `200` with a real
 `checkout.stripe.com/c/pay/...` session URL.
 
+**Store deliberately closed (2026-07-31).** `storeEnabled = false` in
+`src/content/site.ts`. Buy buttons render greyed "Coming soon" and
+`/api/checkout` returns `503 The store is not open yet` before it reaches
+Stripe — checked server-side as well as in the UI, so a disabled button isn't
+the only thing stopping a purchase. Reason: the site is being shown to real
+people while Stripe is still in test mode, and a visitor reaching a Stripe page
+stamped "TEST MODE" looks broken. **This is a one-line reversal** — set it to
+`true`, commit, push. Price IDs and Vercel env vars are unaffected. Do NOT
+interpret a greyed-out Buy button as the Stripe integration being broken; it
+was verified working before being switched off.
+
 **Standing gotcha:** these Vercel vars do not sync with `.env.local`. Any time
 the keys change locally — notably the test→live switch — they must be updated in
 Vercel separately and the project redeployed, or checkout breaks live while

@@ -68,7 +68,24 @@ Nick's).
 
 ---
 
-## Then: test a fake purchase ← **you are here**
+## Store is currently CLOSED on purpose
+
+`storeEnabled = false` in `src/content/site.ts` (set 2026-07-31). Every Buy
+button is greyed out and reads "Coming soon", and `/api/checkout` returns 503
+regardless of what the browser sends. Done so the site could be shown to people
+without anyone landing on a Stripe page stamped "TEST MODE".
+
+**To reopen: change that one line to `true`, commit, push.** Nothing else. The
+Stripe price IDs and the Vercel environment variables are untouched and still
+correct — reopening does not require redoing any of the setup below.
+
+The right moment to flip it is when Nick's Stripe account is verified and live
+keys are in place. Reopening it while still in test mode just restores the
+"TEST MODE" banner problem.
+
+---
+
+## Then: test a fake purchase (only while `storeEnabled = true`)
 
 Once the redeploy is green, on the **live** site (not localhost):
 
