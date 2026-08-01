@@ -40,17 +40,18 @@ export const artist = {
 
   /**
    * The bio. Each string in this list becomes its own paragraph.
-   * Add or remove paragraphs freely.
    *
-   * NOTE: this is a first draft written to be true of almost any emerging solo
-   * artist, so the site reads properly today instead of showing TODO text.
-   * It deliberately contains no invented facts — no fake cities, credits, or
-   * release history. Replace it with the real story when you have it.
+   * Approved by Andrew 2026-07-31. Deliberately plain and present-tense, in the
+   * register of self-released home-recording artists — states the practice and
+   * stops. No invented facts: every claim here is checkable. "Eleven albums" is
+   * the real count, and "they land here first" is true because Thrilla Killa is
+   * on this site before it is on the streaming services.
+   *
+   * Update the album count when a twelfth release goes up.
    */
   bio: [
-    'Merely is a solo project. One person, writing and building the whole thing — guitars, noise, and everything underneath.',
-    'The songs get made in small rooms and taken apart more times than is reasonable. Nothing goes out until it sounds like the thing that was in his head, which takes as long as it takes.',
-    'Eleven albums so far. This is where they live, and where the next one lands.',
+    'Merely is a one-man band. Guitars, noise, and everything underneath — all of it recorded at home and put out as it\'s finished.',
+    'Eleven albums so far, and more in progress. They land here first.',
   ],
 } as const;
 
