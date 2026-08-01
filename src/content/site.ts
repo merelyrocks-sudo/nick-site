@@ -344,7 +344,7 @@ export const releases: Release[] = [
     id: 'merely-lives-2',
     title: 'Merely Lives 2',
     type: 'Album',
-    year: '', // TODO
+    year: '2020', // from Apple Music (official release date)
     // Shares artwork with Merely Lives — swap if a part 2 cover exists.
     artwork: '/images/releases/merely-lives.jpg',
     trackCount: 11,
@@ -368,7 +368,7 @@ export const releases: Release[] = [
     id: 'merely-lives',
     title: 'Merely Lives',
     type: 'Album',
-    year: '', // TODO
+    year: '2020', // from Apple Music (official release date)
     artwork: '/images/releases/merely-lives.jpg',
     trackCount: 11,
     tracks: [
@@ -391,7 +391,7 @@ export const releases: Release[] = [
     id: 'dig-this',
     title: 'Dig This',
     type: 'Album',
-    year: '', // TODO
+    year: '2019', // from Apple Music (official release date)
     artwork: '/images/releases/dig-this.jpg',
     // Track count confirmed from the YouTube playlist itself.
     trackCount: 17,
@@ -424,7 +424,7 @@ export const releases: Release[] = [
     id: 'already-dead',
     title: 'Already Dead',
     type: 'Album',
-    year: '', // TODO
+    year: '2017', // from Apple Music (official release date)
     artwork: '/images/releases/already-dead.jpg',
     // Track count confirmed from the YouTube playlist itself.
     trackCount: 14,
