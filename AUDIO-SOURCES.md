@@ -18,13 +18,51 @@ They are **not** in the repo and never should be (size, and they're the product)
 | `merely-rocks-2` | Merely Rocks II | 15 | `Nick CD 10 Merely Rocks 2` | WAV | 567 MB |
 | `merely-rocks` | Merely Rocks I | 15 | `Nick CD 9 Merely Rocks` | WAV | 657 MB |
 | `daze` | Daze | 15 | `Nick CD 8 Daze` | WAV | 640 MB |
-| `are-you-brutal` | Are You Brutal | 12 | `Nick CD 6 Are You Brutal 1` | WAV | 421 MB |
-| `are-you-brutal-2` | Are You Brutal 2 | 12 | `Nick CD 7 Are You Brutal 2` | MP3 | 44 MB |
+| `are-you-mental-1` | Are You Mental? I | 12 | `Nick CD 6 Are You Brutal 1` | WAV | 421 MB |
+| `are-you-mental-2` | Are You Mental? II | 12 of 13 ⚠️ | `Nick CD 7 Are You Brutal 2` | MP3 | 44 MB |
 | `get-out` | Get Out | 12 | `NIck CD5 Get Out` | MP3 | 139 MB |
 | `merely-lives` | Merely Lives | 11 | `Nick CD3 Merely Lives 1` | MP3 | 87 MB |
 | `merely-lives-2` | Merely Lives 2 | 11 | `Nick CD4 Merely Lives 2` | MP3 | 77 MB |
 | `already-dead` | Already Dead | 14 | `Nick CD1\Audio CD\Unknown artist\Unknown album (7-26-2026 6-41-02 PM)` | MP3 | 139 MB |
 | `dig-this` | Dig This | 17 | `Nick CD2\Tata Young\The Love of Tata Young` | MP3 | 115 MB |
+
+### Folder names lie — verified 2026-07-31 against Apple Music
+
+**The source folders are named wrong and the site inherited it.**
+`Nick CD 6 / CD 7 Are You Brutal` actually contain **Are You Mental? I & II**
+(2022) — Nick confirmed the album title, and every track duration in CD6 matches
+Apple's disc 1 exactly. The folders were not renamed on disk, so this table maps
+the *real* release to the *actual* folder name. Trust the `Release id` column.
+
+**When delivering an order, do NOT read the folder name.** Use this table.
+
+### Which files are the album, and which are burn filler
+
+Nick had to pad several discs to burn them: *"the extra tracks are on the discs
+because they were saved but not on the album — it wouldn't let me burn the discs
+without the extra 2 tracks."* Confirmed by duration-matching against Apple:
+
+| Album | Files on disc | On the album | Filler is at |
+|---|---|---|---|
+| Merely Rocks I | 15 | 13 | **tracks 14, 15** (end) |
+| Merely Rocks II | 15 | 13 | **tracks 14, 15** (end) |
+| Already Dead | 14 | 12 | **tracks 7 and 10** ⚠️ (middle!) |
+
+**The Already Dead filler is mid-album, not appended.** This caused a live bug:
+the site had assumed end-of-disc and so labelled tracks 7–12 with the wrong song
+names — someone previewing "All Gone" was hearing an unreleased track. Fixed
+2026-07-31. **Do not send buyers files 7 or 10 of Already Dead.** The album is
+local files 1,2,3,4,5,6,8,9,11,12,13,14.
+
+### Two things duration could not settle
+
+- **Are You Mental? II is short one track.** Apple's disc 2 has 13; the local
+  disc has 12. Missing: **"Hey My Baby" (213s)**. Buyers currently receive 12 of
+  13. Either Nick has the file or the disc was burned without it.
+- **Already Dead files 6 and 7 are both exactly 213s.** Apple lists "Hole in My
+  Head" at 213500ms; file 6 is 213266ms, file 7 is 213084ms — both inside rip
+  variance. File 6 was chosen (marginally closer, preserves running order). This
+  is the one mapping in the whole catalogue resting on judgement, not proof.
 
 ### Notes on specific entries
 

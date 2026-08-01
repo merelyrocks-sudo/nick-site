@@ -1,193 +1,78 @@
-# For Nick — fill in the blanks
+# For Nick — almost nothing left
 
-Site is live: **https://merely-rocks.vercel.app** — and the store is open, real
-payments, straight to your bank.
+Site is live: **https://merely-rocks.vercel.app** — store open, real payments,
+straight to your bank.
 
-Everything below is stuff only you know. **Nothing here is urgent** and the site
-works fine without it. Where something's missing I left it blank rather than
-guessing, because it's your music and a wrong answer is worse than no answer.
+**Your answers about Are You Mental? and the burn-filler tracks fixed nearly
+everything.** The rest was pulled automatically from your Apple Music releases:
+every song title, every release year, and high-resolution cover art. You don't
+need to write any of that out.
 
-Fill in whatever you can, however you like — type into this file, write it on
-paper and photograph it, send a voice memo, whatever's easiest. Skip anything you
-don't know or don't care about.
+What got corrected because of what you said:
 
----
-
-# PART 1 — Song titles
-
-These albums play fine on the site but the songs show as "Track 1, Track 2"
-because the titles were never written down anywhere. Just the names, in album
-order. Spelling however you want it to appear.
-
-## Thrilla Killa (2026) — 16 songs
-
-```
- 1. ______________________________
- 2. ______________________________
- 3. ______________________________
- 4. ______________________________
- 5. ______________________________
- 6. ______________________________
- 7. ______________________________
- 8. ______________________________
- 9. ______________________________
-10. ______________________________
-11. ______________________________
-12. ______________________________
-13. ______________________________
-14. ______________________________
-15. ______________________________
-16. ______________________________
-```
-
-## Merely Rocks I (2024) — 15 songs
-
-```
- 1. ______________________________
- 2. ______________________________
- 3. ______________________________
- 4. ______________________________
- 5. ______________________________
- 6. ______________________________
- 7. ______________________________
- 8. ______________________________
- 9. ______________________________
-10. ______________________________
-11. ______________________________
-12. ______________________________
-13. ______________________________
-14. ______________________________
-15. ______________________________
-```
-
-## Merely Rocks II (2025) — 15 songs
-
-```
- 1. ______________________________
- 2. ______________________________
- 3. ______________________________
- 4. ______________________________
- 5. ______________________________
- 6. ______________________________
- 7. ______________________________
- 8. ______________________________
- 9. ______________________________
-10. ______________________________
-11. ______________________________
-12. ______________________________
-13. ______________________________
-14. ______________________________
-15. ______________________________
-```
-
-## Are You Brutal (2019) — 12 songs
-
-```
- 1. ______________________________
- 2. ______________________________
- 3. ______________________________
- 4. ______________________________
- 5. ______________________________
- 6. ______________________________
- 7. ______________________________
- 8. ______________________________
- 9. ______________________________
-10. ______________________________
-11. ______________________________
-12. ______________________________
-```
-
-## Are You Brutal 2 (2020) — 12 songs
-
-```
- 1. ______________________________
- 2. ______________________________
- 3. ______________________________
- 4. ______________________________
- 5. ______________________________
- 6. ______________________________
- 7. ______________________________
- 8. ______________________________
- 9. ______________________________
-10. ______________________________
-11. ______________________________
-12. ______________________________
-```
-
-## Already Dead — last two songs only
-
-The other 12 are already on the site and correct. The CD has 14 recordings but
-only 12 were ever named. **Play tracks 13 and 14 and tell me what they are** —
-or whether they're alternate takes / throwaways that shouldn't be listed at all.
-
-```
-13. ______________________________
-14. ______________________________
-```
+- **Are You Brutal I & II** → **Are You Mental? I & II** (2022), with real
+  artwork and all 24 song titles
+- **Merely Rocks I & II** → 13 songs each, full titles. The 4 extra files were
+  the burn-filler you mentioned, now excluded
+- **Daze** → 2024
+- **Already Dead** → 12 songs. Your two extras sit at positions **7 and 10**, not
+  at the end — the site had been showing the wrong song names from track 7
+  onward, now fixed
+- **Get Out** cover replaced — the old one was 281 pixels and blurry, it's now
+  1400
+- Missing years filled in: Dig This 2019, Already Dead 2017, Merely Lives 2020
 
 ---
 
-# PART 2 — Years
+# Four things left. That's it.
 
-These four show no year on the site. **Roughly right is fine** — a year beats a
-blank.
+## 1. Thrilla Killa — 16 song titles
 
-```
-Merely Lives     ________
-Merely Lives 2   ________
-Dig This         ________
-Already Dead     ________
-```
-
----
-
-# PART 3 — Artwork
-
-Three images needed. **Square**, and as big as you can — **1500 × 1500 pixels or
-larger** is ideal, 1000 × 1000 is the minimum. JPG or PNG.
-
-| # | Album | What's there now | What's needed |
-|---|---|---|---|
-| 1 | **Are You Brutal** (2019) | Nothing — grey "artwork coming soon" panel | The cover |
-| 2 | **Are You Brutal 2** (2020) | Nothing — grey "artwork coming soon" panel | The cover |
-| 3 | **Get Out** (2021) | A 281 × 281 scan, blurry when enlarged | A bigger version of the same cover |
-
-**Easiest way, if you still have the physical CDs:** lay the sleeve flat, good
-daylight or a bright lamp, phone directly above it — not at an angle — and fill
-the frame. That's genuinely all it takes. Crop to a square afterwards or just
-send it and Andrew will crop.
-
-**If the original art files exist** on a computer, hard drive or old email, those
-are better than a photo. Any size, we can work with it.
-
-**If the artwork doesn't exist at all** for the two Are You Brutal albums — say
-so. Options then are making something new, or leaving the placeholder, which
-looks intentional on the site rather than broken. Your call, and there's no rush.
-Nothing new gets invented and put under your name without you asking for it.
-
----
-
-# PART 4 — Your bio
-
-The About page currently says something short and generic. It's honest but it's
-about nobody in particular — written that way on purpose so it wouldn't claim
-anything untrue about you until you wrote the real thing.
-
-A few sentences in your own words. Whatever you'd want someone who just found the
-site to know. Some prompts if a blank page is annoying:
-
-- How did this start?
-- Do you play everything yourself, or is anyone else involved?
-- Where does it get recorded?
-- Is there a thread running through the albums, or are they separate things?
-- What do you want someone to feel when they put one on?
-
-**A voice memo is completely fine.** Talk for two minutes and it'll get shaped
-into paragraphs — you'll get to read it before it goes up.
+The only album not on Apple Music yet, so it's the only one that still needs
+writing out. Right now the songs show as "Track 1, Track 2".
 
 ```
-______________________________________________________________
+ 1. ______________________   9. ______________________
+ 2. ______________________  10. ______________________
+ 3. ______________________  11. ______________________
+ 4. ______________________  12. ______________________
+ 5. ______________________  13. ______________________
+ 6. ______________________  14. ______________________
+ 7. ______________________  15. ______________________
+ 8. ______________________  16. ______________________
+```
 
+## 2. Are You Mental? II — one missing song
+
+Apple's version of disc 2 has **13** songs. The disc Andrew has holds **12**.
+The one that isn't there is **"Hey My Baby" (3 minutes 33)**.
+
+So anyone buying Are You Mental? II right now gets 12 of the 13. If you have that
+file, send it. If the disc just got burned without it, say so and it stays a
+12-track download.
+
+## 3. Already Dead — one quick listen
+
+Songs 6 and 7 on that disc are **exactly the same length**, so there was no way
+to tell them apart by data. I've got file 6 as **"Hole in My Head"**.
+
+Play tracks 6 and 7 and tell me if that's right, or if they're the other way
+round. Thirty seconds and it's the last unknown in the whole catalogue.
+
+## 4. Your bio
+
+The About page says something short and generic. It's honest but it's about
+nobody in particular — written that way deliberately so it wouldn't claim
+anything untrue about you.
+
+A few sentences in your own words. How it started, whether you play everything
+yourself, where it gets recorded, what you'd want someone who just found the site
+to know.
+
+**A voice memo is completely fine** — talk for two minutes and it'll get shaped
+into paragraphs. You'll read it before it goes up.
+
+```
 ______________________________________________________________
 
 ______________________________________________________________
@@ -197,33 +82,17 @@ ______________________________________________________________
 
 ---
 
-# PART 5 — Merch (only if you want it)
+# Optional, whenever
 
-There are three placeholders in the code — t-shirt, hoodie, vinyl — currently
-switched off so the site doesn't advertise anything that doesn't exist.
+**Merch** — three placeholders (t-shirt, hoodie, vinyl) are switched off so the
+site doesn't advertise anything that doesn't exist. Each needs a real product,
+price, description, photo and sizes. Leaving them off is fine.
 
-To turn any of them on, each needs: the actual product, a price, a one-line
-description, a photo, and sizes if it's clothing.
+**Streaming links live:** Spotify, Apple Music, YouTube, Instagram, TikTok, X.
+**Hidden until they exist:** SoundCloud, Bandcamp, Facebook. No dead buttons.
 
-If merch isn't happening, leaving them off is the right call and nobody will know
-they were ever there.
+**Prices:** $14.99 for Thrilla Killa, $9.99 for the rest. Say now if you want
+those different.
 
----
-
-# Also worth knowing
-
-**Streaming links that are live:** Spotify, Apple Music, YouTube, Instagram,
-TikTok, X.
-**Hidden because they don't exist yet:** SoundCloud, Bandcamp, Facebook Page.
-They stay hidden — no dead buttons. Say the word if any of them appear.
-
-**Album prices:** $14.99 for Thrilla Killa, $9.99 for everything else. Speak up
-now if you want those different — changing a price after the fact is more
-annoying than it sounds.
-
-**When someone buys:** Stripe emails the order and you email them the files. It's
-manual for now, a few minutes per sale. Worth automating later, not worth it yet.
-
-**One naming question left over:** you wanted Merely Rocks as "I" and "II" in
-roman numerals. Do you want the same for **Are You Brutal / Are You Brutal 2**,
-or leave those as they are?
+**When someone buys:** Stripe emails you the order, you email them the files. A
+few minutes per sale. Worth automating later.
