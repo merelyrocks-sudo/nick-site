@@ -121,9 +121,21 @@ Built and passing (`npx tsc --noEmit` clean, `npm run build`, 27 routes) as of t
 - **Next action (small):** complete one test purchase on the live URL with card
   `4242 4242 4242 4242` and confirm it lands in Nick's Stripe Dashboard with the
   album name in the order metadata. Nothing blocks this.
-- **Blocker (live payments only):** Nick has a Stripe account and test keys
-  work, but has not completed Stripe's account verification (banking/tax).
-  Until then the store is test-mode only. Test mode is fully functional.
+- ~~**Blocker (live payments only):** Nick has not completed Stripe's account
+  verification (banking/tax)~~ — **FALSE, corrected 2026-07-31.** Queried
+  `GET /v1/account` directly: `charges_enabled: true`, `payouts_enabled: true`,
+  `details_submitted: true`, `requirements` empty, `card_payments: active`,
+  `transfers: active`. **Nick's account is already fully verified.** This claim
+  sat in these docs unverified for multiple sessions and sent people chasing a
+  step that was already done. Caveat: queried with the test key — those three
+  fields are account-level rather than mode-specific, so this is strong but the
+  definitive proof is a successful live-mode call.
+- **Actual remaining blocker:** nobody has generated a **live** API key yet.
+  Nick: Stripe Dashboard → toggle Test mode off → Developers → API keys →
+  reveal `sk_live_...` and copy `pk_live_...`. Andrew pastes both into
+  `.env.local` (never into chat). Everything after that is automatable:
+  `npm run stripe:setup -- --live`, commit the new price IDs, mirror the live
+  keys into Vercel, redeploy, set `storeEnabled = true`.
 - ~~Nick has not yet created his own Stripe account~~ — resolved.
 - ~~Vercel deployment success was never confirmed~~ — resolved: live and
   confirmed serving current content at https://merely-rocks.vercel.app.

@@ -27,7 +27,7 @@ this file is kept for the background detail behind each step.
 | 8 | Create a GitHub account | To go live | ✅ merelyrocks-sudo |
 | 9 | Create a Vercel account | To go live | ✅ Live at merely-rocks.vercel.app |
 | 10 | Buy a domain name | Optional | ⬜ Deliberately deferred — `.vercel.app` works fine, a domain can be added any time |
-| 11 | Activate Stripe live mode | To take real money | ⬜ Waiting on Nick's banking/tax verification |
+| 11 | Activate Stripe live mode | To take real money | ⬜ **Account is already verified** (checked via API 2026-07-31 — charges/payouts enabled, no requirements outstanding). Only step left: Nick generates a **live** API key and Andrew puts it in `.env.local`. Everything after that is automated. |
 | 12 | Review policy text | Before launch | ⬜ Real text written; a human should read it once |
 | 13 | Remaining content from Nick | Polish | ⬜ See FOR-NICK.md |
 
