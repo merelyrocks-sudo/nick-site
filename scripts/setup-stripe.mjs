@@ -114,6 +114,15 @@ for (const { block, id } of blocks) {
     continue;
   }
 
+  // Never create Stripe products for items switched off in site.ts.
+  // The merch entries are unnamed placeholders (available: false) and have
+  // no business existing in a real Stripe account.
+  if (/available: false/.test(block)) {
+    console.log(`  · ${id} — available: false, skipped`);
+    skipped++;
+    continue;
+  }
+
   const name = field(block, 'name');
   const description = field(block, 'description');
   const priceCents = num(block, 'priceCents');

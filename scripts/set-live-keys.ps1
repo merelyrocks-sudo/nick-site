@@ -85,14 +85,24 @@ Write-Host ''
 Write-Host "  Backed up old file to: $(Split-Path $backup -Leaf)" -ForegroundColor DarkGray
 
 $lines = Get-Content $envFile
+$sawSecret = $false
+$sawPub    = $false
 $out = foreach ($line in $lines) {
-    if     ($line -match '^\s*STRIPE_SECRET_KEY\s*=')                  { "STRIPE_SECRET_KEY=$secret" }
-    elseif ($line -match '^\s*NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY\s*=') { "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=$pub" }
+    if ($line -match '^\s*STRIPE_SECRET_KEY\s*=') {
+        if (-not $sawSecret) { $sawSecret = $true; "STRIPE_SECRET_KEY=$secret" }
+        # any further duplicates are dropped
+    }
+    elseif ($line -match '^\s*NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY\s*=') {
+        if (-not $sawPub) { $sawPub = $true; "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=$pub" }
+    }
     else { $line }
 }
-# Add them if the lines did not already exist.
-if ($out -notmatch '^STRIPE_SECRET_KEY=')                  { $out += "STRIPE_SECRET_KEY=$secret" }
-if ($out -notmatch '^NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=') { $out += "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=$pub" }
+# Append only if the key was genuinely absent.
+# NOTE: do not use `$array -notmatch 'x'` for this test — on an array that
+# returns the non-matching ELEMENTS (truthy whenever any line differs), which
+# appended a second copy of both keys. Use explicit booleans instead.
+if (-not $sawSecret) { $out += "STRIPE_SECRET_KEY=$secret" }
+if (-not $sawPub)    { $out += "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=$pub" }
 
 Set-Content -Path $envFile -Value $out -Encoding UTF8
 
