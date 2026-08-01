@@ -485,28 +485,28 @@ export const releases: Release[] = [
     year: '2017', // from Apple Music (official release date)
     artwork: '/images/releases/already-dead.jpg',
     // Track count confirmed from the YouTube playlist itself.
-    trackCount: 14,
+    trackCount: 12,
     // Link intentionally removed — see the note above the releases list.
     // Old auto-generated playlist, kept here so it is not lost:
     // https://www.youtube.com/playlist?list=OLAK5uy_nSBOnip5qMbuWOP4q8mSZKi45-3eB1GCY
-    // NOTE: the CD rip holds 14 recordings, but Nick's document and the
-    // YouTube listing both name only 12. Titles 1-12 are his; tracks 13 and
-    // 14 are left unnamed rather than guessed. Worth checking by ear.
+    // The CD rip holds 14 files; the released album is 12. Files 7 and 10 are
+    // unreleased extras Nick had to include to burn the disc - confirmed by
+    // matching every duration against the Apple Music release. The previews
+    // were regenerated from the correct 12, because the earlier mapping
+    // assumed the extras were at the END and so mislabelled tracks 7-12.
     tracks: [
       'Already Dead',
-      'Mother\'s Babies Dyin\'',
+      "Mother's Babies Dyin'",
       'Pour Me Out',
-      'It\'s Alright Mama',
-      'Knowin\'',
-      'Hole In My Head',
+      "It's Alright Mama",
+      "Knowin'",
+      'Hole in My Head',
       'All Gone',
-      'Goin\' Nowhere',
-      'In The Day',
-      'Feelin\'',
+      "Goin' Nowhere",
+      'In the Day',
+      "Feelin'",
       'Drawing Near',
       'Already Dead (Reprise)',
-      '',
-      '',
     ],
     hasPreviews: true,
     links: {},
