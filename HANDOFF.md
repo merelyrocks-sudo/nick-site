@@ -1,5 +1,41 @@
 # Handoff — Merely (artist site)
 
+> [!IMPORTANT] CURRENT STATE — verified live 2026-08-01
+>
+> **The site is finished and selling.** Everything below this box is historical
+> record. Read this box first; if anything further down contradicts it, this box
+> wins.
+>
+> | | |
+> |---|---|
+> | Live | https://merely-rocks.vercel.app |
+> | Albums | 11, all live, all buyable |
+> | Track titles | **144 of 144** — zero placeholders |
+> | Artwork | all 11 present, none under 1000px |
+> | Stripe | **LIVE mode**, real cards, Nick's verified account |
+> | Prices | Thrilla Killa **$14.99**, all others **$9.99** |
+> | Payouts | daily, 2-day delay, automatic |
+> | Statement descriptor | `MERELY` |
+> | Delivery | **manual** — 11 pre-built zips in `C:\Users\Andrew\Desktop\Nick\_delivery\` |
+> | Verified | 11/11 pages 200, 11/11 live Stripe sessions, 0 failures |
+>
+> **The only untested link in the entire project:** nobody has completed a real
+> purchase. Stripe *creates* live sessions — confirmed. Whether money lands and
+> the receipt reaches Nick with order metadata is unproven. One $9.99 purchase
+> settles it.
+>
+> **Blocked on Nick, neither urgent:**
+> 1. The `Hey My Baby` audio file — belongs on Are You Mental? II per his own
+>    document, but does not exist anywhere on this machine (whole-disk scan by
+>    duration, 2026-08-01). That album ships 12 of 13 tracks.
+> 2. Already Dead files 6 and 7 are both 213s — identical length, so which is
+>    "Hole In My Head" cannot be settled by data. Site uses file 6.
+>
+> **Optional, not started:** merch (3 placeholders, off), automated delivery
+> (designed at the end of `AUDIO-SOURCES.md`), custom domain (deliberately
+> deferred).
+
+
 Next.js 16 (App Router) + TypeScript + Tailwind CSS. Stripe Checkout (test mode). Deployed via Vercel, connected to GitHub repo `merelyrocks-sudo/nick-site`.
 
 ## 1. Current state
