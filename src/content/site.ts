@@ -656,12 +656,26 @@ export const products: Product[] = [
     id: 'album-dig-this',
     releaseId: 'dig-this',
     name: 'Dig This',
-    priceCents: 999, // TODO: set the real price. 999 = $9.99
+    priceCents: 999,
     description: 'Full album download. High quality files, yours to keep.',
     image: '/images/releases/dig-this.jpg',
     kind: 'digital',
-    stripePriceId: 'price_1TzSKwQ0jYrsWdaSi1dXW8xQ', // filled in during Stripe setup
-    available: true,
+    stripePriceId: 'price_1TzSKwQ0jYrsWdaSi1dXW8xQ',
+    // PULLED FROM SALE 2026-07-31 — provenance unconfirmed.
+    // The 17 preview clips under /audio/previews/dig-this/ carry ID3 tags
+    // reading artist "Tata Young", album "The Love of Tata Young". They were
+    // generated from `Nick CD2\Tata Young\The Love of Tata Young` — the only
+    // 17-file source on the machine, matched to this release purely on track
+    // count.
+    //
+    // Most likely explanation: Windows Media Player mis-identified Nick's CD2
+    // against its online database when ripping, so the audio IS Dig This with
+    // wrong metadata. But "most likely" is not good enough to sell, and it is
+    // not good enough to publish either.
+    //
+    // Do NOT set this back to true until Nick has listened and confirmed the
+    // audio is his. If it is his, the ID3 tags still need rewriting to Merely.
+    available: false,
   },
   {
     id: 'album-already-dead',
