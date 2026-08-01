@@ -325,7 +325,7 @@ export const releases: Release[] = [
     links: {},
   },
   {
-    id: 'are-you-brutal-2',
+    id: 'are-you-mental-2',
     title: 'Are You Mental? II',
     type: 'Album',
     year: '2022',
@@ -349,7 +349,7 @@ export const releases: Release[] = [
     links: {},
   },
   {
-    id: 'are-you-brutal',
+    id: 'are-you-mental-1',
     title: 'Are You Mental? I',
     type: 'Album',
     year: '2022',
@@ -655,8 +655,8 @@ export const products: Product[] = [
     available: true,
   },
   {
-    id: 'album-are-you-brutal-2',
-    releaseId: 'are-you-brutal-2',
+    id: 'album-are-you-mental-2',
+    releaseId: 'are-you-mental-2',
     name: "Are You Mental? II (2022)",
     priceCents: 999, // TODO: set the real price. 999 = $9.99
     description: 'Full album download. High quality files, yours to keep.',
@@ -666,8 +666,8 @@ export const products: Product[] = [
     available: true,
   },
   {
-    id: 'album-are-you-brutal',
-    releaseId: 'are-you-brutal',
+    id: 'album-are-you-mental-1',
+    releaseId: 'are-you-mental-1',
     name: "Are You Mental? I (2022)",
     priceCents: 999, // TODO: set the real price. 999 = $9.99
     description: 'Full album download. High quality files, yours to keep.',
@@ -690,7 +690,7 @@ export const products: Product[] = [
   {
     id: 'album-merely-lives-2',
     releaseId: 'merely-lives-2',
-    name: 'Merely Lives 2',
+    name: 'Merely Lives 2 (2020)',
     priceCents: 999, // TODO: set the real price. 999 = $9.99
     description: 'Full album download. High quality files, yours to keep.',
     // Shares cover art with Merely Lives — no separate part 2 cover exists yet.
@@ -702,7 +702,7 @@ export const products: Product[] = [
   {
     id: 'album-merely-lives',
     releaseId: 'merely-lives',
-    name: 'Merely Lives',
+    name: 'Merely Lives (2020)',
     priceCents: 999, // TODO: set the real price. 999 = $9.99
     description: 'Full album download. High quality files, yours to keep.',
     image: '/images/releases/merely-lives.jpg',
@@ -713,7 +713,7 @@ export const products: Product[] = [
   {
     id: 'album-dig-this',
     releaseId: 'dig-this',
-    name: 'Dig This',
+    name: 'Dig This (2019)',
     priceCents: 999,
     description: 'Full album download. High quality files, yours to keep.',
     image: '/images/releases/dig-this.jpg',
@@ -731,7 +731,7 @@ export const products: Product[] = [
   {
     id: 'album-already-dead',
     releaseId: 'already-dead',
-    name: 'Already Dead',
+    name: 'Already Dead (2017)',
     priceCents: 999, // TODO: set the real price. 999 = $9.99
     description: 'Full album download. High quality files, yours to keep.',
     image: '/images/releases/already-dead.jpg',
