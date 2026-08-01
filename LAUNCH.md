@@ -68,29 +68,26 @@ Nick's).
 
 ---
 
-## ⚠️ ONE THING LEFT — the card statement descriptor
+## ✅ Stripe account hygiene — done 2026-07-31
 
-Nick's Stripe account still shows a leftover from Bandzoogle:
+Two leftovers from Nick's old Bandzoogle site were corrected in his dashboard:
 
-```
-statement_descriptor              : THRILLAKILLA.BANDZOOGL
-card statement_descriptor_prefix  : THRILLAKIL
-```
+| Field | Was | Now |
+|---|---|---|
+| Statement descriptor | `THRILLAKILLA.BANDZOOGL` | `MERELY` |
+| Business website | `thrillakilla.bandzoogle.com` | `https://merely-rocks.vercel.app` |
 
-**That is what buyers see on their bank statement.** Someone buys a Merely album
-and two days later sees `THRILLAKILLA.BANDZOOGL` on their card. Unrecognised
-descriptors are the number one cause of chargebacks — people assume fraud and
-dispute the charge. A dispute costs $15 on top of losing the sale, and a pattern
-of them puts a Stripe account at risk.
+The descriptor is what buyers see on their bank statement. An unrecognised one is
+the leading cause of chargebacks — people assume fraud and dispute the charge,
+which costs $15 on top of the lost sale and, in a pattern, endangers the account.
 
-**This cannot be fixed by script.** Stripe rejects the API call on your own
-account (`403 — you may only use it on connected accounts`), and the dashboard
-requires a login. It has to be done by hand, once, in **Nick's** dashboard:
+Note for future sessions: **Stripe will not let you change these by API on your
+own account** (`403 — you may only use it on connected accounts`). Dashboard only.
+Reading the values back via `GET /v1/account` to verify does work, and is how
+these were confirmed.
 
-> **stripe.com → Settings → Business → Public details → Statement descriptor**
-> Change to `MERELY` (or `MERELY MUSIC`). Save.
-
-Thirty seconds. Do it before promoting the store anywhere.
+The card `statement_descriptor_prefix` reads empty; Stripe derives it from the
+main descriptor. Confirm what actually prints on the first real charge.
 
 ---
 
