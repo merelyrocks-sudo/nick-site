@@ -1,98 +1,76 @@
-# For Nick — almost nothing left
+# For Nick — the catalogue is finished
 
-Site is live: **https://merely-rocks.vercel.app** — store open, real payments,
-straight to your bank.
+**https://merely-rocks.vercel.app** — live, store open, real payments.
 
-**Your answers about Are You Mental? and the burn-filler tracks fixed nearly
-everything.** The rest was pulled automatically from your Apple Music releases:
-every song title, every release year, and high-resolution cover art. You don't
-need to write any of that out.
+All 11 albums. **All 145 song titles.** Every release year, every cover.
+Nothing left to type out — your Google Docs had everything, and the artwork and
+years came off your Apple Music releases.
 
-What got corrected because of what you said:
+## What's on the site now
 
-- **Are You Brutal I & II** → **Are You Mental? I & II** (2022), with real
-  artwork and all 24 song titles
-- **Merely Rocks I & II** → 13 songs each, full titles. The 4 extra files were
-  the burn-filler you mentioned, now excluded
-- **Daze** → 2024
-- **Already Dead** → 12 songs. Your two extras sit at positions **7 and 10**, not
-  at the end — the site had been showing the wrong song names from track 7
-  onward, now fixed
-- **Get Out** cover replaced — the old one was 281 pixels and blurry, it's now
-  1400
-- Missing years filled in: Dig This 2019, Already Dead 2017, Merely Lives 2020
+| Album | Year | Songs |
+|---|---|---|
+| Thrilla Killa | 2026 | 16 |
+| Merely Rocks II | 2025 | 13 |
+| Merely Rocks I | 2024 | 13 |
+| Daze | 2024 | 15 |
+| Are You Mental? II | 2022 | 12 |
+| Are You Mental? I | 2022 | 12 |
+| Get Out | 2021 | 12 |
+| Merely Lives 2 | 2020 | 11 |
+| Merely Lives | 2020 | 11 |
+| Dig This | 2019 | 17 |
+| Already Dead | 2017 | 12 |
 
----
-
-# Four things left. That's it.
-
-## 1. Thrilla Killa — 16 song titles
-
-The only album not on Apple Music yet, so it's the only one that still needs
-writing out. Right now the songs show as "Track 1, Track 2".
-
-```
- 1. ______________________   9. ______________________
- 2. ______________________  10. ______________________
- 3. ______________________  11. ______________________
- 4. ______________________  12. ______________________
- 5. ______________________  13. ______________________
- 6. ______________________  14. ______________________
- 7. ______________________  15. ______________________
- 8. ______________________  16. ______________________
-```
-
-## 2. Are You Mental? II — one missing song
-
-Apple's version of disc 2 has **13** songs. The disc Andrew has holds **12**.
-The one that isn't there is **"Hey My Baby" (3 minutes 33)**.
-
-So anyone buying Are You Mental? II right now gets 12 of the 13. If you have that
-file, send it. If the disc just got burned without it, say so and it stays a
-12-track download.
-
-## 3. Already Dead — one quick listen
-
-Songs 6 and 7 on that disc are **exactly the same length**, so there was no way
-to tell them apart by data. I've got file 6 as **"Hole in My Head"**.
-
-Play tracks 6 and 7 and tell me if that's right, or if they're the other way
-round. Thirty seconds and it's the last unknown in the whole catalogue.
-
-## 4. Your bio
-
-The About page says something short and generic. It's honest but it's about
-nobody in particular — written that way deliberately so it wouldn't claim
-anything untrue about you.
-
-A few sentences in your own words. How it started, whether you play everything
-yourself, where it gets recorded, what you'd want someone who just found the site
-to know.
-
-**A voice memo is completely fine** — talk for two minutes and it'll get shaped
-into paragraphs. You'll read it before it goes up.
-
-```
-______________________________________________________________
-
-______________________________________________________________
-
-______________________________________________________________
-```
+Corrected along the way: *Are You Brutal* was never the album name — it's
+**Are You Mental? I & II**. *Merely Rocks* is 13 songs a side, not 15; the extras
+were your burn filler. *Already Dead*'s two extras sit at positions **7 and 10**,
+not on the end, which meant the site had been showing wrong song names from track
+7 down. Get Out's cover was 281 pixels and blurry — replaced.
 
 ---
 
-# Optional, whenever
+# Three things left
 
-**Merch** — three placeholders (t-shirt, hoodie, vinyl) are switched off so the
-site doesn't advertise anything that doesn't exist. Each needs a real product,
-price, description, photo and sizes. Leaving them off is fine.
+## 1. One missing song file
 
-**Streaming links live:** Spotify, Apple Music, YouTube, Instagram, TikTok, X.
-**Hidden until they exist:** SoundCloud, Bandcamp, Facebook. No dead buttons.
+Your document lists **"Hey My Baby"** as track 8 of **Are You Mental? II**, and
+Apple has it too. The disc Andrew has doesn't — it holds 12 of the 13.
 
-**Prices:** $14.99 for Thrilla Killa, $9.99 for the rest. Say now if you want
-those different.
+Anyone buying that album right now gets 12 songs. Do you have that file
+somewhere, or did the disc just get burned without it?
 
-**When someone buys:** Stripe emails you the order, you email them the files. A
-few minutes per sale. Worth automating later.
+## 2. Already Dead — one 30-second listen
+
+Tracks 6 and 7 on that disc are **exactly the same length**, so there was no way
+to tell which is the real one from the data. The site has file 6 as
+**"Hole In My Head"**.
+
+Play them both. If 7 is the real one, say so and it gets swapped. Low stakes —
+worst case one preview is the wrong song.
+
+## 3. Your bio
+
+The About page is generic on purpose — nothing untrue was written about you while
+waiting for the real thing.
+
+A few sentences. How it started, whether you play everything yourself, where it
+gets recorded, what you'd want someone finding the site to know.
+
+**Voice memo is fine.** Talk for two minutes, it'll get written up, you read it
+before it goes live.
+
+---
+
+# Optional
+
+**Merch** — three placeholders are switched off so nothing fake is advertised.
+Each needs a real product, price, description, photo, sizes.
+
+**Streaming live:** Spotify, Apple Music, YouTube, Instagram, TikTok, X.
+**Hidden until they exist:** SoundCloud, Bandcamp, Facebook.
+
+**Prices:** $14.99 Thrilla Killa, $9.99 everything else. Say now if that's wrong.
+
+**When someone buys:** Stripe emails the order, you email the files. Manual for
+now, a few minutes per sale.
