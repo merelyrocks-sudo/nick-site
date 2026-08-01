@@ -52,3 +52,6 @@ next-env.d.ts
 # Old "shared with you" email notifications — no actual content (just Google
 # Docs share links, not attachments), not part of the website project.
 /Albums/
+
+# editor/fuse artifacts
+.fuse_hidden*
