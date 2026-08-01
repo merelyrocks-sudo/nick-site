@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { stripe, stripeConfigured, siteUrl } from '@/lib/stripe';
-import { getProduct } from '@/content/site';
+import { getProduct, storeEnabled } from '@/content/site';
 
 /**
  * Creates a Stripe Checkout Session and returns the URL to send the buyer to.
@@ -14,6 +14,16 @@ import { getProduct } from '@/content/site';
  * NEVER trust a price, quantity, or currency that arrived from the client.
  */
 export async function POST(request: Request) {
+  // Store switched off in site.ts. Checked here as well as in the UI so the
+  // store is genuinely closed — a disabled button alone stops nobody who can
+  // open devtools.
+  if (!storeEnabled) {
+    return NextResponse.json(
+      { error: 'The store is not open yet.' },
+      { status: 503 }
+    );
+  }
+
   if (!stripeConfigured || !stripe) {
     return NextResponse.json(
       { error: 'Payments are not set up yet.' },

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { storeEnabled } from '@/content/site';
 import type { Product } from '@/content/site';
 
 /**
@@ -24,7 +25,10 @@ export default function BuyButton({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const ready = product.stripePriceId !== '';
+  // Two independent reasons a button can be closed:
+  //   storeEnabled false  -> whole store is off (see site.ts)
+  //   no stripePriceId    -> this one product isn't set up in Stripe
+  const ready = storeEnabled && product.stripePriceId !== '';
 
   async function buy() {
     setLoading(true);
@@ -58,7 +62,14 @@ export default function BuyButton({
 
       {!ready && (
         <p className="mt-3 text-center text-xs text-bone-faint">
-          Checkout opens soon.
+          The store opens soon. Email{' '}
+          <a
+            href="mailto:merelyrocks@gmail.com"
+            className="underline underline-offset-2 hover:text-bone"
+          >
+            merelyrocks@gmail.com
+          </a>{' '}
+          to buy in the meantime.
         </p>
       )}
 

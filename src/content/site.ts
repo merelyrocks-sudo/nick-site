@@ -474,6 +474,24 @@ export const releases: Release[] = [
 //    $30.00 -> 3000        $28.50 -> 2850        $9.99 -> 999
 //
 
+// ---------------------------------------------------------------------------
+//  STORE ON/OFF SWITCH
+// ---------------------------------------------------------------------------
+//
+//  Set this to false and every Buy button on the site goes grey and reads
+//  "Coming soon". The checkout API also refuses, so the store is genuinely
+//  closed and not just visually disabled.
+//
+//  Set it back to true to reopen. Nothing else needs changing — the Stripe
+//  price IDs below stay exactly as they are.
+//
+//  Currently FALSE because the store is still in Stripe test mode. A visitor
+//  clicking Buy would land on a Stripe page stamped "TEST MODE", which is
+//  confusing on a site being shown to real people. Flip to true once Nick's
+//  Stripe account is verified and live keys are in place.
+//
+export const storeEnabled = false;
+
 export type Product = {
   id: string;
   name: string;
