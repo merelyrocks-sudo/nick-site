@@ -68,6 +68,32 @@ Nick's).
 
 ---
 
+## ⚠️ ONE THING LEFT — the card statement descriptor
+
+Nick's Stripe account still shows a leftover from Bandzoogle:
+
+```
+statement_descriptor              : THRILLAKILLA.BANDZOOGL
+card statement_descriptor_prefix  : THRILLAKIL
+```
+
+**That is what buyers see on their bank statement.** Someone buys a Merely album
+and two days later sees `THRILLAKILLA.BANDZOOGL` on their card. Unrecognised
+descriptors are the number one cause of chargebacks — people assume fraud and
+dispute the charge. A dispute costs $15 on top of losing the sale, and a pattern
+of them puts a Stripe account at risk.
+
+**This cannot be fixed by script.** Stripe rejects the API call on your own
+account (`403 — you may only use it on connected accounts`), and the dashboard
+requires a login. It has to be done by hand, once, in **Nick's** dashboard:
+
+> **stripe.com → Settings → Business → Public details → Statement descriptor**
+> Change to `MERELY` (or `MERELY MUSIC`). Save.
+
+Thirty seconds. Do it before promoting the store anywhere.
+
+---
+
 ## Store is currently CLOSED on purpose
 
 `storeEnabled = false` in `src/content/site.ts` (set 2026-07-31). Every Buy
