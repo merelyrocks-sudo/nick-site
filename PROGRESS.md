@@ -152,7 +152,8 @@ Phase 6, as planned.
       because `.env.local` is gitignored and never reaches Vercel.
 - [x] Redeploy, then confirm checkout reaches Stripe — verified,
       `/api/checkout` returns `200` + a `checkout.stripe.com/c/pay/...` URL
-- [ ] Test purchase on the live URL, and on a real phone ← **next**
+- [x] Mobile check — verified by Andrew on iPhone 2026-07-31, renders correctly
+- [ ] Test purchase on the live URL with card `4242 4242 4242 4242` ← **next**
 
 ## Phase 6 — optional, any order
 
