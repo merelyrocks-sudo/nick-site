@@ -661,21 +661,14 @@ export const products: Product[] = [
     image: '/images/releases/dig-this.jpg',
     kind: 'digital',
     stripePriceId: 'price_1TzSKwQ0jYrsWdaSi1dXW8xQ',
-    // PULLED FROM SALE 2026-07-31 — provenance unconfirmed.
-    // The 17 preview clips under /audio/previews/dig-this/ carry ID3 tags
-    // reading artist "Tata Young", album "The Love of Tata Young". They were
-    // generated from `Nick CD2\Tata Young\The Love of Tata Young` — the only
-    // 17-file source on the machine, matched to this release purely on track
-    // count.
-    //
-    // Most likely explanation: Windows Media Player mis-identified Nick's CD2
-    // against its online database when ripping, so the audio IS Dig This with
-    // wrong metadata. But "most likely" is not good enough to sell, and it is
-    // not good enough to publish either.
-    //
-    // Do NOT set this back to true until Nick has listened and confirmed the
-    // audio is his. If it is his, the ID3 tags still need rewriting to Merely.
-    available: false,
+    // RESTORED 2026-07-31 after a provenance scare — see AUDIO-SOURCES.md.
+    // The source files had been mis-tagged "Tata Young" by Windows Media
+    // Player via a CDDB disc-ID collision (both discs: 17 tracks, total
+    // runtime within 9 seconds). Proven to be Nick's audio by comparing
+    // per-track durations against the real Tata Young release — 16 of 17
+    // differ by 11-136 seconds — and confirmed by Nick listening.
+    // Tags rewritten to Merely / Dig This and previews regenerated.
+    available: true,
   },
   {
     id: 'album-already-dead',

@@ -24,7 +24,7 @@ They are **not** in the repo and never should be (size, and they're the product)
 | `merely-lives` | Merely Lives | 11 | `Nick CD3 Merely Lives 1` | MP3 | 87 MB |
 | `merely-lives-2` | Merely Lives 2 | 11 | `Nick CD4 Merely Lives 2` | MP3 | 77 MB |
 | `already-dead` | Already Dead | 14 | `Nick CD1\Audio CD\Unknown artist\Unknown album (7-26-2026 6-41-02 PM)` | MP3 | 139 MB |
-| `dig-this` | Dig This | 17 | **UNRESOLVED — see below** | — | — |
+| `dig-this` | Dig This | 17 | `Nick CD2\Tata Young\The Love of Tata Young` | MP3 | 115 MB |
 
 ### Notes on specific entries
 
@@ -40,45 +40,75 @@ rip bitrates only. **Use the 139 MB version**, it's the better rip.
 
 ---
 
-## UNRESOLVED: Dig This
+## RESOLVED: the Dig This / "Tata Young" scare
 
-**Status: pulled from sale 2026-07-31.** `available: false` in `site.ts`.
+**Outcome: it is Nick's music. Fixed and back on sale 2026-07-31.**
 
-The 17 preview clips currently served at `/audio/previews/dig-this/` were
-generated from `Nick CD2\Tata Young\The Love of Tata Young`. They carry ID3 tags:
+The folder is still named `Nick CD2\Tata Young\The Love of Tata Young` — that
+name is wrong and is left only so this document matches what's on disk. The files
+inside are Dig This.
 
-```
-TAG:album  = The Love of Tata Young
-TAG:artist = Tata Young
-TAG:title  = Track 01
-```
+### What happened
 
-That folder was matched to Dig This on **track count alone** — it is the only
-17-file audio folder on the machine, and Dig This is documented as 17 tracks.
+Windows Media Player ripped Nick's CD2 and identified it as Tata Young's album
+*The Love of Tata Young*, writing that artist and album into all 17 files. Those
+tags then travelled into the site's preview clips, so a public website was
+serving audio credited to another artist.
 
-**Two possibilities, and they need Nick's ears to separate:**
+### How it was proven to be Nick's
 
-1. **Most likely — it IS Dig This, mis-tagged.** Windows Media Player looks up
-   ripped CDs against an online database and guesses. A wrong match would produce
-   exactly this: Nick's audio wearing a stranger's metadata. The 17-track
-   coincidence supports this.
-2. **It's genuinely a Tata Young CD** that was in the pile and got ripped along
-   with Nick's discs. In which case the real Dig This source has not been found,
-   and 17 tracks of someone else's copyrighted album were published on a public
-   website.
+The old CDDB/freedb disc fingerprint is a **weak hash built from track count and
+total disc length** — not individual track times. Both discs have 17 tracks, and
+their total runtimes are 4288s vs 4297s — **nine seconds apart**. That is a
+textbook disc-ID collision, and WMP returned the first database match.
 
-**To resolve:** Nick plays the previews at `/music/dig-this` (or any file in that
-folder) and says whether it's his. Thirty seconds.
+Comparing per-track durations against the real release (MusicBrainz, TH 2009,
+17 tracks) settles it — a CD rip is exact, so a genuine match would agree within
+a second on every track:
 
-- **If his:** strip and rewrite the ID3 tags to Merely, regenerate the previews
-  from the retagged files, set `available: true`. The wrong tags are a problem
-  regardless of ownership — they're embedded in files served from his domain.
-- **If not his:** delete `public/audio/previews/dig-this/` immediately, remove
-  the release from `site.ts`, and go looking for the real source. Also archive
-  the live Stripe product for `album-dig-this` so it can't be reactivated by
-  accident.
+| # | Real Tata Young | Nick's disc | Diff |
+|---|---|---|---|
+| 1 | 276s | 340s | +64 |
+| 2 | 260s | 262s | +2 |
+| 3 | 326s | 279s | −47 |
+| 4 | 201s | 247s | +46 |
+| 5 | 237s | 219s | −18 |
+| 6 | 245s | 192s | −53 |
+| 7 | 269s | 230s | −39 |
+| 8 | 257s | 330s | +73 |
+| 9 | 285s | 224s | −61 |
+| 10 | 237s | 295s | +58 |
+| 11 | 203s | 192s | −11 |
+| 12 | 259s | 210s | −49 |
+| 13 | 186s | 322s | +136 |
+| 14 | 284s | 194s | −90 |
+| 15 | 231s | 195s | −36 |
+| 16 | 237s | 290s | +53 |
+| 17 | 304s | 267s | −37 |
 
-**Do not put Dig This back on sale on a hunch.**
+Sixteen of seventeen diverge by 11–136 seconds. Nick then confirmed by listening.
+
+### What was done
+
+`scripts/fix-dig-this.ps1` (kept in the repo, safe to re-run):
+
+1. Backed up all 17 originals to `Nick CD2\_backup-original-tags\`
+2. Rewrote ID3 tags to **Merely / Dig This** with the real track titles from
+   `site.ts`, using `-c:a copy` — **the audio stream was never re-encoded**, so
+   there is no generation loss
+3. Regenerated all 17 preview clips from the corrected files, matching the site
+   spec: 30s, mono, 44.1kHz, 96kbps, 2s fade in and out, clipped from 25% into
+   each track
+
+Verified afterwards: **zero files** — source or preview — contain the string
+"Tata" in any tag.
+
+### Lesson worth keeping
+
+Every other album here was matched to its folder by name. This one was matched on
+**track count alone**, and that was almost enough to sell a stranger's album.
+Before automating delivery, confirm each mapping by something stronger than a
+count — durations, tags, or a listen.
 
 ---
 
