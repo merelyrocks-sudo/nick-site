@@ -10,21 +10,45 @@ This page is written so anyone can fill an order without asking anyone else.
 
 ---
 
-## The 5-minute version
+## The 2-minute version
+
+> [!important] Every album is already built and ready to send
+> **`C:\Users\Andrew\Desktop\Nick\_delivery\`** holds all 11 albums as finished
+> zips — MP3 320 where a lossless master existed, correctly named
+> `01 - Title.mp3`, tagged Merely, burn-filler tracks excluded.
+> **You do not need to convert anything.** Just grab the right zip.
 
 1. **A sale email arrives** at `merelyrocks@gmail.com` from Stripe.
 2. **Open the Stripe Dashboard** → **Payments** → click the newest payment.
 3. **Scroll to Metadata.** It tells you exactly what was bought:
    - `productName` — e.g. `Thrilla Killa (2026)`
    - `releaseId` — e.g. `thrilla-killa`
-   - `kind` — `digital`
-4. **Get the buyer's email** — on the same page under Customer.
-5. **Find the album folder** using the table in `AUDIO-SOURCES.md`. Match on
-   `releaseId`. Do not match on folder name alone — one of them is misleading.
-6. **Zip the audio files** for that album.
-7. **Send it.** If it's under ~20 MB, attach it. Otherwise upload to Google Drive
-   or WeTransfer and send the link. Most albums are too big to attach.
-8. **Reply to the buyer** using the template below.
+4. **Get the buyer's email** — same page, under Customer.
+5. **Grab the matching zip** from `_delivery\`:
+
+| Bought | Send |
+|---|---|
+| Thrilla Killa | `Merely - Thrilla Killa.zip` (160 MB) |
+| Merely Rocks I | `Merely - Merely Rocks I.zip` (129 MB) |
+| Merely Rocks II | `Merely - Merely Rocks II.zip` (109 MB) |
+| Daze | `Merely - Daze.zip` (143 MB) |
+| Are You Mental? I | `Merely - Are You Mental I.zip` (87 MB) |
+| Are You Mental? II | `Merely - Are You Mental II.zip` (43 MB) |
+| Get Out | `Merely - Get Out.zip` (39 MB) |
+| Merely Lives | `Merely - Merely Lives.zip` (83 MB) |
+| Merely Lives 2 | `Merely - Merely Lives 2.zip` (77 MB) |
+| Dig This | `Merely - Dig This.zip` (114 MB) |
+| Already Dead | `Merely - Already Dead.zip` (106 MB) |
+
+6. **Send it.** All of these are too big to email as attachments — upload to
+   Google Drive, Dropbox or WeTransfer and send the link.
+7. **Reply to the buyer** using the template below.
+
+> [!note] Rebuilding
+> If a tracklist ever changes, delete the affected zip and run
+> `powershell -ExecutionPolicy Bypass -File .\scripts\build-delivery.ps1`.
+> It skips anything already built, so it only redoes what's missing. Titles come
+> straight out of `site.ts`, so the zips can never disagree with the website.
 
 **Aim to do this within 24 hours.** Most people are fine waiting a day if the
 site was honest that delivery isn't instant. They are not fine with silence.
