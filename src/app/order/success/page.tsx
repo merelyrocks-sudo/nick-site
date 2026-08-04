@@ -22,9 +22,11 @@ export default async function SuccessPage({
   const { session_id } = await searchParams;
   let albumName = '';
   let downloadUrl = '';
+  let stripeError = '';
 
   if (session_id) {
-    const session = await verifyCheckoutSession(session_id);
+    const { session, error } = await verifyCheckoutSession(session_id);
+    if (error) stripeError = error;
     if (session?.metadata?.releaseId) {
       const product = getProduct(session.metadata.releaseId);
       if (product) {
@@ -34,9 +36,8 @@ export default async function SuccessPage({
     }
   }
 
-  // DEBUG: show what happened
   const debug = session_id
-    ? `session_id: ${session_id.slice(0, 16)}... (Stripe verify: ${downloadUrl ? 'OK' : 'FAILED'})`
+    ? `session_id: ${session_id.slice(0, 16)}... (${downloadUrl ? 'OK' : 'FAILED'})${stripeError ? ' — ' + stripeError : ''}`
     : 'No session_id in URL';
 
   if (downloadUrl) {
