@@ -1,55 +1,27 @@
 /**
  * POST /api/download
  *
- * Verifies the Stripe checkout session, checks payment status and metadata,
- * then streams the matching delivery zip.
- *
- * In development, reads from the local _delivery folder.
- * In production (Vercel), reads from Vercel Blob Storage.
+ * Verifies the Stripe checkout session, then proxies the matching delivery
+ * zip from the private GitHub repo's release assets (authenticated).
  */
 import { NextRequest, NextResponse } from 'next/server';
 import { verifyCheckoutSession } from '@/lib/delivery';
 import { getProduct } from '@/content/site';
-import { readFileSync, existsSync } from 'node:fs';
-import { join } from 'node:path';
 
-// GitHub Release download URLs (from https://github.com/merelyrocks-sudo/nick-site/releases/tag/delivery-v1)
-const DL_BASE = 'https://github.com/merelyrocks-sudo/nick-site/releases/download/delivery-v1';
-const GITHUB_URLS: Record<string, string> = {
-  'thrilla-killa': `${DL_BASE}/Merely.-.Thrilla.Killa.zip`,
-  'merely-rocks': `${DL_BASE}/Merely.-.Merely.Rocks.I.zip`,
-  'merely-rocks-2': `${DL_BASE}/Merely.-.Merely.Rocks.II.zip`,
-  'daze': `${DL_BASE}/Merely.-.Daze.zip`,
-  'are-you-mental-1': `${DL_BASE}/Merely.-.Are.You.Mental.I.zip`,
-  'are-you-mental-2': `${DL_BASE}/Merely.-.Are.You.Mental.II.zip`,
-  'get-out': `${DL_BASE}/Merely.-.Get.Out.zip`,
-  'merely-lives': `${DL_BASE}/Merely.-.Merely.Lives.zip`,
-  'merely-lives-2': `${DL_BASE}/Merely.-.Merely.Lives.2.zip`,
-  'dig-this': `${DL_BASE}/Merely.-.Dig.This.zip`,
-  'already-dead': `${DL_BASE}/Merely.-.Already.Dead.zip`,
+// GitHub Release asset IDs (from delivery-v1 tag, private repo)
+const ASSET_IDS: Record<string, string> = {
+  'thrilla-killa': '501504451',
+  'merely-rocks': '501503932',
+  'merely-rocks-2': '501504072',
+  'daze': '501503161',
+  'are-you-mental-1': '501502981',
+  'are-you-mental-2': '501503103',
+  'get-out': '501503556',
+  'merely-lives': '501503809',
+  'merely-lives-2': '501503661',
+  'dig-this': '501503396',
+  'already-dead': '501502859',
 };
-
-const DELIVERY_DIR = 'C:/Users/Andrew/Desktop/Nick/_delivery';
-
-function getLocalPath(releaseId: string): string | null {
-  const map: Record<string, string> = {
-    'thrilla-killa': 'Merely - Thrilla Killa.zip',
-    'merely-rocks': 'Merely - Merely Rocks I.zip',
-    'merely-rocks-2': 'Merely - Merely Rocks II.zip',
-    'daze': 'Merely - Daze.zip',
-    'are-you-mental-1': 'Merely - Are You Mental I.zip',
-    'are-you-mental-2': 'Merely - Are You Mental II.zip',
-    'get-out': 'Merely - Get Out.zip',
-    'merely-lives': 'Merely - Merely Lives.zip',
-    'merely-lives-2': 'Merely - Merely Lives 2.zip',
-    'dig-this': 'Merely - Dig This.zip',
-    'already-dead': 'Merely - Already Dead.zip',
-  };
-  const file = map[releaseId];
-  if (!file) return null;
-  const path = join(DELIVERY_DIR, file);
-  return existsSync(path) ? path : null;
-}
 
 export async function POST(request: NextRequest) {
   let body: { sessionId?: string };
@@ -65,50 +37,51 @@ export async function POST(request: NextRequest) {
 
   const session = await verifyCheckoutSession(body.sessionId);
   if (!session) {
-    return NextResponse.json(
-      { error: 'Invalid or unpaid session' },
-      { status: 403 }
-    );
+    return NextResponse.json({ error: 'Invalid or unpaid session' }, { status: 403 });
   }
 
   const releaseId = session.metadata?.releaseId;
   if (!releaseId) {
-    return NextResponse.json(
-      { error: 'No download for this order' },
-      { status: 404 }
-    );
+    return NextResponse.json({ error: 'No download for this order' }, { status: 404 });
   }
 
-  // Verify the product still exists (not removed after purchase)
   const product = getProduct(releaseId);
   if (!product) {
-    return NextResponse.json(
-      { error: 'Product not found' },
-      { status: 404 }
-    );
+    return NextResponse.json({ error: 'Product not found' }, { status: 404 });
   }
 
-  // Return GitHub download URL directly (redirects through fetch break in browser)
-  const ghUrl = GITHUB_URLS[releaseId];
-  if (ghUrl) {
-    return NextResponse.json({ url: ghUrl });
+  const assetId = ASSET_IDS[releaseId];
+  if (!assetId) {
+    return NextResponse.json({ error: 'Download not available' }, { status: 503 });
   }
 
-  const localPath = getLocalPath(releaseId);
-  if (localPath) {
-    const buf = readFileSync(localPath);
-    const fileName = `${product.name.replace(/\s+/g, '_')}.zip`;
-    return new NextResponse(buf, {
-      headers: {
-        'Content-Type': 'application/zip',
-        'Content-Disposition': `attachment; filename="${fileName}"`,
-        'Content-Length': String(buf.length),
-      },
-    });
+  const token = process.env.GITHUB_TOKEN;
+  if (!token) {
+    return NextResponse.json({ error: 'Server misconfigured' }, { status: 500 });
   }
 
-  return NextResponse.json(
-    { error: 'Download not available yet — check back soon' },
-    { status: 503 }
-  );
+  // Download the release asset from GitHub API (authenticated for private repo)
+  const assetUrl = `https://api.github.com/repos/merelyrocks-sudo/nick-site/releases/assets/${assetId}`;
+  const ghRes = await fetch(assetUrl, {
+    headers: {
+      Accept: 'application/octet-stream',
+      Authorization: `Bearer ${token}`,
+      'X-GitHub-Api-Version': '2022-11-28',
+    },
+  });
+
+  if (!ghRes.ok) {
+    console.error('[download] GitHub asset fetch failed:', ghRes.status);
+    return NextResponse.json({ error: 'Download unavailable' }, { status: 503 });
+  }
+
+  const buf = await ghRes.arrayBuffer();
+  const fileName = `${product.name.replace(/\s+/g, '_')}.zip`;
+  return new NextResponse(buf, {
+    headers: {
+      'Content-Type': 'application/zip',
+      'Content-Disposition': `attachment; filename="${fileName}"`,
+      'Content-Length': String(buf.byteLength),
+    },
+  });
 }
