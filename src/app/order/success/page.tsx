@@ -34,6 +34,11 @@ export default async function SuccessPage({
     }
   }
 
+  // DEBUG: show what happened
+  const debug = session_id
+    ? `session_id: ${session_id.slice(0, 16)}... (Stripe verify: ${downloadUrl ? 'OK' : 'FAILED'})`
+    : 'No session_id in URL';
+
   if (downloadUrl) {
     return (
       <Container className="flex min-h-[60svh] items-center py-24">
@@ -45,16 +50,8 @@ export default async function SuccessPage({
             through. Your receipt is on its way.
           </p>
           <div className="mt-10">
-            <Button href={downloadUrl}>
-              Download {albumName}
-            </Button>
+            <Button href={downloadUrl}>Download {albumName}</Button>
           </div>
-          <p className="mt-6 text-sm leading-relaxed text-bone-faint">
-            Having trouble? Email{' '}
-            <a href={`mailto:${contact.email}`} className="underline underline-offset-4 hover:text-bone">
-              {contact.email}
-            </a>
-          </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Button href="/music">Back to the music</Button>
             <Button href="/" variant="secondary">Home</Button>
@@ -70,10 +67,11 @@ export default async function SuccessPage({
         <p className="eyebrow">Order complete</p>
         <h1 className="display mt-5 text-5xl text-bone sm:text-6xl">Thank you</h1>
         <p className="mt-6 text-base leading-relaxed text-bone-dim">
-          Your payment went through and a receipt is on its way to your email.
+          Your payment went through and a receipt is on its way.
         </p>
+        <p className="mt-4 text-xs text-bone-faint font-mono">{debug}</p>
         <p className="mt-4 text-sm leading-relaxed text-bone-faint">
-          Digital downloads are sent by email, usually within a day.
+          Downloads are sent by email, usually within a day.
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-4">
           <Button href="/music">Back to the music</Button>
