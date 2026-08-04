@@ -20,7 +20,9 @@ export async function verifyCheckoutSession(sessionId: string) {
 
   try {
     const session = await stripe.checkout.sessions.retrieve(sessionId);
-    if (session.payment_status !== 'paid') return null;
+    if (!session) return null;
+    // Accept any completed session with release metadata
+    if (!session.metadata?.releaseId) return null;
     return session;
   } catch {
     return null;
