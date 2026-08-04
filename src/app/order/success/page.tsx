@@ -28,10 +28,11 @@ export default async function SuccessPage({
     const { session, error } = await verifyCheckoutSession(session_id);
     if (error) stripeError = error;
     if (session?.metadata?.releaseId) {
-      const product = getProduct(session.metadata.releaseId);
-      if (product) {
-        albumName = product.name;
-        downloadUrl = buildDownloadUrl(albumName);
+      const releaseId = session.metadata.releaseId;
+      const productName = session.metadata.productName || '';
+      if (releaseId && productName) {
+        albumName = productName;
+        downloadUrl = buildDownloadUrl(productName);
       }
     }
   }
