@@ -13,8 +13,21 @@ import { getProduct } from '@/content/site';
 import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 
-// Vercel Blob URLs (populated after upload)
-const BLOB_URLS: Record<string, string> = {};
+// GitHub Release download URLs (from https://github.com/merelyrocks-sudo/nick-site/releases/tag/delivery-v1)
+const DL_BASE = 'https://github.com/merelyrocks-sudo/nick-site/releases/download/delivery-v1';
+const GITHUB_URLS: Record<string, string> = {
+  'thrilla-killa': `${DL_BASE}/Merely.-.Thrilla.Killa.zip`,
+  'merely-rocks': `${DL_BASE}/Merely.-.Merely.Rocks.I.zip`,
+  'merely-rocks-2': `${DL_BASE}/Merely.-.Merely.Rocks.II.zip`,
+  'daze': `${DL_BASE}/Merely.-.Daze.zip`,
+  'are-you-mental-1': `${DL_BASE}/Merely.-.Are.You.Mental.I.zip`,
+  'are-you-mental-2': `${DL_BASE}/Merely.-.Are.You.Mental.II.zip`,
+  'get-out': `${DL_BASE}/Merely.-.Get.Out.zip`,
+  'merely-lives': `${DL_BASE}/Merely.-.Merely.Lives.zip`,
+  'merely-lives-2': `${DL_BASE}/Merely.-.Merely.Lives.2.zip`,
+  'dig-this': `${DL_BASE}/Merely.-.Dig.This.zip`,
+  'already-dead': `${DL_BASE}/Merely.-.Already.Dead.zip`,
+};
 
 const DELIVERY_DIR = 'C:/Users/Andrew/Desktop/Nick/_delivery';
 
@@ -75,10 +88,10 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  // Try Vercel Blob first (production), then local (development)
-  const blobUrl = BLOB_URLS[releaseId];
-  if (blobUrl) {
-    return NextResponse.redirect(blobUrl);
+  // GitHub Release download link (always available)
+  const ghUrl = GITHUB_URLS[releaseId];
+  if (ghUrl) {
+    return NextResponse.redirect(ghUrl);
   }
 
   const localPath = getLocalPath(releaseId);
