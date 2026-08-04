@@ -10,7 +10,8 @@ export const metadata: Metadata = { title: 'Thank you' };
 const DL = 'https://github.com/merelyrocks-sudo/nick-site/releases/download/delivery-v1';
 
 function buildDownloadUrl(albumName: string): string {
-  const safe = albumName.replace(/[?]/g, '').replace(/\s+/g, '.');
+  // Strip year suffix like "(2025)" and replace spaces/punctuation with dots
+  const safe = albumName.replace(/\(\d{4}\)/, '').replace(/[?]/g, '').replace(/\s+/g, '.').replace(/\.+/g, '.').replace(/\.$/g, '');
   return `${DL}/Merely.-.${safe}.zip`;
 }
 
