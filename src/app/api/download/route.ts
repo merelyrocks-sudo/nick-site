@@ -37,7 +37,8 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Product not found' }, { status: 404 });
   }
 
-  // Return public download URL (repo is public now)
-  const url = `${DL}/Merely.-.${product.name.replace(/\s+/g, '.')}.zip`;
+  // Build filename matching GitHub release naming (spaces→dots, strip ?)
+  const safe = product.name.replace(/[?]/g, '').replace(/\s+/g, '.');
+  const url = `${DL}/Merely.-.${safe}.zip`;
   return NextResponse.json({ url });
 }
