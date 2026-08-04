@@ -17,22 +17,17 @@ if (!existsSync(DELIVERY_DIR)) {
 const files = readdirSync(DELIVERY_DIR).filter(f => f.endsWith('.zip'));
 console.log(`Found ${files.length} delivery zips`);
 
-// Delete existing release/tag if present
-try { execSync(`gh release delete ${TAG} --yes 2>$null`, { shell: 'powershell' }); } catch {}
-try {
-  execSync(`git push origin :refs/tags/${TAG} 2>$null`, { shell: 'powershell' });
-  execSync(`git tag -d ${TAG} 2>$null`, { shell: 'powershell' });
-} catch {}
+// Delete existing release if present, then recreate
+let releaseDeleted = false;
+try { execSync(`gh release delete ${TAG} --yes 2>$null`, { shell: 'powershell' }); releaseDeleted = true; } catch {}
 
-// Create tag
-execSync(`git tag ${TAG}`, { shell: 'powershell' });
-execSync(`git push origin ${TAG}`, { shell: 'powershell', stdio: 'inherit' });
-
-// Create release (empty, upload files after)
-execSync(
-  `gh release create ${TAG} --title "Delivery Zips" --notes "Auto-generated delivery zips for the Merely store. Not a real release — just a CDN for digital downloads."`,
-  { shell: 'powershell', stdio: 'inherit' }
-);
+if (releaseDeleted) {
+  // Recreate release (empty)
+  execSync(
+    `gh release create ${TAG} --title "Delivery Zips" --notes "Auto-generated delivery zips for the Merely store. Not a real release — just a CDN for digital downloads."`,
+    { shell: 'powershell', stdio: 'inherit' }
+  );
+}
 
 // Upload each zip individually to avoid shell quoting issues
 for (const file of files) {
