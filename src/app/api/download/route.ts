@@ -1,0 +1,101 @@
+/**
+ * POST /api/download
+ *
+ * Verifies the Stripe checkout session, checks payment status and metadata,
+ * then streams the matching delivery zip.
+ *
+ * In development, reads from the local _delivery folder.
+ * In production (Vercel), reads from Vercel Blob Storage.
+ */
+import { NextRequest, NextResponse } from 'next/server';
+import { verifyCheckoutSession } from '@/lib/delivery';
+import { getProduct } from '@/content/site';
+import { readFileSync, existsSync } from 'node:fs';
+import { join } from 'node:path';
+
+// Vercel Blob URLs (populated after upload)
+const BLOB_URLS: Record<string, string> = {};
+
+const DELIVERY_DIR = 'C:/Users/Andrew/Desktop/Nick/_delivery';
+
+function getLocalPath(releaseId: string): string | null {
+  const map: Record<string, string> = {
+    'thrilla-killa': 'Merely - Thrilla Killa.zip',
+    'merely-rocks': 'Merely - Merely Rocks I.zip',
+    'merely-rocks-2': 'Merely - Merely Rocks II.zip',
+    'daze': 'Merely - Daze.zip',
+    'are-you-mental-1': 'Merely - Are You Mental I.zip',
+    'are-you-mental-2': 'Merely - Are You Mental II.zip',
+    'get-out': 'Merely - Get Out.zip',
+    'merely-lives': 'Merely - Merely Lives.zip',
+    'merely-lives-2': 'Merely - Merely Lives 2.zip',
+    'dig-this': 'Merely - Dig This.zip',
+    'already-dead': 'Merely - Already Dead.zip',
+  };
+  const file = map[releaseId];
+  if (!file) return null;
+  const path = join(DELIVERY_DIR, file);
+  return existsSync(path) ? path : null;
+}
+
+export async function POST(request: NextRequest) {
+  let body: { sessionId?: string };
+  try {
+    body = await request.json();
+  } catch {
+    return NextResponse.json({ error: 'Bad request' }, { status: 400 });
+  }
+
+  if (!body.sessionId) {
+    return NextResponse.json({ error: 'Missing session ID' }, { status: 400 });
+  }
+
+  const session = await verifyCheckoutSession(body.sessionId);
+  if (!session) {
+    return NextResponse.json(
+      { error: 'Invalid or unpaid session' },
+      { status: 403 }
+    );
+  }
+
+  const releaseId = session.metadata?.releaseId;
+  if (!releaseId) {
+    return NextResponse.json(
+      { error: 'No download for this order' },
+      { status: 404 }
+    );
+  }
+
+  // Verify the product still exists (not removed after purchase)
+  const product = getProduct(releaseId);
+  if (!product) {
+    return NextResponse.json(
+      { error: 'Product not found' },
+      { status: 404 }
+    );
+  }
+
+  // Try Vercel Blob first (production), then local (development)
+  const blobUrl = BLOB_URLS[releaseId];
+  if (blobUrl) {
+    return NextResponse.redirect(blobUrl);
+  }
+
+  const localPath = getLocalPath(releaseId);
+  if (localPath) {
+    const buf = readFileSync(localPath);
+    const fileName = `${product.name.replace(/\s+/g, '_')}.zip`;
+    return new NextResponse(buf, {
+      headers: {
+        'Content-Type': 'application/zip',
+        'Content-Disposition': `attachment; filename="${fileName}"`,
+        'Content-Length': String(buf.length),
+      },
+    });
+  }
+
+  return NextResponse.json(
+    { error: 'Download not available yet — check back soon' },
+    { status: 503 }
+  );
+}
