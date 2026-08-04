@@ -21,26 +21,20 @@ export default function DownloadAction({
         body: JSON.stringify({ sessionId }),
       });
 
-      if (res.redirected) {
-        window.location.href = res.url;
-        return;
-      }
-
       if (!res.ok) {
         setState('error');
         return;
       }
 
-      // Stream the file as a download
-      const blob = await res.blob();
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `${albumName.replace(/\s+/g, '_')}.zip`;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      URL.revokeObjectURL(url);
+      const data = await res.json();
+
+      if (data.url) {
+        // Direct download — open in new tab
+        window.open(data.url, '_blank');
+        return;
+      }
+
+      setState('error');
     } catch {
       setState('error');
     }

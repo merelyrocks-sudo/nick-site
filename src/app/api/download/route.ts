@@ -88,10 +88,10 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  // GitHub Release download link (always available)
+  // Return GitHub download URL directly (redirects through fetch break in browser)
   const ghUrl = GITHUB_URLS[releaseId];
   if (ghUrl) {
-    return NextResponse.redirect(ghUrl);
+    return NextResponse.json({ url: ghUrl });
   }
 
   const localPath = getLocalPath(releaseId);
