@@ -1,16 +1,13 @@
 import type { Metadata } from 'next';
 import Container from '@/components/Container';
 import Button from '@/components/Button';
-import { contact } from '@/content/site';
 import { verifyCheckoutSession } from '@/lib/delivery';
-import { getProduct } from '@/content/site';
 
-export const metadata: Metadata = { title: 'Thank you' };
+export const metadata: Metadata = { title: 'Download your music' };
 
 const DL = 'https://github.com/merelyrocks-sudo/nick-site/releases/download/delivery-v1';
 
 function buildDownloadUrl(albumName: string): string {
-  // Strip year suffix like "(2025)" and replace spaces/punctuation with dots
   const safe = albumName.replace(/\(\d{4}\)/, '').replace(/[?]/g, '').replace(/\s+/g, '.').replace(/\.+/g, '.').replace(/\.$/g, '');
   return `${DL}/Merely.-.${safe}.zip`;
 }
@@ -23,24 +20,14 @@ export default async function SuccessPage({
   const { session_id } = await searchParams;
   let albumName = '';
   let downloadUrl = '';
-  let stripeError = '';
 
   if (session_id) {
-    const { session, error } = await verifyCheckoutSession(session_id);
-    if (error) stripeError = error;
-    if (session?.metadata?.releaseId) {
-      const releaseId = session.metadata.releaseId;
-      const productName = session.metadata.productName || '';
-      if (releaseId && productName) {
-        albumName = productName;
-        downloadUrl = buildDownloadUrl(productName);
-      }
+    const { session } = await verifyCheckoutSession(session_id);
+    if (session?.metadata?.productName) {
+      albumName = session.metadata.productName;
+      downloadUrl = buildDownloadUrl(albumName);
     }
   }
-
-  const debug = session_id
-    ? `session_id: ${session_id.slice(0, 16)}... (${downloadUrl ? 'OK' : 'FAILED'})${stripeError ? ' — ' + stripeError : ''}`
-    : 'No session_id in URL';
 
   if (downloadUrl) {
     return (
@@ -49,12 +36,16 @@ export default async function SuccessPage({
           <p className="eyebrow">Payment confirmed</p>
           <h1 className="display mt-5 text-5xl text-bone sm:text-6xl">Thank you</h1>
           <p className="mt-6 text-base leading-relaxed text-bone-dim">
-            Your payment for <strong className="text-bone">{albumName}</strong> went
-            through. Your receipt is on its way.
+            Your purchase of <strong className="text-bone">{albumName}</strong> is
+            complete. A receipt is on its way from Stripe.
           </p>
           <div className="mt-10">
             <Button href={downloadUrl}>Download {albumName}</Button>
           </div>
+          <p className="mt-6 text-sm text-bone-faint">
+            Your download will start immediately. Save this link or bookmark this
+            page — if you lose it, reply to your receipt email and we will resend.
+          </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Button href="/music">Back to the music</Button>
             <Button href="/" variant="secondary">Home</Button>
@@ -70,11 +61,9 @@ export default async function SuccessPage({
         <p className="eyebrow">Order complete</p>
         <h1 className="display mt-5 text-5xl text-bone sm:text-6xl">Thank you</h1>
         <p className="mt-6 text-base leading-relaxed text-bone-dim">
-          Your payment went through and a receipt is on its way.
-        </p>
-        <p className="mt-4 text-xs text-bone-faint font-mono">{debug}</p>
-        <p className="mt-4 text-sm leading-relaxed text-bone-faint">
-          Downloads are sent by email, usually within a day.
+          Your payment went through and a receipt is on its way from Stripe.
+          If you do not see your download link, reply to the receipt and we will
+          send it right away.
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-4">
           <Button href="/music">Back to the music</Button>

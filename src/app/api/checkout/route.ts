@@ -2,6 +2,13 @@ import { NextResponse } from 'next/server';
 import { stripe, stripeConfigured, siteUrl } from '@/lib/stripe';
 import { getProduct, storeEnabled } from '@/content/site';
 
+const DL_BASE = 'https://github.com/merelyrocks-sudo/nick-site/releases/download/delivery-v1';
+
+function buildDownloadUrl(name: string): string {
+  const safe = name.replace(/\(\d{4}\)/, '').replace(/[?]/g, '').replace(/\s+/g, '.').replace(/\.+/g, '.').replace(/\.$/g, '');
+  return `${DL_BASE}/Merely.-.${safe}.zip`;
+}
+
 /**
  * Creates a Stripe Checkout Session and returns the URL to send the buyer to.
  *
@@ -82,7 +89,7 @@ export async function POST(request: Request) {
         productName: product.name,
         kind: product.kind,
         ...(size ? { size } : {}),
-        ...(product.releaseId ? { releaseId: product.releaseId } : {}),
+        ...(product.releaseId ? { releaseId: product.releaseId, downloadUrl: buildDownloadUrl(product.name) } : {}),
       },
     });
 
