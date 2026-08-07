@@ -679,7 +679,7 @@ export const products: Product[] = [
     name: "Are You Mental? II (2022)",
     priceCents: 999, // TODO: set the real price. 999 = $9.99
     description: 'Full album download. High quality files, yours to keep.',
-    image: ARTWORK_PENDING,
+    image: '/images/releases/are-you-mental-2.jpg',
     kind: 'digital',
     stripePriceId: 'price_1TzSKtQ0jYrsWdaSK3giihtM', // filled in during Stripe setup
     available: true,
@@ -690,7 +690,7 @@ export const products: Product[] = [
     name: "Are You Mental? I (2022)",
     priceCents: 999, // TODO: set the real price. 999 = $9.99
     description: 'Full album download. High quality files, yours to keep.',
-    image: ARTWORK_PENDING,
+    image: '/images/releases/are-you-mental-1.jpg',
     kind: 'digital',
     stripePriceId: 'price_1TzSKuQ0jYrsWdaSCY0WOjlY', // filled in during Stripe setup
     available: true,
