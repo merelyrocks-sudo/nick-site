@@ -59,10 +59,27 @@ local files 1,2,3,4,5,6,8,9,11,12,13,14.
 - **Are You Mental? II is short one track.** Apple's disc 2 has 13; the local
   disc has 12. Missing: **"Hey My Baby" (213s)**. Buyers currently receive 12 of
   13. Either Nick has the file or the disc was burned without it.
+  **RESOLVED 2026-08-07 (Spotify):** Track is **Disc 2 track 8 "Hey My Baby"
+  (3:33/213s)** — verified against Merely's Spotify album page. Local CD 7 maps
+  perfectly to all other 12 tracks (01→Like a Moth to the Flame 298s, 02→Wasted
+  205s, 03→When You're High 168s, 04→Have Another Cigarette? 204s, 05→Gimme
+  Yours 220s, 06→Don't Want You No More 221s, 07→So Hazy 264s, 08→I'm Just
+  Fine 184s, 09→My Funny Valentine 226s, 10→Maybe/Baby 215s, 11→Holly 282s,
+  12→Stranger Than Now 214s). The disc skips 7→9: **Hey My Baby is the missing
+  track, confirmed.** Nick has the master (it's on streaming).
 - **Already Dead files 6 and 7 are both exactly 213s.** Apple lists "Hole in My
   Head" at 213500ms; file 6 is 213266ms, file 7 is 213084ms — both inside rip
   variance. File 6 was chosen (marginally closer, preserves running order). This
   is the one mapping in the whole catalogue resting on judgement, not proof.
+  **RESOLVED 2026-08-07 (Spotify):** File 6 = "Hole in My Head" (Spotify 3:33)
+  — exact match. File 7 is **burn filler, never shipped** (site ships files
+  1,2,3,4,5,6,8,9,11,12,13,14; all 12 map to the real album exactly: 1→Already
+  Dead 271s/4:30, 2→Mother's Babies Dyin' 237s/3:57, 3→Pour Me Out 402s/6:41,
+  4→It's Alright Mama 249s/4:08, 5→Knowin' 229s/3:49, 6→Hole in My Head
+  213s/3:33, 8→All Gone 200s/3:20, 9→Goin' Nowhere 241s/4:00, 11→In the Day
+  371s/6:10, 12→Feelin' 280s/4:40, 13→Drawing Near 299s/4:58, 14→Already Dead
+  (Reprise) 233s/3:53). **No duplicate in the shipped set — mapping is now
+  proof, not judgement.**
 
 ### Notes on specific entries
 
