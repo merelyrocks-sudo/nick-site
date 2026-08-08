@@ -152,7 +152,7 @@ export const streaming: Record<string, string> = {
   appleMusic: 'https://music.apple.com/us/artist/merely/1625077159',
   youtube: 'https://www.youtube.com/channel/UCCbGnstwWpe-dT4TEoR3nig',
   youtubeMusic: '', // TODO (optional — often the same artist as YouTube)
-  soundcloud: '', // TODO
+  soundcloud: 'https://soundcloud.com/merely', // verified live 2026-08-07 (43 tracks, Chillicothe US)
   bandcamp: '', // TODO (optional)
   tidal: '', // TODO (optional)
   amazonMusic: '', // TODO (optional)
@@ -162,7 +162,7 @@ export const social: Record<string, string> = {
   instagram: 'https://www.instagram.com/merelyrocks/',
   tiktok: 'https://www.tiktok.com/@merelyrocks?is_from_webapp=1&sender_device=pc',
   twitter: 'https://x.com/MerelyRocks',
-  facebook: '', // TODO (optional) — a real band Page, not a personal profile
+  facebook: 'https://www.facebook.com/profile.php?id=61592874697638', // MerelyRocks page, verified 2026-08-07
 };
 
 // ---------------------------------------------------------------------------
@@ -289,7 +289,10 @@ export const releases: Release[] = [
       'Whatever May',
     ],
     hasPreviews: true,
-    links: {},
+    links: {
+      // Spotify hosts Merely Rocks I + II as one combined release, "Rocks!" (2025, 26 tracks).
+      spotify: 'https://open.spotify.com/album/41KknFYgOsi2uLTpofpT4P',
+    },
   },
   {
     id: 'merely-rocks',
@@ -314,7 +317,10 @@ export const releases: Release[] = [
       'I Want Your Dazey Eyes',
     ],
     hasPreviews: true,
-    links: {},
+    links: {
+      // Spotify hosts Merely Rocks I + II as one combined release, "Rocks!" (2025, 26 tracks).
+      spotify: 'https://open.spotify.com/album/41KknFYgOsi2uLTpofpT4P',
+    },
   },
   {
     id: 'daze',
@@ -341,7 +347,9 @@ export const releases: Release[] = [
       'Strange Ways',
     ],
     hasPreviews: true,
-    links: {},
+    links: {
+      spotify: 'https://open.spotify.com/album/1WRQNwA8RMFrnjW7bgynBI',
+    },
   },
   {
     id: 'are-you-mental-2',
@@ -365,7 +373,10 @@ export const releases: Release[] = [
       'Stranger Than Now',
     ],
     hasPreviews: true,
-    links: {},
+    links: {
+      // Spotify hosts Are You Mental? I + II as one release (2022).
+      spotify: 'https://open.spotify.com/album/1zZ3hsKMDzDWbLNm2jszkE',
+    },
   },
   {
     id: 'are-you-mental-1',
@@ -389,7 +400,10 @@ export const releases: Release[] = [
       'Are You Mental?',
     ],
     hasPreviews: true,
-    links: {},
+    links: {
+      // Spotify hosts Are You Mental? I + II as one release (2022).
+      spotify: 'https://open.spotify.com/album/1zZ3hsKMDzDWbLNm2jszkE',
+    },
   },
   {
     id: 'get-out',
@@ -415,7 +429,9 @@ export const releases: Release[] = [
       'Dirtbag',
     ],
     hasPreviews: true,
-    links: {},
+    links: {
+      spotify: 'https://open.spotify.com/album/4h5670NNAjpTu3LWLwlPll',
+    },
   },
   {
     id: 'merely-lives-2',
@@ -439,7 +455,10 @@ export const releases: Release[] = [
       'Mere Mortals',
     ],
     hasPreviews: true,
-    links: {},
+    links: {
+      // Spotify hosts Merely Lives 1 + 2 as one release, "Lives" (2020).
+      spotify: 'https://open.spotify.com/album/7Ai2oqhbcHTsvG4O6UqanX',
+    },
   },
   {
     id: 'merely-lives',
@@ -462,7 +481,10 @@ export const releases: Release[] = [
       'I Am But A Mortal Man',
     ],
     hasPreviews: true,
-    links: {},
+    links: {
+      // Spotify hosts Merely Lives 1 + 2 as one release, "Lives" (2020).
+      spotify: 'https://open.spotify.com/album/7Ai2oqhbcHTsvG4O6UqanX',
+    },
   },
   {
     id: 'dig-this',
