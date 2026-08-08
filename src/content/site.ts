@@ -152,7 +152,7 @@ export const streaming: Record<string, string> = {
   appleMusic: 'https://music.apple.com/us/artist/merely/1625077159',
   youtube: 'https://www.youtube.com/channel/UCCbGnstwWpe-dT4TEoR3nig',
   youtubeMusic: 'https://music.youtube.com/channel/UCpTMA4jI8GYqqyXjWk6IGGg', // verified live 2026-08-07 (Rocks!, Daze, Are You Mental?, Get Out!, Lives, Dig This, Already Dead)
-  soundcloud: 'https://soundcloud.com/merely', // verified live 2026-08-07 (43 tracks, Chillicothe US)
+  soundcloud: '', // NOT Nick's account — do not link until ownership is confirmed by Nick
   bandcamp: '', // TODO (optional)
   tidal: '', // TODO (optional)
   amazonMusic: '', // TODO (optional)
